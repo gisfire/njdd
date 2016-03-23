@@ -10,8 +10,8 @@
         <!-- Tool Set Version -->        
         <preference name='phonegap-version' value='cli-5.2.0' />
 
-        <name>Phonegap Generic Boilerplate #7</name>
-        <description>Phonegap Generic Boilerplate #7</description>
+        <name>农机远程指挥调度系统</name>
+        <description>农机远程指挥调度系统</description>
         <author href="http://bsdmasterindex.com" email="jessemonroy650@yahoo.com">
         Jesse Monroy
         </author>
