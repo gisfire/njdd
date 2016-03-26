@@ -3,13 +3,13 @@
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.bsdmasterindex.phonegapgeneric-boilerplate2"
-        version     = "1.0"
+        version     = "0.1"
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
-    <name>NJDDLT</name>
+    <name>NJDDMobile</name>
     <description>
-     NJDDLT
+     NJDDMobile
     </description>
     <author email="#" name="#">
         gislt
