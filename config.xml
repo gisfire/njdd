@@ -7,9 +7,9 @@
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
-    <name>NJDD</name>
+    <name>NJDDLT</name>
     <description>
-     NJDD
+     NJDDLT
     </description>
     <author email="#" name="#">
         gislt
