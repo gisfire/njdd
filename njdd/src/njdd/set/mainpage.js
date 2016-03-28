@@ -3,7 +3,7 @@
 $(document).on("pageinit", "#mainpage", function () {
 
     $("#mainpage_setbtn").html(sessionStorage.name);
-
+   
     $.ajax({
         url: domain + url_getCarInfo + "?token=1",
         type: 'get',
@@ -62,5 +62,5 @@ $(document).on("pageinit", "#mainpage", function () {
 
 function mainpage_selectcar_change() {
     sessionStorage.carid = $("#mainpage_selectcar").val();
-    alert(sessionStorage.carid);
+    //alert(sessionStorage.carid);
 }

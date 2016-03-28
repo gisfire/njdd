@@ -23,30 +23,105 @@
 
         <div data-role="main" class="ui-content">
             <!--具体信息-->
-            <div class="ui-grid-b">
-               
-
-                <div class="ui-block-a" style="border: 1px solid white;"><span>农机手姓名</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_username"></span></div>
-                
-                 <div class="ui-block-a" style="border: 1px solid white;"><span>农机车类型</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_car_type"></span></div>
-
-                <div class="ui-block-a" style="border: 1px solid white;"><span>马力</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_car_horsepower"></span></div>
-                
-                 <div class="ui-block-a" style="border: 1px solid white;"><span>所属农场</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_unit_name"></span></div>
-
-                <div class="ui-block-a" style="border: 1px solid white;"><span>车牌号</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_car_code"></span></div>
-
-                <div class="ui-block-a" style="border: 1px solid white;"><span>电话号码</span></div>
-                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_phone"></span></div>
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">
+                                &nbsp;用户名：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="name" id="detailinfopage_username" placeholder="您的姓名..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
             </div>
+            
+              <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mobile_phone">
+                                &nbsp;&nbsp;手机：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="mobile_phone" id="detailinfopage_phone" placeholder="您的手机号码..." value="" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="leixing">
+                                农机类型：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="leixing" id="detailinfopage_car_type" placeholder="农机类型..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="danwei">
+                                所属农场：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="danwei" id="detailinfopage_unit_name" placeholder="您的所属农场..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+         
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">
+                                &nbsp;车牌号：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="name" id="detailinfopage_car_code" placeholder="车牌号..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mali">
+                                &nbsp;&nbsp;马力： 
+                            </label>
+                        </td>
+                        <td>
+                            <input name="mali" id="detailinfopage_car_horsepower" placeholder="马力..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+          
+           
         </div>
 
-
+      <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <h2></h2>
+        </div>
 
 
     </div>

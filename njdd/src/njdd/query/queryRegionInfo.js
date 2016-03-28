@@ -1,5 +1,4 @@
-﻿
-//定义变量
+﻿//定义变量
 var datajson;
 var userphone;
 var selecttype;
@@ -7,8 +6,6 @@ var colortype;
 var items = new Array();
 var mapPoint;
 var unitname;
-
-var zhi;
 //var njpointresult;
 //njpointresult = new Array();
 var njpointlayer;
@@ -16,6 +13,8 @@ var graphictemp;
 var pt;
 var njpointresult1;
 njpointresult1 = new Array();
+var dianx;
+var diany;
 (function (window) {
     $(document).ready(function () {
 
@@ -106,21 +105,7 @@ njpointresult1 = new Array();
                     map.addLayer(njpointlayer1);
                     njpointlayer2 = new GraphicsLayer({ id: "graphicsLayerPoint2" });
                     map.addLayer(njpointlayer2);
-                    //显示所有车队的列表
-                    //$.ajax({
-                    //    type: "get",
-                    //    url: domain + url_getUnit + "?token=1",
-                    //    async: true,
-                    //    dataType: 'json',
-                    //    success: function (data) {
-                    //        $.each(data.result.datas, function (i, item) {
-                    //            $("#personinfopage_unitName").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                    //        });
-                    //        unitname = $("#personinfopage_unitName").find("option:selected").text();
-                    //    }
-
-                    //});
-
+                    
 
                 })();
                 //initialAction
@@ -164,17 +149,57 @@ njpointresult1 = new Array();
 
                 }
 
+                ////////
+                $("#btn_sumbit").click(function () {
+                    
+                    if (circle != null) {
+                        //zaici();
+                    //定义要画的图形的线条颜色  
+                    var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+                    var geodesic = dom.byId("input_area");
+                    {
+                        var point = new Point([dianx, diany]);
+                        circle = new Circle(point, {
+                            //center: e.mapPoint,
+                            geodesic: domAttr.get(geodesic, "checked"),
+                            radius: document.querySelector("#input_area").value //获取范围
+                        });
+                        gl.clear();
+                        var polycircle = new Graphic(circle, symbol);
+                        gl.add(polycircle);
+                        lastGraphic = polycircle;
+                        map.setExtent(circle.getExtent());
+                        drawData(); //画圆后请求数据
+                        njpointlayer1.clear();
+                    }
+                    relateGeometries();
+
+                    } else {
+                        alert("请点击地图查询范围");
+
+                    }
+
+                });
+
+
+
+
+
+                /////////////
                 //画圆
                 function drawCircle(jsondata) {
                     //定义要画的图形的线条颜色  
                     var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
-                    var geodesic = dom.byId("input_area");
+                    var  geodesic = dom.byId("input_area");
                     map.on("click", function (e) {
                         circle = new Circle({
                             center: e.mapPoint,
+                           
                             geodesic: domAttr.get(geodesic, "checked"),
                             radius: document.querySelector("#input_area").value //获取范围
                         });
+                       dianx =e.mapPoint.x;
+                       diany =e.mapPoint.y;
                         gl.clear();
                         var polycircle = new Graphic(circle, symbol);
                         gl.add(polycircle);
@@ -204,28 +229,13 @@ njpointresult1 = new Array();
                              njpointresult1[a] = njpointresult[a];
                             a++;
 
-                            //var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
-                            //var pointtemp = new Point([getdata.result.datas[i].x, getdata.result.datas[i].y], new SpatialReference({ wkid: 4326 }));
-                            // graphictemp = new Graphic(pointtemp, symboltemp);
-                            //graphictemp.setAttributes({ "username": getdata.result.datas[i].username, "x": getdata.result.datas[i].x, "y": getdata.result.datas[i].y });
-                            //var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
-                            //var infoTemplate = new InfoTemplate("信息", content);
-                            //graphictemp.setInfoTemplate(infoTemplate);
-                            //njpointlayer.add(graphictemp);
-
+                          
                         } 
                        
-                        // $("#content_panelbody").empty();
+                      
                     }
                    
-                    // xianshi();
-                    // showitems(njpointresult);//在右侧栏显示农机信息
-                    //gettu();
-
-
-                    
-
-
+                 
                         //信息与checkbox绑定
                     $(":checkbox").each(function () {
                        
@@ -270,111 +280,40 @@ njpointresult1 = new Array();
                  
                         $(document).on("pagebeforecreate", "#njinfopage", function () {
                             $("#logmanagepage_listview").empty();
-                            $.each(njpointresult, function (i, item) {
-                                njinfopageuser(item);
+                            $(":checkbox").each(function () {
 
+                                if ($(this).attr("checked") == "checked") {
+
+                                    //alert("只查询本车队");
+                                    $.each(njpointresult, function (i, item) {
+                                        if (item.unit_name == unitname) {
+                                              njinfopageuser(item);
+                                        }
+
+                                    });
+
+                                } else {
+
+                                    $.each(njpointresult, function (i, item) {
+                                        
+                                            njinfopageuser(item);
+                                        
+
+                                    });
+
+                                    //alert("查询所有车队");
+                                }
                             });
+
+                            
 
                         });
 
-                        //$(document).on("pagebeforecreate", "#carid", function () {
-                        //    userphone = null;
-                        //    $.each(njpointresult, function (i, item) {
-                        //        if (item.unit_name == null) {
-                        //            item.unit_name = "无";
-                        //        }
-                        //        if (item.userid == carid) {
-                        //            userphone = item.phone;
-                        //            $(document).on("pageinit", "#detailinfopage", function () {
-                        //                $("#detailinfopage_username").html(item.username);
-                        //                $("#detailinfopage_car_type").html(item.car_type);
-                        //                $("#detailinfopage_car_horsepower").html(item.car_horsepower);
-                        //                $("#detailinfopage_unit_name").html(item.unit_name);
-                        //                $("#detailinfopage_car_code").html(item.car_code);
-                        //                $("#detailinfopage_phone").html(item.phone);
-
-                        //            });
-                        //            return;
-                        //        }
-
-                        //    });
-
-                        //});
+                     
 
                 }
 
-             
-
-
-               
-
-
-
-
-
-
-
-
-
-                //$(document).ready(function () {
-
-                //    $("#personinfopage_unitName").change(function () {
-                //        //zhi = document.getElementById("personinfopage_unitName").val();                 
-                //        unitname = $("#personinfopage_unitName").find("option:selected").text();
-                //    });
-                //});
-
-                //对机车渲染模版
-                //function showitems() {
-                //    $.each(njpointresult, function (i, item) {
-
-                //        document.getElementById(item.userid).onclick = function () { dingwei(item.username, item.x, item.y); };
-                //    });
-
-                //    function dingwei(username, x, y) {
-                //        njpointlayer1.clear();
-                //        var symboltemp = new PictureMarkerSymbol('../../image/png/free.png', 35, 35);
-                //        mapPoint = new Point(x, y, new SpatialReference({ wkid: 4326 }));
-                //        var graphictemp = new Graphic(mapPoint, symboltemp);
-                //        graphictemp.setAttributes({ "username": username, "x": x, "y": y });
-                //        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
-                //        var infoTemplate = new InfoTemplate("信息", content);
-                //        map.centerAndZoom(mapPoint, 14);
-                //        graphictemp.setInfoTemplate(infoTemplate);
-                //        njpointlayer1.add(graphictemp);
-                //    }
-
-                //}
-
-
-                //点击后查询至显示的车队
-                //$(document).ready(function () {
-                //    $("#cargroup").on("click", function () {
-
-                //    });
-                //});
-
-
-                //function xianshi() {
-                //    $.each(njpointresult, function(i, item) {
-                //        logmanagepagecar(item);
-                //    });
-                //}
-
-                //function logmanagepagecar(item) {
-                //    //模板渲染
-                //    var html = tmpl("tmpl_logmanagepage_detailinfo", item);
-                //    $(html).appendTo("#logmanagepage_listview").trigger('create');
-                //};
-
-
-                //$(document).on("pagebeforecreate", "#njinfopage", function () {
-                //    $.each(njpointresult, function (i, item) {
-                //        njinfopageuser(item);
-
-                //    });
-
-                //});
+            
 
                 function njinfopageuser(item) {
                     if (item.unit_name == null) {
@@ -387,40 +326,7 @@ njpointresult1 = new Array();
 
                
 
-                //信息与checkbox绑定
-              
-
-                    //$(":checkbox").each(function () {
-                    //    $(this).click(function () {
-                    //        if ($(this).attr("checked") == "checked") {
-
-                    //            //$.each(njpointresult, function (i, item) {
-                    //            //    if (item.unit_name == unitname) {
-                    //            //        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
-                    //            //        mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
-                    //            //        var graphictemp = new Graphic(mapPoint, symboltemp);
-                    //            //        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
-                    //            //        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
-                    //            //        var infoTemplate = new InfoTemplate("信息", content);
-                                       
-                    //            //        graphictemp.setInfoTemplate(infoTemplate);
-                    //            //        njpointlayer1.add(graphictemp);
-
-                    //            //    }
-                    //            //});
-                    //            alert("只查询本车队");
-
-                    //        } else {
-
-                    //            //njpointlayer.clear();
-                    //            alert("查询所有车队");
-                    //        }
-                    //    });
-                    //});
-                //信息与checkbox绑定
-                //}
-                
-                   
+            
 
                 //请求数据
                 function drawData() {
@@ -450,6 +356,7 @@ njpointresult1 = new Array();
 
 
 function njinfo_btn_click(carid) {
+   
     userphone = null;
     $.each(njpointresult1, function (i, item) {
         if (item.unit_name == null) {
@@ -458,12 +365,13 @@ function njinfo_btn_click(carid) {
         if (item.userid == carid) {
             userphone = item.phone;
             $(document).on("pageinit", "#detailinfopage", function () {
-                $("#detailinfopage_username").html(item.username);
-                $("#detailinfopage_car_type").html(item.car_type);
-                $("#detailinfopage_car_horsepower").html(item.car_horsepower);
-                $("#detailinfopage_unit_name").html(item.unit_name);
-                $("#detailinfopage_car_code").html(item.car_code);
-                $("#detailinfopage_phone").html(item.phone);
+                $("#detailinfopage_username").val(item.username);
+              
+                $("#detailinfopage_car_type").val(item.car_type);
+                $("#detailinfopage_car_horsepower").val(item.car_horsepower);
+                $("#detailinfopage_unit_name").val(item.unit_name);
+                $("#detailinfopage_car_code").val(item.car_code);
+                $("#detailinfopage_phone").val(item.phone);
             
             });
             return;

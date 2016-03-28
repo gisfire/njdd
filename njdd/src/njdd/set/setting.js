@@ -3,7 +3,7 @@ var personmanagejson;
 
 function setpage_selectcar_change() {
     sessionStorage.carid = $("#setpage_selectcar").val();
-    alert(sessionStorage.carid);
+    //alert(sessionStorage.carid);
 }
 
 $(document).on("pageinit", "#setpage", function () {
@@ -59,18 +59,3 @@ $(document).on("pageinit", "#setpage", function () {
 
 
 
-function managepage_btn_click(id) {
-    if (datajson != null && datajson.result.datas.length > 0) {
-        $.each(datajson.result.datas, function (i, item) {
-            if (item.id == id) {
-                $(document).on("pageinit", "#informationpage", function () {
-                    $("#informationpage_name").val(item.name);
-                    $("#informationpage_tel").val(item.phone);
-                    $("#informationpage_email").val(item.email);
-                });
-                return;
-            }
-
-        });
-    }
-}

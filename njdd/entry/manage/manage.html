@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
-
+    
 </head>
 <body>
     <div data-role="page" id="managepage">
@@ -33,6 +33,13 @@
     </div>
 
 </body>
-
+<script src="../../dep/tmpl.js"></script>
+<script src="../../src/common/config.js"></script>
+<script src="../../src/njdd/set/manage.js"></script>
+<script type="text/html" id="tmpl_managepage_detailinfo">
+    <li>
+        <a href="../manage/information.html" id="<%=id%>" onclick="managepage_btn_click(this.id)" data-transition="slide"><%=name%></a>
+    </li>
+</script>
 
 </html>

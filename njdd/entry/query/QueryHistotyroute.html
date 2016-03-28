@@ -17,22 +17,35 @@
         <script type="text/javascript" src="http://120.27.93.15:8080/arcgis_js_api/library/3.9/3.9/init.js"></script>
     </head>
     <body>
-        <div data-role="page" id="map-page">
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-fullscreen="true" id="page-header">
-                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
-                <h1>历史轨迹查询  </h1>     
-            </div>
-            <div data-role="content" id="page-content">
-                <div id="map" class="ui-content"></div>  
-            </div>
-            <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="true" id="page-footer">                      
-                <div data-role="navbar" >
+       
+           <div data-role="page" id="main-page">
+            
+                 <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header">
+                     <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
+                     <h1>历史轨迹查询 </h1>
+                
+                 </div>
+            
+
+                 <div data-role="content" id="main-content">
+                     <div id="map" style="width: 100%; height: 100%;">
+                     </div>
+               
+                 </div>
+            
+
+                 <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" style="text-align: center">
+             <div data-role="navbar" >
                     <ul> 
                         <li><a href="#timepicker-page" data-role="button" class="ui-btn">选择查询时间</a></li>
                     </ul>    
                 </div>
             </div>
-        </div>
+               
+             </div>
+        
+        
+
         <div data-role="page" id="timepicker-page">
             <div data-role="header" data-tap-toggle="false"  data-fullscreen="true" id="timepicker-header">
                 <a  href="#map-page" data-role="button" data-ajax="false" data-icon="back">返回</a>
@@ -58,8 +71,8 @@
             <div data-role="footer"data-tap-toggle="false" data-position="fixed" data-fullscreen="true" id="timepicker-footer">
                 <div data-role="navbar" >
                     <ul> 
-                        <li><a href="#map-page" data-role="button" id="btn_start" class="ui-btn">确定</a></li>
-                        <li><a href="#map-page" data-role="button" id="btn_cancel" class="ui-btn">取消</a></li>
+                        <li><a href="#main-page" data-role="button" id="btn_start" class="ui-btn">确定</a></li>
+                        <li><a href="#main-page" data-role="button" id="btn_cancel" class="ui-btn">取消</a></li>
                     </ul>    
                 </div>
             </div>

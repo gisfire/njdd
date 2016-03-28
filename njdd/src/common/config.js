@@ -35,4 +35,6 @@ var url_deleteCar = "njdd.app/rest/v100/car/delete";
 var url_getTeammember = "njdd.app/rest/v100/teammember/get";
 var url_addTeammember = "njdd.app/rest/v100/teammember/add";
 var url_deleteTeammember = "njdd.app/rest/v100/teammember/delete";
+var url_deleteUnitmember = "njdd.app/rest/v100/unitmember/delete";
+var url_addUnitmember = "njdd.app/rest/v100/unitmember/add";
 

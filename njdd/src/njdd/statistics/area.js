@@ -133,27 +133,34 @@
          * 设置图表
          */
         function setChart(selVal, result) {
-            // 图表单位：day week month
             var type = getYAxleType(selVal);
-
             var datas = result.result.datas;
             // 清空option数据
             option.xAxis[0].data = [];
             option.series[0].data = [];
             if (type == "day") {
                 for (var i = 0; i < datas.length; i++) {
-                    option.xAxis[0].data.push(new Date(datas[i].date).Format("yyyy-MM-dd"));
-                    option.series[0].data.push(datas[i].area);
+                    if (datas[i].area < 0.01) {
+                        datas[i].area = 0;
+                        option.xAxis[0].data.push(new Date(datas[i].date).Format("yyyy-MM-dd"));
+                        option.series[0].data.push((datas[i].area * 100000000).toFixed(2));
+                    } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
                 }
             } else if (type == "week") {
                 for (var i = 0; i < datas.length; i++) {
                     option.xAxis[0].data.push("第" + datas[i].week.toString() + "周");
-                    option.series[0].data.push(datas[i].area);
+                    if (datas[i].area < 0.01) {
+                        datas[i].area = 0;
+                        option.series[0].data.push((datas[i].area).toFixed(2));
+                    } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
                 }
             } else if (type == "month") {
                 for (var i = 0; i < datas.length; i++) {
                     option.xAxis[0].data.push(datas[i].month.toString() + "月");
-                    option.series[0].data.push(datas[i].area);
+                    if (datas[i].area < 0.01) {
+                        datas[i].area = 0;
+                        option.series[0].data.push((datas[i].area).toFixed(2));
+                    } else { option.series[0].data.push((datas[i].area).toFixed(2)); }
                 }
             }
             myChart.clear();

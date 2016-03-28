@@ -1,183 +1,13 @@
-﻿/// <reference path="../../../dep/tmpl.js" />
-
-//alluser变量
-var person;
-//teammember变量
+﻿//teammember变量
 var result;
-var datajson = [];
-//车队成员管理
+var person;
 var teamteamid;
-$(document).on("pagebeforecreate", "#teaminfopage", function () {
-    teamteamid = $("#carteamname").val();
-    var pramestr = "?token=1&teamID=" + teamteamid;
-    $.ajax({
-        url: domain + url_getTeammember + pramestr,
-        type: 'get',
-        async: false,
-        success: function (json) {
-
-            if (typeof (json) == "object") {
-                //为对象
-                datajson = json;
-            }
-            else {
-                //将字符串转换为对象
-                datajson = JSON.parse(json);
-            }
-            result = datajson.result.datas;
-            if (datajson.result.datas.length > 0) {
-                $.each(datajson.result.datas, function (i, item) {
-                    //模板渲染
-                    var html = tmpl("tmpl_teaminfopage_detailinfo", item);
-                    $(html).appendTo("#teaminfopage_listview").trigger('create');
-                });
-            }
-        },
-        error: function (errorMsg) {
-            alert(errorMsg);
-        }
-    });
-});
-
-function teaminfopageclick(id) {
-
-    $.ajax({
-        url: domain + url_getAlluser + "?token=1",
-        type: 'get',
-        async: false,
-        success: function (json) {
-
-            if (typeof (json) == "object") {
-                //为对象
-                datajson = json;
-            }
-            else {
-                //将字符串转换为对象
-                datajson = JSON.parse(json);
-            }
-            if (datajson.result.datas.length > 0) {
-                $.each(datajson.result.datas, function (i, item) {
-                    if (id == item.id) {
-                        $(document).on("pagebeforecreate", "#teammemberinfo", function () {
-                            document.getElementById("teammemberinfo_name").value = item.name;
-                            document.getElementById("teammemberinfo_tel").value = item.phone;
-                            document.getElementById("teammemberinfo_email").value = item.email;
-                            $("#teammemberinfopage_unit").empty();
-                            $.ajax({
-                                type: "get",
-                                url: domain + url_getUnit + "?token=1",
-                                async: true,
-                                dataType: 'json',
-                                success: function (data) {
-                                    $.each(data.result.datas, function (i, item) {
-                                        $("#teammemberinfopage_unit").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                                    });
-                                    panduanuserunit(item.unitName, item.teamid, item.teamName);
-                                }
-                            });
-                       });
-                    }
-                });
-            }
-        }
-    });
-}
- 
-$("#updateteammember").click(function () {
-    var username = document.getElementById("teammemberinfo_name").value;
-    var userphone = document.getElementById("teammemberinfo_tel").value
-    var useremail;
-    if (document.getElementById("teammemberinfo_email").value == "" || document.getElementById("teammemberinfo_email").value == null) {
-        useremail = "";
-    }
-    else {
-        useremail = document.getElementById("teammemberinfo_email").value;
-    }
-    var data = new Object();
-    data["token"] = "1";
-    data["data"] = new Object();
-    data["data"]["filter"] = new Object();
-    data["data"]["items"] = [];
-    data["data"]["param"] = new Object();
-    data["data"]["param"]["name"] = username;
-    data["data"]["param"]["phone"] = userphone;
-    data["data"]["param"]["email"] = useremail;
-    data["data"]["param"]["id"] = id;
-    $.ajax({
-        url: domain + url_addUser,
-        type: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        async: false,
-        data: JSON.stringify(data),
-        dataType: "json",
-        timeout: 3000,
-        success: function (json) {
-            confirm("修改成功！");
-        }
-    });
-});
-
-//删除车队人员wy
-$("#deleteteammember").click(function () {
-    var teamid = $("#carteamname").val();
-    var param = "?token=1&teamid=" + teamid + "&personid=" + id;
-    $.ajax({
-        type: "get",
-        url: domain + url_deleteTeammember + param,
-        async: true,
-        dataType: 'json',
-        success: function () {
-            confirm("删除成功！");
-        },
-        error: function (errorMsg) {
-            alert(errorMsg);
-        }
-    });
-});
-
-function panduanuserunit(userunit, userteamUnitid, userteam) {
-    var opList3 = document.getElementById("#informationpage_unit");
-    for (var i = 0, len = opList3.length; i < len; i++) {
-        if (opList3.options[i].text == userunit) {
-            opList3.options[i].selected = true;
-            break;
-        }
-    }
-    //清空
-    $("#informationpage_team").empty();
-    $.ajax({
-        type: "get",
-        url: domain + url_getTeam + "?token=1",
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            $("#informationpage_team").append("<option ></option>");
-            $.each(data.result.datas, function (i, item) {
-                //根据所属单位填充所属车队的下拉内容
-                if (userteamUnitid == item.teamUnitid) {
-                    $("#informationpage_team").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                }
-
-            });
-
-        }
-    });
-    panduanuserteam(userteam);
-}
-
-function panduanuserteam(userteam) {
-    var opList4 = document.getElementById("#informationpage_team");
-    for (var i = 4, len = opList4.length; i < len; i++) {
-        if (opList4.options[i].text == userteam) {
-            opList4.options[i].selected = true;
-            break;
-        }
-    }
-}
-
+var userunitid;
+var userteamid;
+var updateuserid;
+var deleteuserid;
+var datajson = [];
+//alluser变量
 $(document).on("pagecreate", "#carteaminputpage", function () {
     //填充车队名称
     $("#carteamname").empty();//清空
@@ -188,50 +18,52 @@ $(document).on("pagecreate", "#carteaminputpage", function () {
         dataType: 'json',
         success: function (data) {
             $("#carteamname").append("<option >" + "请输入" + "</option>");
+            $("#carteamname").append("<option >" + "请输入" + "</option>");
             $.each(data.result.datas, function (i, item) {
                 $("#carteamname").append("<option value='" + item.id + "'>" + item.name + "</option>");
             });
+            var selObj = $("#carteamname");
+            var option = $($("option", selObj).get(0));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
         }
     });
     document.getElementById("teamnameinput").value = "";
 
     //填充所属单位
-    $("#unitid").empty();
+    $("#unitid").empty();//清空
     $.ajax({
         type: "get",
         url: domain + url_getUnit + "?token=1",
         async: true,
         dataType: 'json',
         success: function (data) {
-            $("#unitid").append("<option ></option>");
+            $("#unitid").append("<option></option>");
+            $("#unitid").append("<option>" + "请选择" + "</option>");
             $.each(data.result.datas, function (i, item) {
                 $("#unitid").append("<option value='" + item.id + "'>" + item.name + "</option>");
             });
-
+            var selObj = $("#unitid");
+            var option = $($("option", selObj).get(1));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
         }
     });
-
     //填充车队队长
-    $("#teamcaptain").empty();//清空
-    $.ajax({
-        type: "get",
-        url: domain + url_getAlluser + "?token=1",
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            $("#teamcaptain").append("<option></option>");
-            $.each(data.result.datas, function (i, item) {
-                $("#teamcaptain").append("<option value='" + item.id + "'>" + item.name + "</option>");
-            });
+    $("#teamcaptain").empty();
+    $("#teamcaptain").append("<option >" + "请选择" + "</option>");
+    var sel = $("#teamcaptain");
+    var ops = $($("option", sel).get(0));
+    ops.attr('selected', 'selected');
+    sel.selectmenu();
+    sel.selectmenu('refresh', true);
 
-        }
-    });
+
     $("#teamadd").hide();
     document.getElementById("captainphone").value = "";
     document.getElementById("textarea").value = "";
-    $("#addteam").attr("disabled", false);
-    $("#updateteam").attr("disabled", true);
-    $("#deleteteam").attr("disabled", true);
 });
 
 //内容为“请输入”时添加信息，否则修改信息
@@ -241,13 +73,19 @@ function teamchange() {
     if (teamselect == "请输入") {
         //内容清空
         document.getElementById("teamnameinput").value = "";
-        document.getElementById("unitid").options[0].selected = true;
-        document.getElementById("teamcaptain").options[0].selected = true;
+        var selObj1 = $("#unitid");
+        var option1 = $($("option", selObj1).get(1));
+        option1.attr('selected', 'selected');
+        selObj1.selectmenu();
+        selObj1.selectmenu('refresh', true);
+        var selObj2 = $("#teamcaptain");
+        var option2 = $($("option", selObj2).get(0));
+        option2.attr('selected', 'selected');
+        selObj2.selectmenu();
+        selObj2.selectmenu('refresh', true);
         document.getElementById("captainphone").value = "";
         document.getElementById("textarea").value = "";
-        $("#addteam").attr("disabled", false);
-        $("#updateteam").attr("disabled", true);
-        $("#deleteteam").attr("disabled", true);
+        changedisabled();
     }
     else {
         //填充相应信息
@@ -265,29 +103,80 @@ function teamchange() {
                         var opList = document.getElementById("unitid");
                         for (var j = 0, len = opList.length; j < len; j++) {
                             if (opList.options[j].text == item.unitename) {
-                                opList.options[j].selected = true;
+                                var selObj = $("#unitid");
+                                var option = $($("option", selObj).get(j));
+                                option.attr('selected', 'selected');
+                                selObj.selectmenu();
+                                selObj.selectmenu('refresh', true);
                                 break;
                             }
                         }
-
-                        document.getElementById("captainphone").value = item.captainphone;
-                        document.getElementById("textarea").value = item.remark;
-
-                        var op = document.getElementById("teamcaptain");
-                        for (var j = 0, len = op.length; j < len; j++) {
-                            if (op.options[j].text == item.captainname) {
-                                op.options[j].selected = true;
-                                break;
+                        var carteamunitid = item.teamUnitid;
+                        $("#teamcaptain").empty();//清空
+                        $.ajax({
+                            type: "get",
+                            url: domain + url_getAlluser + "?token=1",
+                            async: true,
+                            dataType: 'json',
+                            success: function (data) {
+                                $("#teamcaptain").append("<option >" + "请选择" + "</option>");
+                                $.each(data.result.datas, function (i, item) {
+                                    if (carteamunitid == item.unitid) {
+                                        $("#teamcaptain").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                                    }
+                                });
+                                unit_owner(item.captainname, item.captainphone, item.remark);
                             }
-                        }
+                        });
 
                     }
                 });
             }
         });
-        $("#addteam").attr("disabled", true);
-        $("#updateteam").attr("disabled", false);
-        $("#deleteteam").attr("disabled", false);
+        changedisabled();
+    }
+}
+
+function unit_owner(captainname, captainphone, remark) {
+    var op = document.getElementById("teamcaptain");
+    for (var j = 0, len = op.length; j < len; j++) {
+        if (op.options[j].text == captainname) {
+            var selObj = $("#teamcaptain");
+            var option = $($("option", selObj).get(j));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
+            break;
+        }
+    }
+    document.getElementById("captainphone").value = captainphone;
+    document.getElementById("textarea").value = remark;
+}
+
+//转换按钮的disabled属性
+function changedisabled() {
+    var teamselect = $("#carteamname").find("option:selected").text();
+    if (teamselect == "请输入") {
+        if (classie_css.has(document.querySelector("#addteam"), "ui-state-disabled")) {
+            classie_css.remove(document.querySelector("#addteam"), "ui-state-disabled");
+        }
+        if (!classie_css.has(document.querySelector("#updateteam"), "ui-state-disabled")) {
+            classie_css.add(document.querySelector("#updateteam"), "ui-state-disabled");
+        }
+        if (!classie_css.has(document.querySelector("#deleteteam"), "ui-state-disabled")) {
+            classie_css.add(document.querySelector("#deleteteam"), "ui-state-disabled");
+        }
+    }
+    else {
+        if (!classie_css.has(document.querySelector("#addteam"), "ui-state-disabled")) {
+            classie_css.add(document.querySelector("#addteam"), "ui-state-disabled");
+        }
+        if (classie_css.has(document.querySelector("#updateteam"), "ui-state-disabled")) {
+            classie_css.remove(document.querySelector("#updateteam"), "ui-state-disabled");
+        }
+        if (classie_css.has(document.querySelector("#deleteteam"), "ui-state-disabled")) {
+            classie_css.remove(document.querySelector("#deleteteam"), "ui-state-disabled");
+        }
     }
 }
 
@@ -397,6 +286,39 @@ function addTeam() {
     }
 }
 
+//车队成员添加界面的显示
+$(document).on("pagebeforecreate", "#teaminfopage", function () {
+    teamteamid = $("#carteamname").val();
+    var pramestr = "?token=1&teamID=" + teamteamid;
+    $.ajax({
+        url: domain + url_getTeammember + pramestr,
+        type: 'get',
+        async: false,
+        success: function (json) {
+
+            if (typeof (json) == "object") {
+                //为对象
+                datajson = json;
+            }
+            else {
+                //将字符串转换为对象
+                datajson = JSON.parse(json);
+            }
+            result = datajson.result.datas;
+            if (datajson.result.datas.length > 0) {
+                $.each(datajson.result.datas, function (i, item) {
+                    //模板渲染
+                    var html = tmpl("tmpl_teaminfopage_detailinfo", item);
+                    $(html).appendTo("#teaminfopage_listview").trigger('create');
+                });
+            }
+        },
+        error: function (errorMsg) {
+            alert(errorMsg);
+        }
+    });
+});
+
 //车队人员添加显示内容
 $(document).on("pagebeforecreate", "#teammemberaddpage", function () {
     $.ajax({
@@ -439,8 +361,28 @@ $(document).on("pagebeforecreate", "#teammemberaddpage", function () {
 //车队人员添加
 function addperson() {
     for (var i = 0; i < person.length; i++) {
-        for (var j = 0; j < result.length; j++) {
-            if ($("#add_" + person[i]["id"]).is(":checked") && result[j]["id"] != person[i]["id"]) {
+        if (result.length > 0) {
+            for (var j = 0; j < result.length; j++) {
+                if ($("#add_" + person[i]["id"]).is(":checked") && result[j]["id"] != person[i]["id"]) {
+                    var personid = person[i]["id"];
+                    var param = "?token=1&teamid=" + teamteamid + "&personid=" + personid;
+                    $.ajax({
+                        type: "get",
+                        url: domain + url_addTeammember + param,
+                        async: true,
+                        dataType: 'json',
+                        success: function () {
+                            confirm("添加成功！");
+                        },
+                        error: function (errorMsg) {
+                            alert(errorMsg);
+                        }
+                    });
+                }
+            }
+        }
+        if (result.length <= 0) {
+            if ($("#add_" + person[i]["id"]).is(":checked")) {
                 var personid = person[i]["id"];
                 var param = "?token=1&teamid=" + teamteamid + "&personid=" + personid;
                 $.ajax({
@@ -449,7 +391,7 @@ function addperson() {
                     async: true,
                     dataType: 'json',
                     success: function () {
-
+                        confirm("添加成功！");
                     },
                     error: function (errorMsg) {
                         alert(errorMsg);
@@ -460,4 +402,228 @@ function addperson() {
     }
     confirm("添加成功！");
 }
+
+var replaceid;
+
+function teaminfopageclick(id) {
+    replaceid = id;
+    deleteuserid = replaceid;
+    updateuserid = replaceid;
+    $(document).on("pageinit", "#teammemberinfo", function () {
+        $("#teammemberinfo_team").empty();
+        $("#teammemberinfo_unit").empty();
+        $.ajax({
+            type: "get",
+            url: domain + url_getAlluser + "?token=1&id=" + replaceid,
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                $.each(data.result.datas, function (i, item) {
+                    $("#teammemberinfo_name").val(item.name);
+                    $("#teammemberinfo_tel").val(item.phone);
+                    $("#teammemberinfo_email").val(item.email);
+                    userunitid = item.unitid;
+                    userteamid = item.teamid;
+                });
+                panduanuserunit();
+                panduanuserteam();
+            }
+        });
+        //删除车队人员wy
+        $("#deleteteammember").click(function () {
+            var teamid = $("#carteamname").val();
+            var param = "?token=1&teamid=" + teamid + "&personid=" + deleteuserid;
+            $.ajax({
+                type: "get",
+                url: domain + url_deleteTeammember + param,
+                async: true,
+                dataType: 'json',
+                success: function () {
+                    confirm("删除成功！");
+                },
+                error: function (errorMsg) {
+                    alert(errorMsg);
+                }
+            });
+        });
+    });
+}
+
+//保存人员具体信息的修改
+function saveTeammember() {
+    var username = document.getElementById("teammemberinfo_name").value;
+    var userphone = document.getElementById("teammemberinfo_tel").value;
+    var useremail;
+    if (document.getElementById("teammemberinfo_email").value == "" || document.getElementById("teammemberinfo_email").value == null) {
+        useremail = "";
+    }
+    else {
+        useremail = document.getElementById("teammemberinfo_email").value;
+    }
+    var userunit = $("#teammemberinfo_unit").val();
+    var userteam = $("#teammemberinfo_team").val();
+    var data = new Object();
+    data["token"] = "1";
+    data["data"] = new Object();
+    data["data"]["filter"] = new Object();
+    data["data"]["items"] = [];
+    data["data"]["param"] = new Object();
+    data["data"]["param"]["name"] = username;
+    data["data"]["param"]["phone"] = userphone;
+    data["data"]["param"]["email"] = useremail;
+    data["data"]["param"]["unitid"] = userunit;
+    data["data"]["param"]["teamid"] = userteam;
+    data["data"]["param"]["id"] = updateuserid;
+    $.ajax({
+        url: domain + url_addUser,
+        type: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        async: false,
+        data: JSON.stringify(data),
+        dataType: "json",
+        timeout: 3000,
+        success: function (json) {
+            confirm("修改成功！");
+        }
+    });
+}
+//);
+
+
+function panduanuserunit() {
+    var selObj = $("#teammemberinfo_unit");
+    //显示所有车队的列表
+    $.ajax({
+        type: "get",
+        url: domain + url_getUnit + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (json) {
+            if (typeof (json) == "object") {
+                //为对象
+                teamjson = json;
+            }
+            else {
+                //将字符串转换为对象
+                teamjson = JSON.parse(json);
+            }
+            $("#teammemberinfo_unit").empty();
+            selObj.append("<option></option>");
+            $.each(teamjson.result.datas, function (i, item) {
+                selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+            });
+
+            var teamNames = document.getElementById("teammemberinfo_unit");
+            for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                if (teamNames.options[b].value == userunitid) {
+                    var option = $($("option", selObj).get(b));
+                    option.attr('selected', 'selected');
+                    selObj.selectmenu();
+                    selObj.selectmenu('refresh', true);
+                    break;
+                }
+
+            }
+        }
+
+    });
+}
+
+function panduanuserteam() {
+    var selObj = $("#teammemberinfo_team");
+    //显示所有车队的列表
+    $.ajax({
+        type: "get",
+        url: domain + url_getTeam + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (json) {
+            if (typeof (json) == "object") {
+                //为对象
+                teamjson = json;
+            }
+            else {
+                //将字符串转换为对象
+                teamjson = JSON.parse(json);
+            }
+            $("#teammemberinfo_team").empty();
+            selObj.append("<option></option>");
+            $.each(teamjson.result.datas, function (i, item) {
+                if (item.teamUnitid == userunitid) {
+                    selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                }
+
+            });
+            var teamNames = document.getElementById("teammemberinfo_team");
+            for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                if (teamNames.options[b].value == userteamid) {
+                    var option = $($("option", selObj).get(b));
+                    option.attr('selected', 'selected');
+                    selObj.selectmenu();
+                    selObj.selectmenu('refresh', true);
+                    break;
+                }
+
+            }
+        }
+    });
+}
+
+//根据单位的不同改变车队列表
+function unit_carteam() {
+    var judgeunitid = $("#teammemberinfo_unit").val();
+    //填充车队名称
+    $("#teammemberinfo_team").empty();//清空
+    $.ajax({
+        type: "get",
+        url: domain + url_getTeam + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $("#teammemberinfo_team").append("<option ></option>");
+            $.each(data.result.datas, function (i, item) {
+                if (item.teamUnitid == judgeunitid) {
+                    $("#teammemberinfo_team").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                }
+            });
+            var selObj = $("#teammemberinfo_team");
+            var option = $($("option", selObj).get(0));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
+        }
+    });
+}
+
+//车主与单位相关联
+function judgeunit_user() {
+    var judgeselectuser = $("#unitid").val();
+    $("#teamcaptain").empty();
+    $.ajax({
+        type: "get",
+        url: domain + url_getAlluser + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $("#teamcaptain").append("<option>" + "请选择" + "</option>");
+            $.each(data.result.datas, function (i, item) {
+                //根据id匹配相应的电话
+                if (judgeselectuser == item.unitid) {
+                    $("#teamcaptain").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                }
+            });
+            document.getElementById("captainphone").value = "";
+            var judgeselObj = $("#teamcaptain");
+            var judgeoption = $($("option", judgeselObj).get(0));
+            judgeoption.attr('selected', 'selected');
+            judgeselObj.selectmenu();
+            judgeselObj.selectmenu('refresh', true);
+        }
+    });
+}
+
+
 

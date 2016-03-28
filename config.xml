@@ -7,9 +7,9 @@
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
-    <name>NJDD</name>
+    <name>农机远程指挥调度系统</name>
     <description>
-     NJDD
+     农机远程指挥调度系统
     </description>
     <author email="#" name="#">
         gislt

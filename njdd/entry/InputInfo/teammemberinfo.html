@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script src="../../src/common/config.js"></script>
 </head>
+
 <body>
-    <div data-role="page" id="informationpage">
+    <div data-role="page" id="teammemberinfo">
         <div data-role="header">
-            <a id="a_back" data-role="button" data-rel="back" href="set.html" class="ui-btn-left" data-icon="back">返回</a>
-            <h3>  车队成员信息
+            <a id="a_back" data-role="button" data-rel="back" href="teammember.html" data-ajax="false" class="ui-btn-left" data-icon="back">返回</a>
+            <h3>车队成员信息
             </h3>
         </div>
 
@@ -31,7 +33,7 @@
                             </label>
                         </td>
                         <td>
-                            <input name="name" id="informationpage_name" placeholder="您的姓名..." value="" type="text" />
+                            <input name="name" id="teammemberinfo_name" placeholder="您的姓名..." value="" type="text" />
                         </td>
                     </tr>
                 </table>
@@ -47,7 +49,7 @@
                             </label>
                         </td>
                         <td>
-                            <input name="mobile_phone" id="informationpage_tel" placeholder="您的手机号码..." value="" type="tel" />
+                            <input name="mobile_phone" id="teammemberinfo_tel" placeholder="您的手机号码..." value="" type="tel" />
                         </td>
                     </tr>
                 </table>
@@ -63,7 +65,7 @@
                             </label>
                         </td>
                         <td>
-                            <input name="email" id="informationpage_email" placeholder="您的E-Mail地址..." value="" type="email" />
+                            <input name="email" id="teammemberinfo_email" placeholder="您的E-Mail地址..." value="" type="email" />
                         </td>
                     </tr>
                 </table>
@@ -79,7 +81,7 @@
                             </label>
                         </td>
                         <td>
-                            <select  class="form-control ui-body-inherit ui-corner-all ui-shadow-inset" style="width:183px;height:38px;" data-role="none"  data-inline="true" id="informationpage_unit">
+                            <select  data-inline="true" id="teammemberinfo_unit" onchange="unit_carteam()">
                             </select>
                         </td>
                     </tr>
@@ -97,22 +99,20 @@
                             </label>
                         </td>
                         <td>
-                            <select  class="form-control ui-body-inherit ui-corner-all ui-shadow-inset" data-role="none" style="width:183px;height:38px;" id="informationpage_team" data-inline="true">
+                            <select id="teammemberinfo_team" data-inline="true">
                             </select>
 
                         </td>
                     </tr>
                 </table>
             </div>
-
-
         </div>
 
 
         <div data-role="footer">
 
-            <a id="updateteammember" data-role="button" href="#" data-icon="check" data-iconpos="left" class="ui-btn-right">保存</a>
-            <a id="deleteteammember" data-role="button" href="#" data-icon="delete" data-iconpos="left" class="ui-btn-left">删除</a>
+            <a id="updateteammember" data-role="button" href="teammember.html" data-icon="check" data-iconpos="left" class="ui-btn-right" onclick="saveTeammember()">保存</a>
+            <a id="deleteteammember" data-role="button" href="teammember.html" data-icon="delete" data-iconpos="left" class="ui-btn-left">删除</a>
 
         </div>
     </div>

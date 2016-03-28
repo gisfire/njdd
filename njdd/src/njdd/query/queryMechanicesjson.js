@@ -31,8 +31,6 @@
         });
 
 
-
-
         $("#btn_start").click(function () {
             $("#quetymechanicsinfopage_listview").empty();
             var option = $("#quetymechanicsinfopage_selectname option:selected").text();
