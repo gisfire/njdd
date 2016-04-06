@@ -10,7 +10,9 @@
             $("#carcode").append("<option></option>");
             $("#carcode").append("<option>" + "请输入" + "</option>");
             $.each(data.result.datas, function (i, item) {
-                $("#carcode").append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                if (sessionStorage.unitid == item.car_unitid) {
+                    $("#carcode").append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                }
             });
             var selObj = $("#carcode");
             var option = $($("option", selObj).get(1));
@@ -94,7 +96,7 @@ function toolschange() {
         selObj1.selectmenu();
         selObj1.selectmenu('refresh', true);
         var selObj2 = $("#owner");
-        var option2 = $($("option", selObj2).get(1));
+        var option2 = $($("option", selObj2).get(0));
         option2.attr('selected', 'selected');
         selObj2.selectmenu();
         selObj2.selectmenu('refresh', true);
@@ -147,7 +149,7 @@ function toolschange() {
                                 break;
                             }
                         }
-                        var carunitid=item.carUnitid;
+                        var carunitid = item.car_unitid;
                         $("#owner").empty();//清空
                         $.ajax({
                             type: "get",

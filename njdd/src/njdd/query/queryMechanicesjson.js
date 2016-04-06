@@ -18,7 +18,7 @@
 
         $.ajax({
             type: "get",
-            url: domain + url_getCartype + "/get?token=1",
+            url: domain + url_getCartype + "?token=1",
             async: true,
             dataType: 'json',
             success: function (data) {

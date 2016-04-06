@@ -36,7 +36,7 @@
                                 <label style="float: left; font-size: 15px; text-align: right;">车队名称:</label>
                             </td>
                             <td>
-                                <select data-native-menu="false" data-inline="true" data-role="none" style="width: 60%" id="carteamname" onchange="teamchange()">
+                                <select data-native-menu="false" data-inline="true" data-role="none" id="carteamname" onchange="teamchange()">
                                 </select>
                             </td>
                         </tr>
@@ -65,7 +65,7 @@
                                 <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
                             </td>
                             <td>
-                                <select data-native-menu="false" data-inline="true" name="unitname" id="unitid" data-role="none" style='display: inline-block; width: 60%' onchange="judgeunit_user()"></select>
+                                <select data-native-menu="false" data-inline="true" name="unitname" id="unitid" data-role="none" onchange="judgeunit_user()"></select>
                             </td>
                         </tr>
                     </table>
@@ -79,7 +79,7 @@
                                 <label style="float: left; font-size: 15px; text-align: right;">车队队长:</label>
                             </td>
                             <td>
-                                <select data-native-menu="false" data-inline="true" data-role="none" style="width: 60%" id="teamcaptain" onchange="captainchange()">
+                                <select data-native-menu="false" data-inline="true" data-role="none" id="teamcaptain" onchange="captainchange()">
                                 </select>
                             </td>
                         </tr>
@@ -129,9 +129,9 @@
                     <br />
                     <div data-role="navbar">
                         <ul>
-                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="deleteteam" data-inline="true" onclick="deleteTeam();" href="InfoInput.html">删 除</a></li>
-                            <li><a data-role="button" class="ui-btn" id="addteam" data-inline="true" onclick="addTeam();" href="InfoInput.html">添加</a></li>
-                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="updateteam" data-inline="true" onclick="updateTeam();" href="InfoInput.html">修改</a></li>
+                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="deleteteam" data-inline="true" onclick="deleteTeam();">删 除</a></li>
+                            <li><a data-role="button" class="ui-btn" id="addteam" data-inline="true" onclick="addTeam();">添加</a></li>
+                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="updateteam" data-inline="true" onclick="updateTeam();">修改</a></li>
                         </ul>
                     </div>
                 </div>

@@ -16,11 +16,6 @@
             }
             if (carjson.result.datas.length > 0) {
                 var selObj = $("#number");
-                $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.userid == item.car_ownerid) {
-                        sessionStorage.carid = item.id;
-                    }
-                });
                 selObj.append("<option>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
                     selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");

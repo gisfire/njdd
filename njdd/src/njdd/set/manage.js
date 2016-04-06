@@ -51,37 +51,22 @@ function managepage_btn_click(unituserid) {
         $("#informationpage_team").empty();
         $.ajax({
             type: "get",
-            url: domain + url_getAlluser + "?token=1&id=" + replaceid,
+            url: domain + url_getAlluser + "?token=1",
             async: true,
             dataType: 'json',
             success: function (data) {
                 $.each(data.result.datas, function (i, item) {
-                    $("#informationpage_name").val(item.name);
-                    $("#informationpage_tel").val(item.phone);
-                    $("#informationpage_email").val(item.email);
-                    userunitid = item.unitid;
-                    userteamid = item.teamid;
+                    if (replaceid == item.id) {
+                        $("#informationpage_name").val(item.name);
+                        $("#informationpage_tel").val(item.phone);
+                        $("#informationpage_email").val(item.email);
+                        userunitid = item.unitid;
+                        userteamid = item.teamid;
+                    }
                 });
                 fullunit();
                 fulluserteam();
             }
-        });
-        ////删除用户
-        $("#deleteuser").click(function () {
-            var param = "?token=1&unitID= " + userunitid + "&userID=" + deleteuserid;
-            $.ajax({
-                type: "get",
-                url: domain + url_deleteUnitmember + param,
-                async: true,
-                dataType: 'json',
-                success: function () {
-                    //personSearch();
-                    confirm("修改成功！");
-                },
-                error: function (errorMsg) {
-                    alert(errorMsg);
-                }
-            });
         });
     });
 }
@@ -130,25 +115,28 @@ function dianji() {
     });
     //});
 }
-//删除用户
-//$("#deleteuser").click(function () {
-//    var param = "?token=1&unitID= " + userunitid + "&userID=" + deleteuserid;
-//    $.ajax({
-//        type: "get",
-//        url: domain + url_deleteUnitmember + param,
-//        async: true,
-//        dataType: 'json',
-//        success: function () {
-//            //personSearch();
-//        },
-//        error: function (errorMsg) {
-//            alert(errorMsg);
-//        }
-//    });
-//});
+
+function deleteunituser() {
+    ////删除用户
+    //$("#deleteuser").click(function () {
+    var param = "?token=1&unitID=" + userunitid + "&userID=" + deleteuserid;
+    $.ajax({
+        type: "get",
+        url: domain + url_deleteUnitmember + param,
+        async: true,
+        dataType: 'json',
+        success: function () {
+            //personSearch();
+            confirm("删除成功！");
+        },
+        error: function (errorMsg) {
+            alert(errorMsg);
+        }
+    });
+    //});
+}
 
 function fullunit() {
-
     var selObj = $("#informationpage_unit");
     //显示所有单位的列表
     $.ajax({

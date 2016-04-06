@@ -29,6 +29,7 @@ function entrypage_signin_btn_click() {
                     sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
                     sessionStorage.jobrolename = datajson.result.datas[0].jobrolename;
                     sessionStorage.tel = tel;
+                    sessionStorage.unitid = datajson.result.datas[0].unitid;
                     sessionStorage.password = datajson.result.datas[0].password;
                     window.location.href = "../../entry/mainpage.html";
                 } else {

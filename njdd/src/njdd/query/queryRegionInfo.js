@@ -355,14 +355,14 @@ var diany;
 
 
 
-function njinfo_btn_click(carid) {
+function njinfo_btn_click(userid) {
    
     userphone = null;
     $.each(njpointresult1, function (i, item) {
         if (item.unit_name == null) {
             item.unit_name = "无";
         }
-        if (item.userid == carid) {
+        if (item.userid == userid) {
             userphone = item.phone;
             $(document).on("pageinit", "#detailinfopage", function () {
                 $("#detailinfopage_username").val(item.username);

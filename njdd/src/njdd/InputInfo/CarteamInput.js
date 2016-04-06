@@ -17,13 +17,15 @@ $(document).on("pagecreate", "#carteaminputpage", function () {
         async: true,
         dataType: 'json',
         success: function (data) {
-            $("#carteamname").append("<option >" + "请输入" + "</option>");
+            $("#carteamname").append("<option ></option>");
             $("#carteamname").append("<option >" + "请输入" + "</option>");
             $.each(data.result.datas, function (i, item) {
-                $("#carteamname").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                if (sessionStorage.unitid == item.teamUnitid) {
+                    $("#carteamname").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                }
             });
             var selObj = $("#carteamname");
-            var option = $($("option", selObj).get(0));
+            var option = $($("option", selObj).get(1));
             option.attr('selected', 'selected');
             selObj.selectmenu();
             selObj.selectmenu('refresh', true);
@@ -372,7 +374,6 @@ function addperson() {
                         async: true,
                         dataType: 'json',
                         success: function () {
-                            confirm("添加成功！");
                         },
                         error: function (errorMsg) {
                             alert(errorMsg);
@@ -391,7 +392,6 @@ function addperson() {
                     async: true,
                     dataType: 'json',
                     success: function () {
-                        confirm("添加成功！");
                     },
                     error: function (errorMsg) {
                         alert(errorMsg);
@@ -414,37 +414,22 @@ function teaminfopageclick(id) {
         $("#teammemberinfo_unit").empty();
         $.ajax({
             type: "get",
-            url: domain + url_getAlluser + "?token=1&id=" + replaceid,
+            url: domain + url_getAlluser + "?token=1",
             async: true,
             dataType: 'json',
             success: function (data) {
                 $.each(data.result.datas, function (i, item) {
-                    $("#teammemberinfo_name").val(item.name);
-                    $("#teammemberinfo_tel").val(item.phone);
-                    $("#teammemberinfo_email").val(item.email);
-                    userunitid = item.unitid;
-                    userteamid = item.teamid;
+                    if (replaceid == item.id) {
+                        $("#teammemberinfo_name").val(item.name);
+                        $("#teammemberinfo_tel").val(item.phone);
+                        $("#teammemberinfo_email").val(item.email);
+                        userunitid = item.unitid;
+                        userteamid = item.teamid;
+                    }
                 });
                 panduanuserunit();
                 panduanuserteam();
             }
-        });
-        //删除车队人员wy
-        $("#deleteteammember").click(function () {
-            var teamid = $("#carteamname").val();
-            var param = "?token=1&teamid=" + teamid + "&personid=" + deleteuserid;
-            $.ajax({
-                type: "get",
-                url: domain + url_deleteTeammember + param,
-                async: true,
-                dataType: 'json',
-                success: function () {
-                    confirm("删除成功！");
-                },
-                error: function (errorMsg) {
-                    alert(errorMsg);
-                }
-            });
         });
     });
 }
@@ -492,6 +477,25 @@ function saveTeammember() {
 }
 //);
 
+function deleteTeammember() {
+    //删除车队人员wy
+    //$("#deleteteammember").click(function () {
+    var teamid = $("#carteamname").val();
+    var param = "?token=1&teamid=" + teamid + "&personid=" + deleteuserid;
+    $.ajax({
+        type: "get",
+        url: domain + url_deleteTeammember + param,
+        async: true,
+        dataType: 'json',
+        success: function () {
+            confirm("删除成功！");
+        },
+        error: function (errorMsg) {
+            alert(errorMsg);
+        }
+    });
+    //});
+}
 
 function panduanuserunit() {
     var selObj = $("#teammemberinfo_unit");
