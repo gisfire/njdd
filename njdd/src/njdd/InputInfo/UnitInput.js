@@ -1,4 +1,13 @@
-﻿$(document).on("pagecreate", "#unitinputpage", function () {
+﻿
+$(document).on("pagecreate", "#unitinputpage", function () {
+    readyunit();
+    $("#unitadd").hide();
+    $("#unitupdate").hide();
+    document.getElementById("unitInput").value = "";
+    document.getElementById("textarea").value = "";
+});
+
+function readyunit() {
     //填充所属单位
     $("#unitselect").empty();
     $.ajax({
@@ -19,13 +28,9 @@
 
         }
     });
-    $("#unitadd").hide();
-    $("#unitupdate").hide();
-    document.getElementById("unitInput").value = "";
-    document.getElementById("textarea").value = "";
-});
+}
 
-var unitremark;
+
 //内容为“请输入”时添加信息，否则修改信息
 function unitChange() {
     var selectstr = $("#unitselect").find("option:selected").text();
@@ -33,6 +38,7 @@ function unitChange() {
         document.getElementById("unitInput").value = "";
         $("#unitadd").hide();
         $("#unitupdate").hide();
+        document.getElementById("textarea").value = "";
         changedisabled();
     } else {
         $("#unitadd").hide();
@@ -48,7 +54,6 @@ function unitChange() {
                 $.each(data.result.datas, function (i, item) {
                     if (unitvalue == item.id) {
                         document.getElementById("textarea").value = item.remark;
-                        unitremark = item.remark;
                     }
                 });
             }
@@ -106,6 +111,7 @@ function addUnit() {
             dataType: 'json',
             success: function () {
                 confirm("添加成功！");
+                readyunit();
             },
             error: function (errorMsg) {
                 alert(errorMsg);
@@ -118,14 +124,36 @@ function addUnit() {
 function updateUnit() {
     var unitname = document.getElementById("unitInput").value;
     var unit = $("#unitselect").find("option:selected").text();
-    var unitchangeremark = document.getElementById("textarea").value
-    if (unitname == unit && unitchangeremark == unitremark) {
+    var unitchangeremark = document.getElementById("textarea").value;
+    var reunitvalue = $("#unitselect").val();
+    var reunitremark;
+    $.ajax({
+        type: "get",
+        url: domain + url_getUnit + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $.each(data.result.datas, function (i, item) {
+                if (reunitvalue == item.id) {
+                    reunitremark = item.remark;
+                }
+            });
+            saveunitchange(unitname,unit,unitchangeremark,reunitremark);
+        }
+    });
+}
+function saveunitchange(unitname, unit, unitchangeremark, reunitremark) {
+    if (unitname == unit && unitchangeremark == reunitremark) {
         $("#unitupdate").show();
     }
     else {
         var unitid = $("#unitselect").val();
-        var unitremark = document.getElementById("textarea").value;
-        var param = "?token=1&id=" + unitid + "&newName=" + unitname + "&remark=" + unitremark;
+        var unitremarkchange;
+        if (document.getElementById("textarea").value == "" || document.getElementById("textarea").value == null)
+            unitremarkchange = "";
+        else
+            unitremarkchange = document.getElementById("textarea").value;
+        var param = "?token=1&id=" + unitid + "&newName=" + unitname + "&remark=" + unitremarkchange;
         $.ajax({
             type: "get",
             url: domain + url_updateUnit + param,
@@ -152,6 +180,7 @@ function deleteUnit() {
         dataType: 'json',
         success: function () {
             confirm("删除成功！");
+            readyunit();
         },
         error: function (errorMsg) {
             alert(errorMsg);

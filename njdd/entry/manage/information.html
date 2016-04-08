@@ -25,15 +25,15 @@
 
         <div data-role="content" class="ui-content">
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
-                            <label for="name">
-                                &nbsp;用户名：  
+                        <td style="width: 23%">
+                            <label for="name" style="float: right; font-size: 15px; text-align: right;">
+                                用户名：  
                             </label>
                         </td>
-                        <td>
-                            <input name="name" id="informationpage_name" placeholder="您的姓名..." value="" type="text" />
+                        <td style="width: 76%;">
+                            <input name="name" id="informationpage_name" placeholder="您的姓名..." value="" style="text-align: center;" type="text" />
                         </td>
                     </tr>
                 </table>
@@ -41,15 +41,15 @@
 
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
-                            <label for="mobile_phone">
-                                &nbsp;&nbsp;手机：  
+                        <td style="width: 23%">
+                            <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
+                                手机：  
                             </label>
                         </td>
-                        <td>
-                            <input name="mobile_phone" id="informationpage_tel" placeholder="您的手机号码..." value="" type="tel" />
+                        <td style="width: 76%;">
+                            <input name="mobile_phone" id="informationpage_tel" placeholder="您的手机号码..." value="" style="text-align: center;" type="tel" />
                         </td>
                     </tr>
                 </table>
@@ -57,15 +57,15 @@
 
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
-                            <label for="email">
-                                &nbsp;&nbsp;邮箱：  
+                        <td style="width: 23%">
+                            <label for="email" style="float: right; font-size: 15px; text-align: right;">
+                                邮箱：  
                             </label>
                         </td>
-                        <td>
-                            <input name="email" id="informationpage_email" placeholder="您的E-Mail地址..." value="" type="email" />
+                        <td style="width: 76%;">
+                            <input name="email" id="informationpage_email" placeholder="您的E-Mail地址..." value="" style="text-align: center;" type="email" />
                         </td>
                     </tr>
                 </table>
@@ -73,14 +73,14 @@
 
 
             <div class="ui-field-contain" data-controltype="selectinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
-                            <label for="danwei">
+                        <td style="width: 23%">
+                            <label for="danwei" style="float: right; font-size: 15px; text-align: right;">
                                 所属单位：  
                             </label>
                         </td>
-                        <td>
+                        <td style="width: 75%;">
                             <select id="informationpage_unit" onchange="judgeunit()">
                             </select>
                         </td>
@@ -91,15 +91,15 @@
 
 
             <div class="ui-field-contain" data-controltype="selectinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
-                            <label for="car_group">
-                                &nbsp;&nbsp;车队：  
+                        <td style="width: 23%">
+                            <label for="car_group" style="float: right; font-size: 15px; text-align: right;">
+                                车队：  
                             </label>
                         </td>
-                        <td>
-                            <select data-inline="true" id="informationpage_team">
+                        <td style="width: 75%;">
+                            <select id="informationpage_team">
                             </select>
 
                         </td>
@@ -112,10 +112,12 @@
 
 
         <div data-role="footer">
-
-            <a id="updateuser" data-role="button" data-icon="check" data-iconpos="left" class="ui-btn-right" onclick="dianji()">保存</a>
-            <a id="deleteuser" data-role="button" data-icon="delete" data-iconpos="left" class="ui-btn-left" onclick="deleteunituser()">删除</a>
-
+            <div data-role="navbar">
+                <ul>
+                    <li><a id="updateuser" data-role="button" class="ui-btn" data-inline="true" onclick="dianji()">保存</a></li>
+                    <li><a id="deleteuser" data-role="button" class="ui-btn" data-inline="true" onclick="deleteunituser()">删除</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 

@@ -22,35 +22,27 @@ $(document).on("pageinit", "#mainpage", function () {
                 var selObj = $("#mainpage_selectcar");
                 $.each(carjson.result.datas, function (i, item) {
                     if (sessionStorage.userid == item.car_ownerid) {//问题在这里，checkbox
-                        sessionStorage.carid = item.id;
+                        //sessionStorage.carid = item.id;
                         sessionStorage.userunit = item.car_userunit;
                         sessionStorage.groupname = item.car_userteam;
                     }
                 });
-                if (sessionStorage.carid == null) {
-                    selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
+                selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
+                $.each(carjson.result.datas, function (i, item) {
+                    if (sessionStorage.unitid == item.car_unitid) {
+                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                    }
+                });
+                var opList = document.getElementById("mainpage_selectcar");
+                for (var j = 0, len = opList.length; j < len; j++) {
+                    if (opList.options[j].value == sessionStorage.carid) {
+                        var option = $($("option", selObj).get(j));
+                        option.attr('selected', 'selected');
+                        selObj.selectmenu();
+                        selObj.selectmenu('refresh', true);
+                        break;
+                    }
                 }
-                $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.carid == item.id) {
-                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                    }
-                });
-
-                $.each(carjson.result.datas, function (i, item) {
-                    if (typeof (sessionStorage.carid) != "undefined") {
-                        if (sessionStorage.carid != item.id) {
-                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                        }
-
-                    } else {
-                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                    }
-                });
-                var option = $($("option", selObj).get(0));
-                option.attr('selected', 'selected');
-                selObj.selectmenu();
-                selObj.selectmenu('refresh', true);
-
             }
         },
         error: function (errorMsg) {
@@ -60,7 +52,3 @@ $(document).on("pageinit", "#mainpage", function () {
 
 });
 
-function mainpage_selectcar_change() {
-    sessionStorage.carid = $("#mainpage_selectcar").val();
-    //alert(sessionStorage.carid);
-}

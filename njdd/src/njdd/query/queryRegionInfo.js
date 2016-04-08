@@ -15,6 +15,7 @@ var njpointresult1;
 njpointresult1 = new Array();
 var dianx;
 var diany;
+ var unitid = sessionStorage.unitid;
 (function (window) {
     $(document).ready(function () {
 
@@ -242,7 +243,7 @@ var diany;
                             if ($(this).attr("checked") == "checked") {
 
                                 $.each(njpointresult, function (i, item) {
-                                    if (item.unit_name == unitname) {
+                                    if (item.unit_id == unitid) {
                                         var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
                                         mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                                         var graphictemp = new Graphic(mapPoint, symboltemp);

@@ -30,13 +30,13 @@
             </div>
             <div data-role="content">
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label style="float: left; font-size: 15px; text-align: right;">车队名称:</label>
                             </td>
-                            <td>
-                                <select data-native-menu="false" data-inline="true" data-role="none" id="carteamname" onchange="teamchange()">
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" id="carteamname" onchange="teamchange()">
                                 </select>
                             </td>
                         </tr>
@@ -45,13 +45,13 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label style="float: left; font-size: 15px; text-align: right;">车队名称:</label>
                             </td>
-                            <td>
-                                <input type="text" name="teamnameinput" id="teamnameinput" />
+                            <td style="width: 76%;">
+                                <input type="text" name="teamnameinput" style="text-align: center;" id="teamnameinput" />
                             </td>
                         </tr>
                     </table>
@@ -59,13 +59,13 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
                             </td>
-                            <td>
-                                <select data-native-menu="false" data-inline="true" name="unitname" id="unitid" data-role="none" onchange="judgeunit_user()"></select>
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" name="unitname" id="unitid" onchange="judgeunit_user()"></select>
                             </td>
                         </tr>
                     </table>
@@ -73,13 +73,13 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label style="float: left; font-size: 15px; text-align: right;">车队队长:</label>
                             </td>
-                            <td>
-                                <select data-native-menu="false" data-inline="true" data-role="none" id="teamcaptain" onchange="captainchange()">
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" id="teamcaptain" onchange="captainchange()">
                                 </select>
                             </td>
                         </tr>
@@ -88,13 +88,13 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label for="tel1" style="float: left; font-size: 15px; text-align: right;">队长电话：</label>
                             </td>
-                            <td>
-                                <input type="text" name="" id="captainphone" disabled="disabled" />
+                            <td style="width: 76%;">
+                                <input type="text" name="" id="captainphone" style="text-align: center;" disabled="disabled" />
                             </td>
                         </tr>
                     </table>
@@ -102,13 +102,13 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <table>
+                    <table style="width: 100%">
                         <tr>
-                            <td>
+                            <td style="width: 23%">
                                 <label style="float: left; font-size: 15px; text-align: right;">车队人员：</label>
                             </td>
-                            <td>
-                                <a data-role="button" href="teammember.html" data-inline="true" style="width: 70%">一键查看</a>
+                            <td style="width: 75%;">
+                                <a data-role="button" href="teammember.html">一键查看</a>
                             </td>
                         </tr>
                     </table>
@@ -116,7 +116,7 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <p>备注</p>
+                    <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
                     <!--有CSS样式-->
                     <textarea id="textarea"></textarea>
                 </div>

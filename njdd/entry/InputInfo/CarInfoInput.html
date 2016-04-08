@@ -42,8 +42,8 @@
                         <td style="width: 23%">
                             <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
                         </td>
-                        <td>
-                            <select data-native-menu="false"  style="width: 70%;float: left;" id="carcode" onchange="toolschange()">
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="float: left;" id="carcode" onchange="toolschange()">
                             </select>
                         </td>
                     </tr>
@@ -53,50 +53,50 @@
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
-                        <td style="width: 22%">
+                        <td style="width: 23%">
                             <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
                         </td>
-                        <td style="width: 80%">
-                            <input type="text" name="carbrand" id="carcodeinput" />
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carcodeinput" />
                         </td>
                     </tr>
                 </table>
             </div>
             <!--农机品牌-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机品牌：</label>
                         </td>
-                        <td>
-                            <input type="text" name="carbrand" id="carbrand" />
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carbrand" />
                         </td>
                     </tr>
                 </table>
             </div>
             <!--农机马力-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机马力：</label>
                         </td>
-                        <td>
-                            <input type="text" name="carbrand" id="carhorsepower" />
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carhorsepower" />
                         </td>
                     </tr>
                 </table>
             </div>
             <!--农机类型-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label style="float: left; font-size: 15px; text-align: right;">农机类型:</label>
                         </td>
-                        <td>
-                            <select data-native-menu="false" data-inline="true" data-role="none" style="width: 60%" id="cartype">
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="width: 60%" id="cartype">
                             </select>
                         </td>
                     </tr>
@@ -104,26 +104,26 @@
             </div>
              <!--所属单位-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
                         </td>
-                        <td>
-                            <select type="text" name="unitname" id="unit" data-role="none" data-native-menu="false" data-inline="true" style='display: inline-block; width: 60%' onchange="judgeunit()"></select>
+                        <td style="width: 75%;">
+                            <select name="unitname" id="unit" data-role="none" data-native-menu="false" onchange="judgeunit()"></select>
                         </td>
                     </tr>
                 </table>
             </div>
             <!--农机车主-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label for="carhoster" style="float: left; font-size: 15px; text-align: right;">农机车主：</label>
                         </td>
-                        <td>
-                            <select data-native-menu="false" data-inline="true" data-role="none" style="width: 60%" id="owner" onchange="ownerchange()">
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="width: 60%" id="owner" onchange="ownerchange()">
                             </select>
                         </td>
                     </tr>
@@ -131,20 +131,20 @@
             </div>
             <!--车主电话-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
-                        <td>
+                        <td style="width: 23%">
                             <label for="tel" style="float: left; font-size: 15px; text-align: right;">车主电话：</label>
                         </td>
-                        <td>
-                            <input type="text" name="tel" id="tel" disabled="disabled" />
+                        <td style="width: 76%;">
+                            <input type="text" name="tel" id="tel" style="text-align: center;" disabled="disabled" />
                         </td>
                     </tr>
                 </table>
             </div>
             <!--备注-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <p>备注</p>
+                <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
                 <!--有CSS样式-->
                 <textarea id="textarea"></textarea>
             </div>

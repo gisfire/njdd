@@ -9,28 +9,7 @@ var deleteuserid;
 var datajson = [];
 //alluser变量
 $(document).on("pagecreate", "#carteaminputpage", function () {
-    //填充车队名称
-    $("#carteamname").empty();//清空
-    $.ajax({
-        type: "get",
-        url: domain + url_getTeam + "?token=1",
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            $("#carteamname").append("<option ></option>");
-            $("#carteamname").append("<option >" + "请输入" + "</option>");
-            $.each(data.result.datas, function (i, item) {
-                if (sessionStorage.unitid == item.teamUnitid) {
-                    $("#carteamname").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                }
-            });
-            var selObj = $("#carteamname");
-            var option = $($("option", selObj).get(1));
-            option.attr('selected', 'selected');
-            selObj.selectmenu();
-            selObj.selectmenu('refresh', true);
-        }
-    });
+    readyteam();
     document.getElementById("teamnameinput").value = "";
 
     //填充所属单位
@@ -67,6 +46,30 @@ $(document).on("pagecreate", "#carteaminputpage", function () {
     document.getElementById("captainphone").value = "";
     document.getElementById("textarea").value = "";
 });
+function readyteam() {
+    //填充车队名称
+    $("#carteamname").empty();//清空
+    $.ajax({
+        type: "get",
+        url: domain + url_getTeam + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $("#carteamname").append("<option ></option>");
+            $("#carteamname").append("<option >" + "请输入" + "</option>");
+            $.each(data.result.datas, function (i, item) {
+                if (sessionStorage.unitid == item.teamUnitid) {
+                    $("#carteamname").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                }
+            });
+            var selObj = $("#carteamname");
+            var option = $($("option", selObj).get(1));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
+        }
+    });
+}
 
 //内容为“请输入”时添加信息，否则修改信息
 function teamchange() {
@@ -104,7 +107,7 @@ function teamchange() {
                         document.getElementById("teamnameinput").value = item.name;
                         var opList = document.getElementById("unitid");
                         for (var j = 0, len = opList.length; j < len; j++) {
-                            if (opList.options[j].text == item.unitename) {
+                            if (opList.options[j].value == item.teamUnitid) {
                                 var selObj = $("#unitid");
                                 var option = $($("option", selObj).get(j));
                                 option.attr('selected', 'selected');
@@ -127,7 +130,7 @@ function teamchange() {
                                         $("#teamcaptain").append("<option value='" + item.id + "'>" + item.name + "</option>");
                                     }
                                 });
-                                unit_owner(item.captainname, item.captainphone, item.remark);
+                                unit_owner(item.teamCaptainid, item.captainphone, item.remark);
                             }
                         });
 
@@ -139,16 +142,25 @@ function teamchange() {
     }
 }
 
-function unit_owner(captainname, captainphone, remark) {
+function unit_owner(teamCaptainid, captainphone, remark) {
     var op = document.getElementById("teamcaptain");
-    for (var j = 0, len = op.length; j < len; j++) {
-        if (op.options[j].text == captainname) {
-            var selObj = $("#teamcaptain");
-            var option = $($("option", selObj).get(j));
-            option.attr('selected', 'selected');
-            selObj.selectmenu();
-            selObj.selectmenu('refresh', true);
-            break;
+    if (teamCaptainid == "") {
+        var selObj = $("#teamcaptain");
+        var option = $($("option", selObj).get(0));
+        option.attr('selected', 'selected');
+        selObj.selectmenu();
+        selObj.selectmenu('refresh', true);
+    }
+    else {
+        for (var j = 0, len = op.length; j < len; j++) {
+            if (op.options[j].value == teamCaptainid) {
+                var selObj = $("#teamcaptain");
+                var option = $($("option", selObj).get(j));
+                option.attr('selected', 'selected');
+                selObj.selectmenu();
+                selObj.selectmenu('refresh', true);
+                break;
+            }
         }
     }
     document.getElementById("captainphone").value = captainphone;
@@ -212,6 +224,7 @@ function deleteTeam() {
         dataType: 'json',
         success: function () {
             confirm("删除成功！");
+            readyteam();
         },
         error: function (errorMsg) {
             alert(errorMsg);
@@ -280,6 +293,7 @@ function addTeam() {
             dataType: 'json',
             success: function () {
                 confirm("添加成功！");
+                readyteam();
             },
             error: function (errorMsg) {
                 alert(errorMsg);

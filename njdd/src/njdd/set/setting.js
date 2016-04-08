@@ -29,17 +29,10 @@ $(document).on("pageinit", "#setpage", function () {
                         sessionStorage.carid = item.id;
                     }
                 });
-
+                selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
-                    if (typeof (sessionStorage.carid) != "undefined") {
-                        if (sessionStorage.carid != item.id) {
-                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                        }
-                        else {
-                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                        }
-                    } else {
-                        selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
+                    if (sessionStorage.unitid == item.car_unitid) {
+                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
                     }
                 });
                 var option = $($("option", selObj).get(0));

@@ -1,4 +1,12 @@
 ﻿$(document).on("pagecreate", "#stypeinputpage", function () {
+    readycartype();
+    $("#typeadd").hide();
+    $("#typeupdate").hide();
+    document.getElementById("Styleinput").value = "";
+    document.getElementById("textarea").value = "";
+});
+
+function readycartype() {
     //加载农机类型select的内容
     $("#StyleSelect").empty();
     $.ajax({
@@ -18,11 +26,7 @@
             selObj.selectmenu('refresh', true);
         }
     });
-    $("#typeadd").hide();
-    $("#typeupdate").hide();
-    document.getElementById("Styleinput").value = "";
-    document.getElementById("textarea").value = "";
-});
+}
 
 var typeremark;
 //内容为“请输入”时添加信息，否则修改信息
@@ -104,6 +108,7 @@ function addCartype() {
             dataType: 'json',
             success: function () {
                 confirm("添加成功！");
+                readycartype();
             },
             error: function (errorMsg) {
                 alert(errorMsg);
@@ -130,7 +135,7 @@ function updateCartype() {
         else {
             cartyperemark = document.getElementById("textarea").value;
         }
-        var param = "?token=1&type= " + cartypename + "&remark=" + cartyperemark + "&typeid=" + cartypeid;
+        var param = "?token=1&type=" + cartypename + "&remark=" + cartyperemark + "&typeid=" + cartypeid;
         $.ajax({
             type: "get",
             url: domain + url_addCartype + param,
@@ -157,6 +162,7 @@ function deleteCartype() {
         dataType: 'json',
         success: function () {
             confirm("删除成功！");
+            readycartype();
         },
         error: function (errorMsg) {
             alert(errorMsg);

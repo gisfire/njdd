@@ -1,26 +1,5 @@
 ﻿$(document).on("pagecreate", "#carinfoinputpage", function () {
-    //填充农机编号
-    $("#carcode").empty();//清空
-    $.ajax({
-        type: "get",
-        url: domain + url_getCarInfo + "?token=1",
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            $("#carcode").append("<option></option>");
-            $("#carcode").append("<option>" + "请输入" + "</option>");
-            $.each(data.result.datas, function (i, item) {
-                if (sessionStorage.unitid == item.car_unitid) {
-                    $("#carcode").append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                }
-            });
-            var selObj = $("#carcode");
-            var option = $($("option", selObj).get(1));
-            option.attr('selected', 'selected');
-            selObj.selectmenu();
-            selObj.selectmenu('refresh', true);
-        }
-    });
+    readycode();
     $("#caradd").hide();
     document.getElementById("carcodeinput").value = "";
     document.getElementById("carbrand").value = "";
@@ -80,6 +59,31 @@
     document.getElementById("textarea").value = "";
 });
 
+function readycode() {
+    //填充农机编号
+    $("#carcode").empty();//清空
+    $.ajax({
+        type: "get",
+        url: domain + url_getCarInfo + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $("#carcode").append("<option></option>");
+            $("#carcode").append("<option>" + "请输入" + "</option>");
+            $.each(data.result.datas, function (i, item) {
+                if (sessionStorage.unitid == item.car_unitid) {
+                    $("#carcode").append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                }
+            });
+            var selObj = $("#carcode");
+            var option = $($("option", selObj).get(1));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
+        }
+    });
+}
+
 //内容为“请输入”时添加信息，否则修改信息
 function toolschange() {
     $("#caradd").hide();
@@ -106,6 +110,7 @@ function toolschange() {
         option3.attr('selected', 'selected');
         selObj3.selectmenu();
         selObj3.selectmenu('refresh', true);
+        document.getElementById("tel").value = "";
         document.getElementById("textarea").value = "";
         changedisabled();
     }
@@ -128,8 +133,8 @@ function toolschange() {
                         document.getElementById("carhorsepower").value = item.car_horsepower;
                         var opLst = document.getElementById("cartype");
                         for (var j = 0, len = opLst.length; j < len; j++) {
-                            var cartype = item.cartype;
-                            if (opLst.options[j].text == cartype) {
+                            var cartypeid = item.typeid;
+                            if (opLst.options[j].value == cartypeid) {
                                 var selObj = $("#cartype");
                                 var option = $($("option", selObj).get(j));
                                 option.attr('selected', 'selected');
@@ -140,7 +145,7 @@ function toolschange() {
                         }
                         var opList = document.getElementById("unit");
                         for (var j = 0, len = opList.length; j < len; j++) {
-                            if (opList.options[j].text == item.car_userunit) {
+                            if (opList.options[j].value == item.car_unitid) {
                                 var selObj = $("#unit");
                                 var option = $($("option", selObj).get(j));
                                 option.attr('selected', 'selected');
@@ -163,7 +168,7 @@ function toolschange() {
                                         $("#owner").append("<option value='" + item.id + "'>" + item.name + "</option>");
                                     }
                                 });
-                                unit_owner(item.car_username, item.car_userphone, item.remark);
+                                unit_owner(item.car_ownerid, item.car_userphone, item.remark);
                             }
                         });
                     }
@@ -174,16 +179,25 @@ function toolschange() {
     }
 }
 
-function unit_owner(car_username, car_userphone, remark) {
+function unit_owner(car_ownerid, car_userphone, remark) {
     var op = document.getElementById("owner");
-    for (var j = 0, len = op.length; j < len; j++) {
-        if (op.options[j].text == car_username) {
-            var selObj = $("#owner");
-            var option = $($("option", selObj).get(j));
-            option.attr('selected', 'selected');
-            selObj.selectmenu();
-            selObj.selectmenu('refresh', true);
-            break;
+    if (car_ownerid == "") {
+        var selObj = $("#owner");
+        var option = $($("option", selObj).get(0));
+        option.attr('selected', 'selected');
+        selObj.selectmenu();
+        selObj.selectmenu('refresh', true);
+    }
+    else {
+        for (var j = 0, len = op.length; j < len; j++) {
+            if (op.options[j].value == car_ownerid) {
+                var selObj = $("#owner");
+                var option = $($("option", selObj).get(j));
+                option.attr('selected', 'selected');
+                selObj.selectmenu();
+                selObj.selectmenu('refresh', true);
+                break;
+            }
         }
     }
     document.getElementById("tel").value = car_userphone;
@@ -247,6 +261,7 @@ function deleteTools() {
         dataType: 'json',
         success: function () {
             confirm("删除成功！");
+            readycode();
         },
         error: function (errorMsg) {
             alert(errorMsg);
@@ -338,6 +353,7 @@ function addTools() {
             dataType: 'json',
             success: function () {
                 confirm("添加成功！");
+                readycode();
             },
             error: function (errorMsg) {
                 alert(errorMsg);

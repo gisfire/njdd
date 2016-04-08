@@ -49,7 +49,7 @@ function userupdate() {
         if ($("#add_" + person[i]["id"]).is(":checked")) {
             if (person[i]["unitid"] != userunitid) {
                 var personid = person[i]["id"];
-                var param = "?token=1&unitID=" + userunitid + "&userID=" + personid;
+                var param = "?token=1&unitid=" + userunitid + "&userid=" + personid;
                 $.ajax({
                     type: "get",
                     url: domain + url_addUnitmember + param,
@@ -67,7 +67,7 @@ function userupdate() {
         else {
             if (person[i]["unitid"] == userunitid) {
                 var personid = person[i]["id"];
-                var param = "?token=1&unitID=" + userunitid + "&userID=" + personid;
+                var param = "?token=1&unitid=" + userunitid + "&userid=" + personid;
                 $.ajax({
                     type: "get",
                     url: domain + url_deleteUnitmember + param,

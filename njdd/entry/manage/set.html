@@ -35,14 +35,14 @@
                     <label for="speed">工作农机车牌号：</label></p>
 
                 <p align="center">
-                    <select name="speed" id="setpage_selectcar" onchange="setpage_selectcar_change()">
+                    <select name="speed" id="setpage_selectcar">
                     </select>
                 </p>
 
 
                 <div data-role="listview" data-type="vertical">
                     <h1>
-                        <a href="#" data-icon="star" data-role="button" id="setpage_surebtn" onclick="setpage_surebtnclick()">确&nbsp;&nbsp;定</a>
+                        <a href="#" data-icon="star" data-role="button" id="setpage_surebtn" onclick="setpage_selectcar_change()">确&nbsp;&nbsp;定</a>
                         <a href="../login/entry.html" data-icon="alert" data-ajax="false" data-role="button">退&nbsp;&nbsp;出</a>
                         <a href="person information.html"data-icon="info" data-role="button"  data-ajax="false" id="dianjixinxi" >个人信息</a>
                         <a href="manage.html" data-icon="gear" data-ajax="false" data-role="button">用户管理</a>

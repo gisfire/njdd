@@ -18,7 +18,9 @@
                 var selObj = $("#number");
                 selObj.append("<option>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
-                    selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                    if (sessionStorage.unitid == item.car_unitid) {
+                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                    }
                 });
                 if (sessionStorage.carid == "" || sessionStorage.carid == null) {
                     var option = $($("option", selObj).get(b));
@@ -45,4 +47,6 @@
     });
 });
 
-
+function infoinputpage_selectcar_change() {
+    sessionStorage.carid = $("#number").val();
+}
