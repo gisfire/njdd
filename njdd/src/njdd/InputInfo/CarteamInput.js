@@ -69,6 +69,21 @@ function readyteam() {
             selObj.selectmenu('refresh', true);
         }
     });
+    $("#teamadd").hide();
+    document.getElementById("teamnameinput").value = "";
+    var selObj1 = $("#unitid");
+    var option1 = $($("option", selObj1).get(1));
+    option1.attr('selected', 'selected');
+    selObj1.selectmenu();
+    selObj1.selectmenu('refresh', true);
+    var selObj2 = $("#teamcaptain");
+    var option2 = $($("option", selObj2).get(0));
+    option2.attr('selected', 'selected');
+    selObj2.selectmenu();
+    selObj2.selectmenu('refresh', true);
+    document.getElementById("captainphone").value = "";
+    document.getElementById("textarea").value = "";
+    changedisabled();
 }
 
 //内容为“请输入”时添加信息，否则修改信息

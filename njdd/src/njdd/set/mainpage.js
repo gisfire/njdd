@@ -22,7 +22,7 @@ $(document).on("pageinit", "#mainpage", function () {
                 var selObj = $("#mainpage_selectcar");
                 $.each(carjson.result.datas, function (i, item) {
                     if (sessionStorage.userid == item.car_ownerid) {//问题在这里，checkbox
-                        //sessionStorage.carid = item.id;
+                        sessionStorage.carid = item.id;
                         sessionStorage.userunit = item.car_userunit;
                         sessionStorage.groupname = item.car_userteam;
                     }
@@ -34,13 +34,21 @@ $(document).on("pageinit", "#mainpage", function () {
                     }
                 });
                 var opList = document.getElementById("mainpage_selectcar");
-                for (var j = 0, len = opList.length; j < len; j++) {
-                    if (opList.options[j].value == sessionStorage.carid) {
-                        var option = $($("option", selObj).get(j));
-                        option.attr('selected', 'selected');
-                        selObj.selectmenu();
-                        selObj.selectmenu('refresh', true);
-                        break;
+                if (sessionStorage.carid == "" || sessionStorage.carid == null) {
+                    var option = $($("option", selObj).get(0));
+                    option.attr('selected', 'selected');
+                    selObj.selectmenu();
+                    selObj.selectmenu('refresh', true);
+                }
+                else {
+                    for (var j = 0, len = opList.length; j < len; j++) {
+                        if (opList.options[j].value == sessionStorage.carid) {
+                            var option = $($("option", selObj).get(j));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            break;
+                        }
                     }
                 }
             }

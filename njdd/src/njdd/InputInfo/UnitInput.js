@@ -28,6 +28,11 @@ function readyunit() {
 
         }
     });
+    document.getElementById("unitInput").value = "";
+    $("#unitadd").hide();
+    $("#unitupdate").hide();
+    document.getElementById("textarea").value = "";
+    changedisabled();
 }
 
 

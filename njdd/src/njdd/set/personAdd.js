@@ -56,7 +56,6 @@ function userupdate() {
                     async: true,
                     dataType: 'json',
                     success: function () {
-                        confirm("添加成功！");
                     },
                     error: function (errorMsg) {
                         alert(errorMsg);
@@ -74,7 +73,6 @@ function userupdate() {
                     async: true,
                     dataType: 'json',
                     success: function () {
-                        confirm("删除成功！");
                     },
                     error: function (errorMsg) {
                         alert(errorMsg);
@@ -83,4 +81,5 @@ function userupdate() {
             }
         }
     }
+    confirm("修改成功！");
 }

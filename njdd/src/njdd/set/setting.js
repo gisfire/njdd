@@ -35,11 +35,24 @@ $(document).on("pageinit", "#setpage", function () {
                         selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
                     }
                 });
-                var option = $($("option", selObj).get(0));
-                option.attr('selected', 'selected');
-                selObj.selectmenu();
-                selObj.selectmenu('refresh', true);
-
+                var opList = document.getElementById("setpage_selectcar");
+                if (sessionStorage.carid == "") {
+                    var option = $($("option", selObj).get(0));
+                    option.attr('selected', 'selected');
+                    selObj.selectmenu();
+                    selObj.selectmenu('refresh', true);
+                }
+                else {
+                    for (var j = 0, len = opList.length; j < len; j++) {
+                        if (opList.options[j].value == sessionStorage.carid) {
+                            var option = $($("option", selObj).get(j));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            break;
+                        }
+                    }
+                }
             }
         },
         error: function (errorMsg) {

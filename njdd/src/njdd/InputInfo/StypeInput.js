@@ -26,6 +26,11 @@ function readycartype() {
             selObj.selectmenu('refresh', true);
         }
     });
+    $("#typeadd").hide();
+    $("#typeupdate").hide();
+    document.getElementById("Styleinput").value = "";
+    document.getElementById("textarea").value = "";
+    changedisabled();
 }
 
 var typeremark;

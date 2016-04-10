@@ -50,7 +50,7 @@
                             show: true
                         },
                         legend: {
-                            data: ['面积(这里有BUG,记得改)']
+                            data: ['面积(平方米)']
                         },
                         xAxis: [
                             {

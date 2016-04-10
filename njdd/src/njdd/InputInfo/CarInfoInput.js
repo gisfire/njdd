@@ -82,6 +82,30 @@ function readycode() {
             selObj.selectmenu('refresh', true);
         }
     });
+    $("#caradd").hide();
+    document.getElementById("carcodeinput").value = "";
+    document.getElementById("carbrand").value = "";
+    document.getElementById("carcodeinput").disabled = false;
+    document.getElementById("carhorsepower").value = "";
+    var selObj1 = $("#cartype");
+    var option1 = $($("option", selObj1).get(1));
+    option1.attr('selected', 'selected');
+    selObj1.selectmenu();
+    selObj1.selectmenu('refresh', true);
+    var selObj2 = $("#owner");
+    var option2 = $($("option", selObj2).get(0));
+    option2.attr('selected', 'selected');
+    selObj2.selectmenu();
+    selObj2.selectmenu('refresh', true);
+    document.getElementById("tel").value = "";
+    var selObj3 = $("#unit");
+    var option3 = $($("option", selObj3).get(1));
+    option3.attr('selected', 'selected');
+    selObj3.selectmenu();
+    selObj3.selectmenu('refresh', true);
+    document.getElementById("tel").value = "";
+    document.getElementById("textarea").value = "";
+    changedisabled();
 }
 
 //内容为“请输入”时添加信息，否则修改信息
