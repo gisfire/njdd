@@ -23,71 +23,22 @@ $(document).on("pageinit", "#personinfopage", function () {
                 $("#personinfopage_tel").val(item.phone);
                 $("#personinfopage_email").val(item.email);
                 $("#personinfopage_password").val(item.password);
-                $("#personinfopage_teamName").val(item.teamName);
+              
+                $("#personinfopage_teamName").append("<option >" + item.teamName + "</option>");
+                $("#personinfopage_teamName").selectmenu();
+                $("#personinfopage_teamName").selectmenu('refresh', true);
                 nuitnameid = item.unitid;
                 teamnameid = item.teamid;
                 ID = item.id;
             });
-            liebiao1();
-            liebiao2();
+            liebiao1(); //显示所有单位的列表
+            //liebiao2(); //显示所有车队的列表
         }
     });
 
     function liebiao1() {
-        var selObj = $("#personinfopage_teamName");
-        //显示所有车队的列表
-        $.ajax({
-            type: "get",
-            url: domain + url_getTeam + "?token=1",
-            async: true,
-            dataType: 'json',
-            success: function (json) {
-                if (typeof (json) == "object") {
-                    //为对象
-                    teamjson = json;
-                }
-                else {
-                    //将字符串转换为对象
-                    teamjson = JSON.parse(json);
-                }
-
-                $.each(teamjson.result.datas, function (i, item) {
-                    if (typeof (teamnameid) != "undefined") {
-                        if (teamnameid != item.id) {
-                            selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
-                        }
-
-                        else {
-                            selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
-                        }
-                    }
-                    else {
-                        selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
-                    }
-                });
-
-                var teamNames = document.getElementById("personinfopage_teamName");
-                for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-                    if (teamNames.options[b].value == teamnameid) {
-                        var option = $($("option", selObj).get(b));
-                        option.attr('selected', 'selected');
-                        selObj.selectmenu();
-                        selObj.selectmenu('refresh', true);
-                        break;
-                    }
-
-                }
-            }
-
-        });
-
-
-    }
-
-
-    function liebiao2() {
         var selObj = $("#personinfopage_unitName");
-        //显示所有车队的列表
+        //显示所有单位的列表
         $.ajax({
             type: "get",
             url: domain + url_getUnit + "?token=1",
@@ -117,6 +68,7 @@ $(document).on("pageinit", "#personinfopage", function () {
                     } else {
                         selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                     }
+                   
                 });
 
                 var unitNames = document.getElementById("personinfopage_unitName");
@@ -138,7 +90,166 @@ $(document).on("pageinit", "#personinfopage", function () {
 
     }
 
+
+    //function liebiao2() {
+    //    var selObj = $("#personinfopage_teamName");
+    //    //显示所有车队的列表
+    //    $.ajax({
+    //        type: "get",
+    //        url: domain + url_getTeam + "?token=1",
+    //        async: true,
+    //        dataType: 'json',
+    //        success: function (json) {
+    //            if (typeof (json) == "object") {
+    //                //为对象
+    //                teamjson = json;
+    //            }
+    //            else {
+    //                //将字符串转换为对象
+    //                teamjson = JSON.parse(json);
+    //            }
+
+    //            $.each(teamjson.result.datas, function (i, item) {
+    //                if (typeof (teamnameid) != "undefined") {
+    //                    if (teamnameid != item.id) {
+    //                        selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+    //                    }
+
+    //                    else {
+    //                        selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+    //                    }
+    //                }
+    //                else {
+    //                    selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
+    //                }
+    //            });
+
+    //            var teamNames = document.getElementById("personinfopage_teamName");
+    //            for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+    //                if (teamNames.options[b].value == teamnameid) {
+    //                    var option = $($("option", selObj).get(b));
+    //                    option.attr('selected', 'selected');
+    //                    selObj.selectmenu();
+    //                    selObj.selectmenu('refresh', true);
+    //                    break;
+    //                }
+
+    //            }
+    //        }
+
+    //    });
+
+
+    //}
+
+
+   
+
 });
+
+
+
+//显示所选农场的所有车队的列表
+function judgeunit() {
+   
+   
+    var unitNameid = $("#personinfopage_unitName").val();
+    $("#personinfopage_teamName").empty();
+    $("#personinfopage_teamName").selectmenu();
+    $("#personinfopage_teamName").selectmenu('refresh', false);
+        $.ajax({
+            type: "get",
+            url: domain + url_getTeam + "?token=1",
+            async: true,
+            dataType: 'json',
+            success: function (json) {
+                if (typeof (json) == "object") {
+                    //为对象
+                    teamjson = json;
+                }
+                else {
+                    //将字符串转换为对象
+                    teamjson = JSON.parse(json);
+                }
+
+                $.each(teamjson.result.datas, function (i, item) {
+                    if (item.teamUnitid == unitNameid)
+                    {
+                        if (typeof (teamnameid) != "undefined") {
+                            if (teamnameid != item.id) {
+                                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                            }
+
+                            else {
+                                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                            }
+                        }
+                        else {
+                            $("#personinfopage_teamName").append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
+                        }
+                    }
+
+                });
+
+                //var teamNames = document.getElementById("personinfopage_teamName");
+                //for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++)
+                {
+                    //if (teamNames.options[b].value == teamnameid )
+                    {
+                        //var option = $($("option", $("#personinfopage_teamName")).get(b));
+                        //option.attr('selected', 'selected');
+                        $("#personinfopage_teamName").selectmenu();
+                        $("#personinfopage_teamName").selectmenu('refresh', true);
+                        //break;
+                    }
+
+                }
+                var teamNames = document.getElementById("personinfopage_teamName");
+                for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++)
+                {
+                    if (teamNames.options[b].value == teamnameid )
+                    {
+                        var option = $($("option", $("#personinfopage_teamName")).get(b));
+                        option.attr('selected', 'selected');
+                        $("#personinfopage_teamName").selectmenu();
+                        $("#personinfopage_teamName").selectmenu('refresh', true);
+                        break;
+                    }
+
+                }
+
+
+            }
+
+        });
+
+    //$.ajax({
+    //    type: "get",
+    //    url: domain + url_getTeam + "?token=1",
+    //    async: true,
+    //    dataType: 'json',
+    //    success: function (data) {
+
+    //        $("#personinfopage_teamName").append("<option  value='-1'>" + "请选择" + "</option>");
+    //        $.each(data.result.datas, function (i, item) {
+
+    //            if (item.teamUnitid == unitNameid) {
+    //                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
+    //            }
+
+    //        });
+
+           
+
+    //    }
+    //});
+
+}
+
+
+
+
+
 
 //提交保存信息
 function tijiao() {

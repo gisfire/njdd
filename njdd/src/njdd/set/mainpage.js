@@ -22,7 +22,9 @@ $(document).on("pageinit", "#mainpage", function () {
                 var selObj = $("#mainpage_selectcar");
                 $.each(carjson.result.datas, function (i, item) {
                     if (sessionStorage.userid == item.car_ownerid) {//问题在这里，checkbox
-                        sessionStorage.carid = item.id;
+                        if (sessionStorage.carid == "") {
+                            sessionStorage.carid = item.id;
+                        }
                         sessionStorage.userunit = item.car_userunit;
                         sessionStorage.groupname = item.car_userteam;
                     }

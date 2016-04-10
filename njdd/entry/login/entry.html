@@ -111,7 +111,7 @@
         <div data-role="content" align="center">
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
                         <td>
                             <label for="user_name">
@@ -128,7 +128,7 @@
                 </table>
             </div>
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
                         <td>
                             <label for="user_tel">
@@ -146,7 +146,7 @@
             </div>
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+                <table style="width: 100%">
                     <tr>
                         <td>
                             <label for="user_key">
@@ -164,15 +164,15 @@
             </div>
 
 
-            <div class="ui-field-contain" data-controltype="textinput">
-                <table>
+            <div class="ui-field-contain" data-controltype="textinput"   >
+                <table style="width: 100%" >
                     <tr>
-                        <td>
+                        <td >
                             <label for="con_key">
                                 密码确认(*)：  
                             </label>
                         </td>
-                        <td>
+                        <td >
                             <input name="user_passwordsure" type="password" id="entrypage_register_passwordsure" value="" />
                         </td>
                         <td>
@@ -183,14 +183,38 @@
                 </table>
             </div>
 
-
-            <div>
-                <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center">一键注册</a>
+           <div class="ui-field-contain" data-controltype="textinput">
+                <table  style="width: 100%">
+                    <tr>
+                        <td >
+                            <label for=""  >
+                              角色选择(*)：  
+                            </label>
+                        </td>
+                        <td  style="width: 63.3%">
+                            <select   id="personinfopage_unitName" onchange="judgeunit()">
+                                <option value="1">农机手</option>
+                                <option value="2">农场主</option>
+                            </select>
+                        </td>
+                         <td>
+                          
+                        </td>
+                    </tr>
+                </table>
             </div>
+            
+            
+
+           <!-- <div>
+                <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center">一键注册</a>
+            </div>-->
         </div>
 
         <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            <h1></h1>
+            
+                <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center" style="width: 100%;">一键注册</a>
+           
         </div>
     </div>
     <!-- a start -->

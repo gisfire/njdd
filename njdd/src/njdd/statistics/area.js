@@ -50,7 +50,7 @@
                             show: true
                         },
                         legend: {
-                            data: ['面积(平方米)']
+                            data: ['面积(平方千米)']
                         },
                         xAxis: [
                             {
@@ -65,7 +65,7 @@
                         ],
                         series: [
                             {
-                                "name": "面积",
+                                "name": "面积（平方千米）",
                                 "type": "bar",
                                 "data": []
                             }

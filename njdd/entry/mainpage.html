@@ -10,6 +10,8 @@
     <script src="../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../dep/tmpl.js"></script>    
     <script src="../src/common/config.js"></script>
+    <script src="../src/common/jobrolecontrol.js"></script>
+    
    <!-- <script src="../src/njdd/set/setting.js"></script>-->
     <style>
         .ui-icon {
@@ -63,7 +65,7 @@
                     <label for="mainpage_selectcar" class="select">农机编号：</label>
                 </td>
                 <td style="width: 50%;">
-                    <select id="mainpage_selectcar" autocomplete="off" onchange="mainpage_selectcar_change()">
+                    <select id="mainpage_selectcar" autocomplete="off">
                        
                     </select>
                 </td>
@@ -97,13 +99,13 @@
                     <a href="../entry/execution/execution.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
                     <span>任务执行</span>
                 </div>
-                <div class="ui-block-b">
-                    <a href="../entry/conduct/conduct.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>指挥调度</span>
-                </div>
                 <div class="ui-block-c">
-                    <a href="../entry/essence/addEssence.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>地理要素添加</span>
+                    <a href="../entry/query/QueryRegionInfo.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                    <span>区域农机查询</span>
+                </div>
+                <div class="ui-block-d">
+                    <a href="../entry/query/QueryHistotyroute.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                    <span>历史轨迹</span>
                 </div>
                 <div class="ui-block-d">
                     <a href="../entry/InputInfo/InfoInput.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
@@ -117,16 +119,17 @@
                     <span>农机资料信息</span>
                 </div>
                 <div class="ui-block-b">
-                    <a href="../entry/query/Logmanage.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon  "></a>
-                    <span>系统日志管理</span>
+                    <a href="../entry/query/Logmanage.html" data-ajax="false" id="header_Logmanage" class="ui-btn ui-corner-all ui-shadow ui-icon  "></a>
+                    <span id="_Logmanage">系统日志管理</span>
+                </div>
+                
+                <div class="ui-block-b">
+                    <a href="../entry/conduct/conduct.html" data-ajax="false" id="header_conduct" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                    <span id="_conduct">指挥调度</span>
                 </div>
                 <div class="ui-block-c">
-                    <a href="../entry/query/QueryRegionInfo.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>区域农机查询</span>
-                </div>
-                <div class="ui-block-d">
-                    <a href="../entry/query/QueryHistotyroute.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>历史轨迹</span>
+                    <a href="../entry/essence/addEssence.html" data-ajax="false" id="header_addEssence" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                    <span id="_addEssence">地理要素添加</span>
                 </div>
             </div>
         </div>
@@ -163,6 +166,20 @@
         })
     </script>
     <script src="../src/njdd/set/mainpage.js"></script>
-
+    <script type="text/html" id="tmpl_detailinfo">
+        <li>
+            <a href="#">
+                <div>
+                    <strong id="<%=messageid%>"><%=sendusername%></strong>
+                    <span class="pull-right text-muted">
+                        <em id="<%=senduserid%>"><%=sendtime%></em>
+                    </span>
+                </div>
+                <div><%=messagecontend%></div>
+            </a>
+        </li>
+        <li class="divider"></li>
+    </script>
+    <script src="../src/common/getmessages.js"></script>
 </body>
 </html>

@@ -24,11 +24,6 @@ $(document).on("pageinit", "#setpage", function () {
             }
             if (carjson.result.datas.length > 0) {
                 var selObj = $("#setpage_selectcar");
-                $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.userid == item.car_ownerid) {
-                        sessionStorage.carid = item.id;
-                    }
-                });
                 selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
                     if (sessionStorage.unitid == item.car_unitid) {

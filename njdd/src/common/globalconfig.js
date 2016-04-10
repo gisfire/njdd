@@ -1,5 +1,6 @@
 ﻿
 function entrypage_signin_btn_click() {
+   
     var tel = $("#entrypage_signin_tel").val();
     var password = $("#entrypage_signin_password").val();
     if (tel == null || tel == "" || password == null || password == "") {
@@ -46,7 +47,11 @@ function entrypage_signin_btn_click() {
 
 }
 
+
 function entrypage_register_btn_click() {
+
+    var selectval = $("#personinfopage_unitName").val();
+
     var tel = $("#entrypage_register_tel").val();
     var name = $("#entrypage_register_name").val();
     var password = $("#entrypage_register_password").val();
@@ -67,7 +72,16 @@ function entrypage_register_btn_click() {
             data["data"]["param"]["phone"] = tel;
             data["data"]["param"]["email"] = '';
             data["data"]["param"]["password"] = password;
-            data["data"]["param"]["jobroleid"] = '1';
+
+            if (selectval == "2") {
+                
+                data["data"]["param"]["jobroleid"] = '2';
+            }
+            else {
+
+                data["data"]["param"]["jobroleid"] = '1';
+            }
+          
 
             $.ajax({
                 url: domain + url_addUser,
@@ -81,6 +95,7 @@ function entrypage_register_btn_click() {
                 dataType: "json",
                 timeout: 3000,
                 success: function (json) {
+                    
                     var datajson;
 
                     if (typeof (json) == "object") {
@@ -91,13 +106,16 @@ function entrypage_register_btn_click() {
                         //将字符串转换为对象
                         datajson = JSON.parse(json);
                     }
-                    if (datajson.result.datas.length>0) {
+                    if (datajson.result.datas.length > 0) {
+                       
                         sessionStorage.phone = tel;
                         sessionStorage.name = datajson.result.datas[0].name;
-                        sessionStorage.userid = datajson.result.datas[0].userid;
+                        sessionStorage.userid = datajson.result.datas[0].id;
                         sessionStorage.email = datajson.result.datas[0].email;
                         sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
                         sessionStorage.password = datajson.result.datas[0].password;
+
+
                         window.location.href = "../../entry/mainpage.html";
                     } else {
                         $("#confirm-dialog_info").html("该手机号码已注册");
@@ -120,7 +138,16 @@ function entrypage_register_btn_click() {
 
 
 
-
+function judgeunit()
+{
+    
+    if (value == 1) {
+        alert("1");
+    }
+    if (value == 0) {
+        alert("0");
+    }
+}
 
 
 

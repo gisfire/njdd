@@ -37,4 +37,8 @@ var url_addTeammember = "njdd.app/rest/v100/teammember/add";
 var url_deleteTeammember = "njdd.app/rest/v100/teammember/delete";
 var url_deleteUnitmember = "njdd.app/rest/v100/unitmember/delete";
 var url_addUnitmember = "njdd.app/rest/v100/unitmember/add";
+var url_getmessage = "njdd.app/rest/v100/message/get";
+var url_queryMessagesBetween = "njdd.app/rest/v100/message/queryMessagesBetween";
+var url_sendMessage = "njdd.app/rest/v100/message/send";
+var url_readedMessage = "njdd.app/rest/v100/message/read";
 

@@ -10,36 +10,38 @@
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
-    <script src="../../src/common/getmessages.js"></script>
+    <script src="../../dep/tmpl.js"></script>
 </head>
 <body>
-    <div data-role="page" id="managepage">
+    <div data-role="page" id="persmessage">
         <div data-role="header">
-            <a data-role="button" href="set.html" data-ajax="false" data-icon="back">返回</a>
-            <h1>用户管理信息</h1>
+            <a data-role="button" href="message.html" data-ajax="false" data-icon="back">返回</a>
+            <h1>具体信息管理</h1>
         </div>
         <!--具体信息-->
         <div data-role="main" class="ui-content">
             <div>
-                <ul data-role="listview" id="managepage_listview">
-
+                <ul data-role="listview" id="persmessage_listview">
                 </ul>
             </div>
         </div>
         <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            <h2></h2>
+            <label>
+                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                <span class="input-group-btn"style="float:right">
+                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick="diaoyong()">
+                        发送
+                    </button>
+                </span>
+            </label>
         </div>
 
     </div>
 
 </body>
-<script src="../../dep/tmpl.js"></script>
-<script src="../../src/common/config.js"></script>
-<script src="../../src/njdd/set/manage.js"></script>
-<script type="text/html" id="tmpl_managepage_detailinfo">
-    <li>
-        <a href="../manage/information.html" id="<%=id%>" onclick="managepage_btn_click(this.id)" data-transition="slide"><%=name%></a>
-    </li>
-</script>
 
+<script src="../../src/common/config.js"></script>
+<script src="../../src/njdd/message/persmessage.js"></script>
+<script src="../../src/common/getmessages.js"></script>
 </html>
+
