@@ -383,3 +383,11 @@ function njinfo_btn_click(userid) {
     
 }
 
+function detailinfopage_smsbtn() {
+   
+    if (userphone != null) {
+        window.location.href = "sms:" + userphone + "?body=" + $("#writemessage").val();
+      
+        document.getElementById("writemessage").value = "";
+    }
+}

@@ -191,6 +191,10 @@ function detailinfopage_smsbtn_click() {
     //alert($("#detailinfopage_smsinfo").val());
     if (userphone!=null) {
         window.location.href = "sms:" + userphone + "?body=" + $("#detailinfopage_smsinfo").val();
+        
+        document.getElementById("writemessage").value = "";
+
+       
     }
 }
 

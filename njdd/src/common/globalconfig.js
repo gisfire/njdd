@@ -138,16 +138,16 @@ function entrypage_register_btn_click() {
 
 
 
-function judgeunit()
-{
+//function judgeunit()
+//{
     
-    if (value == 1) {
-        alert("1");
-    }
-    if (value == 0) {
-        alert("0");
-    }
-}
+//    if (value == 1) {
+//        alert("1");
+//    }
+//    if (value == 0) {
+//        alert("0");
+//    }
+//}
 
 
 

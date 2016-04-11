@@ -121,7 +121,15 @@
         </div>
 
       <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            <h2></h2>
+            <form method="post" >
+                <div class="ui-field-contain">
+                    <label for="info">发送消息:</label>
+                    <textarea  id="writemessage"></textarea>
+                </div>
+                <div align="center">
+                    <a href="#" data-role="button" data-theme="a" data-inline="true" id="detailinfopage_smsbtn" onclick="detailinfopage_smsbtn()">发送OK</a>
+                </div>
+            </form>
         </div>
 
 
