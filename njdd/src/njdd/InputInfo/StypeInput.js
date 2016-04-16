@@ -30,7 +30,15 @@ function readycartype() {
     $("#typeupdate").hide();
     document.getElementById("Styleinput").value = "";
     document.getElementById("textarea").value = "";
-    changedisabled();
+    if (classie_css.has(document.querySelector("#addCartype"), "ui-state-disabled")) {
+        classie_css.remove(document.querySelector("#addCartype"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#updateCartype"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#updateCartype"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#deleteCartype"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#deleteCartype"), "ui-state-disabled");
+    }
 }
 
 var typeremark;

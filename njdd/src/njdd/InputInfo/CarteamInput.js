@@ -83,7 +83,15 @@ function readyteam() {
     selObj2.selectmenu('refresh', true);
     document.getElementById("captainphone").value = "";
     document.getElementById("textarea").value = "";
-    changedisabled();
+    if (classie_css.has(document.querySelector("#addteam"), "ui-state-disabled")) {
+        classie_css.remove(document.querySelector("#addteam"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#updateteam"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#updateteam"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#deleteteam"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#deleteteam"), "ui-state-disabled");
+    }
 }
 
 //内容为“请输入”时添加信息，否则修改信息

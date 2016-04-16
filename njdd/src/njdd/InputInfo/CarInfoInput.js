@@ -105,7 +105,15 @@ function readycode() {
     selObj3.selectmenu('refresh', true);
     document.getElementById("tel").value = "";
     document.getElementById("textarea").value = "";
-    changedisabled();
+    if (classie_css.has(document.querySelector("#addtools"), "ui-state-disabled")) {
+        classie_css.remove(document.querySelector("#addtools"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#updatetools"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#updatetools"), "ui-state-disabled");
+    }
+    if (!classie_css.has(document.querySelector("#deletetools"), "ui-state-disabled")) {
+        classie_css.add(document.querySelector("#deletetools"), "ui-state-disabled");
+    }
 }
 
 //内容为“请输入”时添加信息，否则修改信息

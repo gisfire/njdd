@@ -246,7 +246,7 @@ var distance;
                                 var xdiff = currentX - item.x;            // 计算两个点的横坐标之差  
                                 var ydiff = currentY - item.y;            // 计算两个点的纵坐标之差  
                                 item.distance = Math.pow((xdiff * xdiff + ydiff * ydiff), 0.5);   // 计算两点之间的距离，十进度米  
-                                var symboltemp = new PictureMarkerSymbol('../../dep/image/png/nj.png', 20, 20);
+                                var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
                                 mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                                 var graphictemp = new Graphic(mapPoint, symboltemp);
                                 graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y, "distance": Math.ceil(item.distance * 100000) });
