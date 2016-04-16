@@ -60,48 +60,53 @@
     <div data-role="page" id="mainpage">
         <div data-role="header">
             <h1>农机远程指挥调度系统</h1>
-            <a href="manage/set.html" id="mainpage_setbtn" data-icon="gear"  data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
+            <a href="manage/setnm.html" id="mainpage_setbtn" data-icon="gear"  data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
         </div>
-        <!--<table style="width: 100%">
+       
+        <table style="width: 100%">
             <tr>
                 <td style="width: 15%; text-align: right; vertical-align: middle;">
-                    <label for="mainpage_selectcar" class="select">农机编号：</label>
+                    <label for="" class="select">我的角色：</label>
                 </td>
                 <td style="width: 50%;">
-                    <select id="mainpage_selectcar" autocomplete="off">
-                       
-                    </select>
+                    
+                   <input type="button" data-icon="user" value="农民">
                 </td>
             </tr>
-        </table>-->
-
+        </table>
+    
+        
+        
         <div class="divider"></div>
 
         <div data-role="main" class="ui-content">
-            <!--<div class="ui-grid-c">
-                <div class="ui-block-a">
-                    <a href="../entry/statistics/statUsage.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>利用率统计</span>
-                </div>
-                <div class="ui-block-b">
-                    <a href="../entry/statistics/statArea.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>作业面积统计</span>
-                </div>
-                <div class="ui-block-c">
-                    <a href="../entry/statistics/statDistance.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>里程统计</span>
-                </div>
-                <div class="ui-block-d">
-                    <a href="../entry/statistics/statProblem.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>超速统计</span>
-                </div>
-            </div>
-            <br />-->
+            
+             
+
             <div class="ui-grid-c">
-               <!-- <div class="ui-block-a">
-                    <a href="../entry/execution/execution.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>任务执行</span>
-                </div>-->
+                    <!--<div class="ui-block-a">
+                        <a href="../entry/statistics/statUsage.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span>利用率统计</span>
+                    </div>
+                    <div class="ui-block-b">
+                        <a href="../entry/statistics/statArea.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span>作业面积统计</span>
+                    </div>
+                    <div class="ui-block-c">
+                        <a href="../entry/statistics/statDistance.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span>里程统计</span>
+                    </div>
+                    <div class="ui-block-d">
+                        <a href="../entry/statistics/statProblem.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span>超速统计</span>
+                    </div>
+                </div>
+                <br />-->
+            <div class="ui-grid-c">
+                <!-- <div class="ui-block-a">
+                         <a href="../entry/execution/execution.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                         <span>任务执行</span>
+                     </div>-->
                 <div class="ui-block-a">
                     <a href="../entry/zhaonj/querynj.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
                     <span>找农机</span>
@@ -110,41 +115,41 @@
                     <a href="../entry/essence/addEssence.html" data-ajax="false" id="header_addEssence" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
                     <span id="_addEssence">地理要素添加</span>
                 </div>
-                 <div class="ui-block-b">
-                    <a href="../entry/query/QuetyMechanicsInfo.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon "></a>
-                    <span>农机资料信息</span>
-                </div>
-               <!-- <div class="ui-block-d">
-                    <a href="../entry/query/QueryHistotyroute.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>历史轨迹</span>
-                </div>
-                <div class="ui-block-d">
-                    <a href="../entry/InputInfo/InfoInput.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span>信息录入</span>
-                </div>
-            </div>
-            <br />
-            <div class="ui-grid-c">
-                <div class="ui-block-a">
-                    <a href="../entry/query/QuetyMechanicsInfo.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon "></a>
-                    <span>农机资料信息</span>
-                </div>
                 <div class="ui-block-b">
-                    <a href="../entry/xiunj/zxld.html" data-ajax="false" id="header_Logmanage" class="ui-btn ui-corner-all ui-shadow ui-icon  "></a>
-                    <span id="_Logmanage">修农机</span>
+                    <a href="../entry/query/QuetyMechanicsInfo.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon "></a>
+                    <span>农机资料信息</span>
                 </div>
+                 <!--<div class="ui-block-d">
+                         <a href="../entry/query/QueryHistotyroute.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                         <span>历史轨迹</span>
+                     </div>
+                    <div class="ui-block-d">
+                        <a href="../entry/InputInfo/InfoInput.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span>信息录入</span>
+                    </div>-->
+                </div>
+                   <!-- <br />
+                    <div class="ui-grid-c">
+                    <div class="ui-block-a">
+                        <a href="../entry/query/QuetyMechanicsInfo.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon "></a>
+                        <span>农机资料信息</span>
+                    </div>
+                    <div class="ui-block-b">
+                        <a href="../entry/xiunj/zxld.html" data-ajax="false" id="header_Logmanage" class="ui-btn ui-corner-all ui-shadow ui-icon  "></a>
+                        <span id="_Logmanage">修农机</span>
+                    </div>-->
                 
-                <div class="ui-block-b">
-                    <a href="../entry/conduct/conduct.html" data-ajax="false" id="header_conduct" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span id="_conduct">指挥调度</span>
-                </div>
-                <div class="ui-block-c">
-                    <a href="../entry/essence/addEssence.html" data-ajax="false" id="header_addEssence" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span id="_addEssence">地理要素添加</span>
-                </div>-->
+                <!--    <div class="ui-block-b">
+                        <a href="../entry/conduct/conduct.html" data-ajax="false" id="header_conduct" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span id="_conduct">指挥调度</span>
+                    </div>-->
+                  <!--  <div class="ui-block-c">
+                        <a href="../entry/essence/addEssence.html" data-ajax="false" id="header_addEssence" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
+                        <span id="_addEssence">地理要素添加</span>
+                    </div>-->
             </div>
         </div>
-
+      
         <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
             <h2></h2>
         </div>

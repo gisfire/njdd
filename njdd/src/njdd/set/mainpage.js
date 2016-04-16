@@ -2,6 +2,17 @@
 
 $(document).on("pageinit", "#mainpage", function () {
 
+    if (sessionStorage.jobroleid == 1) {
+        $("#mainpage_name").val("农机手");
+    }
+    else if (sessionStorage.jobroleid == 2) {
+        $("#mainpage_name").val("农民");
+    }
+    else if (sessionStorage.jobroleid == 3) {
+        $("#mainpage_name").val("农场主");
+    }
+
+    $("#mainpage_setbtn").html(sessionStorage.name);
     $("#mainpage_setbtn").html(sessionStorage.name);
    
     $.ajax({

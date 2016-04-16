@@ -3,7 +3,7 @@
 
         $.each(data, function (i, item) {
             if (item.id == userid) {
-                $(document).on("pageinit", "#detailinfopage", function () {
+                $(document).on("pageinit", "#querypersonpage", function () {
                     $("#weixiu_name").val(item.repairdepot);
                     $("#weixiu_address").val(item.address);
                     $("#weixiu_diatance").val(item.distance);

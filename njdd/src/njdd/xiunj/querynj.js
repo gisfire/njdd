@@ -239,7 +239,7 @@ var unitid = sessionStorage.unitid;
                     }
 
                     $.each(njpointresult, function (i, item) {
-                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
+                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/tools.png', 20, 20);
                         mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                         var graphictemp = new Graphic(mapPoint, symboltemp);
                         graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });

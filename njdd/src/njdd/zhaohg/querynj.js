@@ -1,4 +1,5 @@
-﻿//定义变量
+﻿
+//定义变量
 var datajson;
 var userphone;
 var selecttype;
@@ -16,7 +17,6 @@ njpointresult1 = new Array();
 var dianx;
 var diany;
 var unitid = sessionStorage.unitid;
-var distance;
 (function (window) {
     $(document).ready(function () {
 
@@ -95,7 +95,6 @@ var distance;
                 (function () {
                     map = new Map("map", {
                         logo: false,
-                      //  basemap: "oceans"  ："streets","satellite","hybrid","topo","gray","oceans","national-geographic","osm". 
                     });
                     var imgMap = new TDTVecLayer();
                     map.addLayer(imgMap);
@@ -109,7 +108,6 @@ var distance;
                     map.addLayer(njpointlayer1);
                     njpointlayer2 = new GraphicsLayer({ id: "graphicsLayerPoint2" });
                     map.addLayer(njpointlayer2);
-                  
 
 
                 })();
@@ -139,9 +137,9 @@ var distance;
                 }
 
                 function zoomToPoint() {
-                    //var pt1 = new Point(currentX, currentY, new SpatialReference({ wkid: 4326 }));
+                    var pt1 = new Point(currentX, currentY, new SpatialReference({ wkid: 4326 }));
 
-                    var pt1 = new Point(118.301223, 32.2716, new SpatialReference({ wkid: 4326 }));
+
                     var symboltemp2 = new PictureMarkerSymbol('../../dep/image/png/user.png', 20, 20);
                     //pt1 = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                     var graphictemp2 = new Graphic(pt1, symboltemp2);
@@ -212,18 +210,18 @@ var distance;
                         lastGraphic = polycircle;
                         map.setExtent(circle.getExtent());
                         drawData(); //画圆后请求数据
-                        //njpointlayer1.clear();
+                        njpointlayer1.clear();
                     });
 
                 }
 
                 //判断点是否在圆内
                 function relateGeometries() {
-                    //njpointlayer.clear();
+                    njpointlayer.clear();
 
                     var njpointresult;
                     njpointresult = new Array();
-                    //njpointresult = new Array();
+
                     var a = 0;
 
 
@@ -240,47 +238,22 @@ var distance;
 
 
                     }
-      
-                        
+
                     $.each(njpointresult, function (i, item) {
-                                var xdiff = currentX - item.x;            // 计算两个点的横坐标之差  
-                                var ydiff = currentY - item.y;            // 计算两个点的纵坐标之差  
-                                item.distance = Math.pow((xdiff * xdiff + ydiff * ydiff), 0.5);   // 计算两点之间的距离，十进度米  
-                                var symboltemp = new PictureMarkerSymbol('../../dep/image/png/nj.png', 20, 20);
-                                mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
-                                var graphictemp = new Graphic(mapPoint, symboltemp);
-                                graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y, "distance": Math.ceil(item.distance * 100000) });
-                                var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong><br/><b>距离</b>: <strong>${distance}</strong>";
-                                var infoTemplate = new InfoTemplate("信息", content);
-                                graphictemp.setInfoTemplate(infoTemplate);
-                                njpointlayer.add(graphictemp);
-                               
-                               
-                            });
-
-                    $(document).on("pagebeforecreate", "#njinfopage", function () {
-                        $("#logmanagepage_listview").empty();
-
-                                $.each(njpointresult, function (i, item) {
-
-                                    njinfopageuser(item);
-
-                                });
+                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
+                        mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
+                        var graphictemp = new Graphic(mapPoint, symboltemp);
+                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
+                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
+                        var infoTemplate = new InfoTemplate("信息", content);
+                        graphictemp.setInfoTemplate(infoTemplate);
+                        njpointlayer.add(graphictemp);
 
                     });
+                    //alert("查询所有车队");
+
 
                 }
-
-
-                function njinfopageuser(item) {
-                    if (item.unit_name == null) {
-                        item.unit_name = "无";
-                    }
-                    //模板渲染                   
-                    var html = tmpl("tmpl_logmanagepage_detailinfo", item);
-                    $(html).appendTo("#logmanagepage_listview").trigger('create');
-                }
-
 
 
                 //请求数据
@@ -296,7 +269,7 @@ var distance;
                             jsondata = data.result.datas;
                         },
                         error: function (errorMsg) {
-                            alert("请求数据失败\n" + errorMsg.toString());
+                            //alert("请求数据失败\n" + errorMsg.toString());
                         }
                     });
 
@@ -307,6 +280,7 @@ var distance;
             });
     });
 })(window);
+
 
 
 
