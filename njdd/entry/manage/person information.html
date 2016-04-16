@@ -13,9 +13,7 @@
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
     <script src="../../src/njdd/set/personinfo.js"></script>
-    <script>
-       
-    </script>
+   
 
 </head>
 <body>
@@ -118,13 +116,51 @@
                             </label>
                         </td>
                         <td style="width: 76%">
-                            <input name="mima" id="personinfopage_password" placeholder="您的密码..." value="" type="tel" />
+                            <input name="mima" id="personinfopage_password" placeholder="您的密码..." style="text-align: center;" value="" type="tel" />
                         </td>
                     </tr>
                 </table>
                
             </div>
-            
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="mima" style="float: right; font-size: 15px; text-align: right;">
+                                个人特长：  
+                            </label>
+                        </td>
+                        <td style="width: 76%">
+                            <input name="mima" id="good" style="text-align: center;" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+               
+            </div>
+            <div class="ui-field-contain" data-controltype="selectinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="" style="float: right; font-size: 15px; text-align: right;">
+                                信誉评价：  
+                            </label>
+                        </td>
+                        <td style="width: 75%;">
+                                <select id="Select1">
+                                    <option></option>
+                            <option>极优秀</option>
+                            <option selected="selected">优秀</option>
+                            <option>较优秀</option>
+                            <option>良好</option>
+                            <option>一般</option>
+                            <option>较差</option>
+                            <option>差</option>
+                            <option>极差</option>
+                                </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             
         </div>
          

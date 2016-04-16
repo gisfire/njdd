@@ -1,6 +1,5 @@
-﻿
-function entrypage_signin_btn_click() {
-   
+﻿function entrypage_signin_btn_click() {
+
     var tel = $("#entrypage_signin_tel").val();
     var password = $("#entrypage_signin_password").val();
     if (tel == null || tel == "" || password == null || password == "") {
@@ -8,7 +7,7 @@ function entrypage_signin_btn_click() {
         window.location.href = "#confirm-dialog";
     } else {
         $.ajax({
-            url: domain+url_checkUser+"?token=1&username=" + tel + "&password=" + password,
+            url: domain + url_checkUser + "?token=1&username=" + tel + "&password=" + password,
             type: 'get',
             async: false,
             success: function (json) {
@@ -32,7 +31,16 @@ function entrypage_signin_btn_click() {
                     sessionStorage.tel = tel;
                     sessionStorage.unitid = datajson.result.datas[0].unitid;
                     sessionStorage.password = datajson.result.datas[0].password;
-                    window.location.href = "../../entry/mainpage.html";
+                    if (sessionStorage.jobroleid == 1) {
+                        window.location.href = "../../entry/mainpage.html";
+                   }
+                   else if (sessionStorage.jobroleid == 2) {
+                        window.location.href = "../../entry/mainpagenm.html";
+                    }
+                   else if (sessionStorage.jobroleid == 3) {
+                        window.location.href = "../../entry/mainpagencz.html";
+                    }
+
                 } else {
                     $("#confirm-dialog_info").html("登录失败");
                     window.location.href = "#confirm-dialog";
@@ -73,15 +81,19 @@ function entrypage_register_btn_click() {
             data["data"]["param"]["email"] = '';
             data["data"]["param"]["password"] = password;
 
-            if (selectval == "2") {
-                
-                data["data"]["param"]["jobroleid"] = '2';
-            }
-            else {
+            if (selectval == "1") {
 
                 data["data"]["param"]["jobroleid"] = '1';
             }
-          
+            else if (selectval == "2") {
+
+                data["data"]["param"]["jobroleid"] = '2';
+            }
+
+            else if (selectval == "3") {
+
+                data["data"]["param"]["jobroleid"] = '3';
+            }
 
             $.ajax({
                 url: domain + url_addUser,
@@ -95,7 +107,7 @@ function entrypage_register_btn_click() {
                 dataType: "json",
                 timeout: 3000,
                 success: function (json) {
-                    
+
                     var datajson;
 
                     if (typeof (json) == "object") {
@@ -107,7 +119,7 @@ function entrypage_register_btn_click() {
                         datajson = JSON.parse(json);
                     }
                     if (datajson.result.datas.length > 0) {
-                       
+
                         sessionStorage.phone = tel;
                         sessionStorage.name = datajson.result.datas[0].name;
                         sessionStorage.userid = datajson.result.datas[0].id;
@@ -115,14 +127,23 @@ function entrypage_register_btn_click() {
                         sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
                         sessionStorage.password = datajson.result.datas[0].password;
 
+                        if (sessionStorage.jobroleid == 1) {
+                            window.location.href = "../../entry/mainpage.html";
+                        }
+                        else if (sessionStorage.jobroleid == 2) {
+                            window.location.href = "../../entry/mainpagenm.html";
+                        }
+                        else if (sessionStorage.jobroleid == 3) {
+                            window.location.href = "../../entry/mainpagencz.html";
+                        }
 
-                        window.location.href = "../../entry/mainpage.html";
-                    } else {
+                    }
+                    else {
                         $("#confirm-dialog_info").html("该手机号码已注册");
                         window.location.href = "#confirm-dialog";
                     }
                 },
-                error:function(errorMsg) {
+                error: function (errorMsg) {
                     $("#confirm-dialog_info").html(errorMsg);
                     window.location.href = "#confirm-dialog";
                 }
@@ -136,18 +157,6 @@ function entrypage_register_btn_click() {
 }
 
 
-
-
-//function judgeunit()
-//{
-    
-//    if (value == 1) {
-//        alert("1");
-//    }
-//    if (value == 0) {
-//        alert("0");
-//    }
-//}
 
 
 

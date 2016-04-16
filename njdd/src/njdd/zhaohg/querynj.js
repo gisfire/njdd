@@ -15,7 +15,8 @@ var njpointresult1;
 njpointresult1 = new Array();
 var dianx;
 var diany;
- var unitid = sessionStorage.unitid;
+var unitid = sessionStorage.unitid;
+var distance;
 (function (window) {
     $(document).ready(function () {
 
@@ -86,7 +87,7 @@ var diany;
                 var gl; //use it to create graphic.       
                 var lastGraphic;
                 var circle;
-               
+
                 //var njpointresult;
                 var getdata; //全局变量
 
@@ -94,6 +95,7 @@ var diany;
                 (function () {
                     map = new Map("map", {
                         logo: false,
+                      //  basemap: "oceans"  ："streets","satellite","hybrid","topo","gray","oceans","national-geographic","osm". 
                     });
                     var imgMap = new TDTVecLayer();
                     map.addLayer(imgMap);
@@ -107,7 +109,8 @@ var diany;
                     map.addLayer(njpointlayer1);
                     njpointlayer2 = new GraphicsLayer({ id: "graphicsLayerPoint2" });
                     map.addLayer(njpointlayer2);
-                    
+                  
+
 
                 })();
                 //initialAction
@@ -136,13 +139,13 @@ var diany;
                 }
 
                 function zoomToPoint() {
-                    var pt1 = new Point(currentX, currentY, new SpatialReference({ wkid: 4326 }));
-                   
+                    //var pt1 = new Point(currentX, currentY, new SpatialReference({ wkid: 4326 }));
 
+                    var pt1 = new Point(118.301223, 32.2716, new SpatialReference({ wkid: 4326 }));
                     var symboltemp2 = new PictureMarkerSymbol('../../dep/image/png/user.png', 20, 20);
                     //pt1 = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                     var graphictemp2 = new Graphic(pt1, symboltemp2);
-                    graphictemp2.setAttributes({  "x": currentX, "y": currentY });
+                    graphictemp2.setAttributes({ "x": currentX, "y": currentY });
                     var content = "<b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
                     var infoTemplate = new InfoTemplate("信息", content);
                     graphictemp2.setInfoTemplate(infoTemplate);
@@ -153,28 +156,28 @@ var diany;
 
                 ////////
                 $("#btn_sumbit").click(function () {
-                    
+
                     if (circle != null) {
                         //zaici();
-                    //定义要画的图形的线条颜色  
-                    var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
-                    var geodesic = dom.byId("input_area");
-                    {
-                        var point = new Point([dianx, diany]);
-                        circle = new Circle(point, {
-                            //center: e.mapPoint,
-                            geodesic: domAttr.get(geodesic, "checked"),
-                            radius: document.querySelector("#input_area").value //获取范围
-                        });
-                        gl.clear();
-                        var polycircle = new Graphic(circle, symbol);
-                        gl.add(polycircle);
-                        lastGraphic = polycircle;
-                        map.setExtent(circle.getExtent());
-                        drawData(); //画圆后请求数据
-                        njpointlayer1.clear();
-                    }
-                    relateGeometries();
+                        //定义要画的图形的线条颜色  
+                        var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+                        var geodesic = dom.byId("input_area");
+                        {
+                            var point = new Point([dianx, diany]);
+                            circle = new Circle(point, {
+                                //center: e.mapPoint,
+                                geodesic: domAttr.get(geodesic, "checked"),
+                                radius: document.querySelector("#input_area").value //获取范围
+                            });
+                            gl.clear();
+                            var polycircle = new Graphic(circle, symbol);
+                            gl.add(polycircle);
+                            lastGraphic = polycircle;
+                            map.setExtent(circle.getExtent());
+                            drawData(); //画圆后请求数据
+                            njpointlayer1.clear();
+                        }
+                        relateGeometries();
 
                     }
                     //else {
@@ -193,122 +196,78 @@ var diany;
                 function drawCircle(jsondata) {
                     //定义要画的图形的线条颜色  
                     var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
-                    var  geodesic = dom.byId("input_area");
+                    var geodesic = dom.byId("input_area");
                     map.on("click", function (e) {
                         circle = new Circle({
                             center: e.mapPoint,
-                           
+
                             geodesic: domAttr.get(geodesic, "checked"),
                             radius: document.querySelector("#input_area").value //获取范围
                         });
-                       dianx =e.mapPoint.x;
-                       diany =e.mapPoint.y;
-                       gl.clear();
+                        dianx = e.mapPoint.x;
+                        diany = e.mapPoint.y;
+                        gl.clear();
                         var polycircle = new Graphic(circle, symbol);
                         gl.add(polycircle);
                         lastGraphic = polycircle;
                         map.setExtent(circle.getExtent());
                         drawData(); //画圆后请求数据
-                        njpointlayer1.clear();
+                        //njpointlayer1.clear();
                     });
 
                 }
 
                 //判断点是否在圆内
                 function relateGeometries() {
-                    njpointlayer.clear();
-                    
+                    //njpointlayer.clear();
+
                     var njpointresult;
                     njpointresult = new Array();
-                 
+                    //njpointresult = new Array();
                     var a = 0;
-                    
+
 
                     for (var b = 0; b < getdata.result.datas.length; b++) {
                         var pt = new Point(getdata.result.datas[b].x, getdata.result.datas[b].y);
                         if (circle.contains(pt)) {
                             items[a] = getdata.result.datas[b];
                             njpointresult[a] = getdata.result.datas[b];
-                             njpointresult1[a] = njpointresult[a];
+                            njpointresult1[a] = njpointresult[a];
                             a++;
 
-                          
-                        } 
-                       
-                      
+
+                        }
+
+
                     }
-                   
-                 
-                        //信息与checkbox绑定
-                    $(":checkbox").each(function () {
-                       
-                            if ($(this).attr("checked") == "checked") {
+      
+                        
+                    $.each(njpointresult, function (i, item) {
+                                var xdiff = currentX - item.x;            // 计算两个点的横坐标之差  
+                                var ydiff = currentY - item.y;            // 计算两个点的纵坐标之差  
+                                item.distance = Math.pow((xdiff * xdiff + ydiff * ydiff), 0.5);   // 计算两点之间的距离，十进度米  
+                                var symboltemp = new PictureMarkerSymbol('../../dep/image/png/nj.png', 20, 20);
+                                mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
+                                var graphictemp = new Graphic(mapPoint, symboltemp);
+                                graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y, "distance": Math.ceil(item.distance * 100000) });
+                                var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong><br/><b>距离</b>: <strong>${distance}</strong>";
+                                var infoTemplate = new InfoTemplate("信息", content);
+                                graphictemp.setInfoTemplate(infoTemplate);
+                                njpointlayer.add(graphictemp);
+                               
+                               
+                            });
+
+                    $(document).on("pagebeforecreate", "#njinfopage", function () {
+                        $("#logmanagepage_listview").empty();
 
                                 $.each(njpointresult, function (i, item) {
-                                    if (item.unit_id == unitid) {
-                                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
-                                        mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
-                                        var graphictemp = new Graphic(mapPoint, symboltemp);
-                                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
-                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
-                                        var infoTemplate = new InfoTemplate("信息", content);
-                                        graphictemp.setInfoTemplate(infoTemplate);
-                                        njpointlayer.add(graphictemp);
 
-                                    }
-
-                                  
+                                    njinfopageuser(item);
 
                                 });
-                                //alert("只查询本车队");
-                               
 
-                            } else {
-                                $.each(njpointresult, function (i, item) {                                    
-                                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
-                                        mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
-                                        var graphictemp = new Graphic(mapPoint, symboltemp);
-                                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
-                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
-                                        var infoTemplate = new InfoTemplate("信息", content);
-                                        graphictemp.setInfoTemplate(infoTemplate);
-                                        njpointlayer.add(graphictemp);
-
-                                });
-                                //alert("查询所有车队");
-                            }
-                        });
-                        //信息与checkbox绑定
-
-                 
-                        $(document).on("pagebeforecreate", "#njinfopage", function () {
-                            $("#logmanagepage_listview").empty();
-                            $(":checkbox").each(function () {
-
-                                if ($(this).attr("checked") == "checked") {
-
-                                    //alert("只查询本车队");
-                                    $.each(njpointresult, function (i, item) {
-                                        if (item.unit_name == unitname) {
-                                              njinfopageuser(item);
-                                        }
-
-                                    });
-
-                                } else {
-
-                                    $.each(njpointresult, function (i, item) {
-                                        
-                                            njinfopageuser(item);
-
-                                    });
-
-                                    //alert("查询所有车队");
-                                }
-                            });
-                   
-
-                        });
+                    });
 
                 }
 
@@ -322,9 +281,7 @@ var diany;
                     $(html).appendTo("#logmanagepage_listview").trigger('create');
                 }
 
-               
 
-            
 
                 //请求数据
                 function drawData() {
@@ -354,7 +311,7 @@ var diany;
 
 
 function njinfo_btn_click(userid) {
-   
+
     userphone = null;
     $.each(njpointresult1, function (i, item) {
         if (item.unit_name == null) {
@@ -364,27 +321,27 @@ function njinfo_btn_click(userid) {
             userphone = item.phone;
             $(document).on("pageinit", "#detailinfopage", function () {
                 $("#detailinfopage_username").val(item.username);
-              
+
                 $("#detailinfopage_car_type").val(item.car_type);
                 $("#detailinfopage_car_horsepower").val(item.car_horsepower);
                 $("#detailinfopage_unit_name").val(item.unit_name);
                 $("#detailinfopage_car_code").val(item.car_code);
                 $("#detailinfopage_phone").val(item.phone);
-            
+
             });
             return;
         }
 
 
     });
-    
+
 }
 
 function detailinfopage_smsbtn() {
-   
+
     if (userphone != null) {
         window.location.href = "sms:" + userphone + "?body=" + $("#writemessage").val();
-      
+
         document.getElementById("writemessage").value = "";
     }
 }

@@ -94,6 +94,8 @@
             $(html).appendTo("#logmanagepage_listview").trigger('create');
         };
 
-
     });
 })(window)
+
+
+

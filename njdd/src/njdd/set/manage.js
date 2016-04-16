@@ -60,6 +60,19 @@ function managepage_btn_click(unituserid) {
                         $("#informationpage_name").val(item.name);
                         $("#informationpage_tel").val(item.phone);
                         $("#informationpage_email").val(item.email);
+                        $("#good").val(arr[i]["good"]);
+                        var selObj = $("#comment");
+                        var teamNames = document.getElementById("comment");
+                        for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                            if (teamNames.options[b].text == arr[i]["comment"]) {
+                                var option = $($("option", selObj).get(b));
+                                option.attr('selected', 'selected');
+                                selObj.selectmenu();
+                                selObj.selectmenu('refresh', true);
+                                break;
+                            }
+
+                        }
                         userunitid = item.unitid;
                         userteamid = item.teamid;
                     }

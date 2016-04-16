@@ -452,6 +452,18 @@ function teaminfopageclick(id) {
                         $("#teammemberinfo_name").val(item.name);
                         $("#teammemberinfo_tel").val(item.phone);
                         $("#teammemberinfo_email").val(item.email);
+                        $("#regood").val(arr[i]["good"]);
+                        var selObj = $("#recomment");
+                        var teamNames = document.getElementById("recomment");
+                        for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                            if (teamNames.options[b].text == arr[i]["comment"]) {
+                                var option = $($("option", selObj).get(b));
+                                option.attr('selected', 'selected');
+                                selObj.selectmenu();
+                                selObj.selectmenu('refresh', true);
+                                break;
+                            }
+                        }
                         userunitid = item.unitid;
                         userteamid = item.teamid;
                     }

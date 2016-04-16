@@ -5,124 +5,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>农机综合调度指挥系统</title>
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/conduct/conduct.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
-    <script src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
     <script src="../../src/common/getmessages.js"></script>
+    <script src="../../src/njdd/xiunj/querynj.js"></script>
 </head>
 <body>
-
-    <div data-role="page" id="informationpage">
+    <div data-role="page" id="detailinfopage">
         <div data-role="header">
-            <a id="a_back" data-role="button" data-rel="back" href="manage.html" class="ui-btn-left" data-icon="back">返回</a>
-            <h3>用户管理信息  
-            </h3>
+            <a data-role="button" href="querynjinfo.html" data-icon="back" data-transition="slide">返回</a>
+            <h1>详细信息</h1>
+             <button class="ui-btn ui-icon-phone ui-btn-icon-left" onclick="getphone()">联系他</button>
         </div>
 
-
-        <div data-role="content" class="ui-content">
-            <div class="ui-field-contain" data-controltype="textinput">
+        <div data-role="main" class="ui-content">
+            <!--具体信息-->
+             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="name" style="float: right; font-size: 15px; text-align: right;">
-                                用户名：  
+                               维修点：  
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="name" id="informationpage_name" placeholder="您的姓名..." value="" style="text-align: center;" type="text" />
+                            <input name="name" id="weixiu_name" value="" style="text-align: center;"/>
                         </td>
                     </tr>
                 </table>
             </div>
-
 
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
-                                手机：  
+                                地址：  
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="mobile_phone" id="informationpage_tel" placeholder="您的手机号码..." value="" style="text-align: center;" type="tel" />
+                            <input name="mobile_phone" id="weixiu_address" value="" style="text-align: center;"/>
                         </td>
                     </tr>
                 </table>
             </div>
-
-
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="email" style="float: right; font-size: 15px; text-align: right;">
-                                邮箱：  
+                                距离：  
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="email" id="informationpage_email" placeholder="您的E-Mail地址..." value="" style="text-align: center;" type="email" />
+                            <input name="email" id="weixiu_diatance" style="text-align: center;"/>
                         </td>
                     </tr>
                 </table>
             </div>
+           
 
-
-            <div class="ui-field-contain" data-controltype="selectinput">
+            <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="danwei" style="float: right; font-size: 15px; text-align: right;">
-                                所属单位：  
+                            <label for="" style="float: right; font-size: 15px; text-align: right;" >
+                                负责人：  
                             </label>
                         </td>
                         <td style="width: 75%;">
-                            <select id="informationpage_unit" onchange="judgeunit()">
-                            </select>
+                            <input id="weixiu_userName" style="text-align: center;" value="" type="tel"/>
                         </td>
                     </tr>
                 </table>
             </div>
 
-
-
-            <div class="ui-field-contain" data-controltype="selectinput">
-                <table style="width: 100%">
-                    <tr>
-                        <td style="width: 23%">
-                            <label for="car_group" style="float: right; font-size: 15px; text-align: right;">
-                                车队：  
-                            </label>
-                        </td>
-                        <td style="width: 75%;">
-                            <select id="informationpage_team">
-                            </select>
-
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="mima" style="float: right; font-size: 15px; text-align: right;">
-                                个人特长：  
+                                电话：  
                             </label>
                         </td>
                         <td style="width: 76%">
-                            <input name="mima" id="good" style="text-align: center;" type="tel" />
+                            <input name="mima" id="weixiu_tel" style="text-align: center;" value="" type="tel" />
                         </td>
                     </tr>
                 </table>
                
             </div>
-            <div class="ui-field-contain" data-controltype="selectinput">
+            
+            <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
@@ -130,36 +111,32 @@
                                 信誉评价：  
                             </label>
                         </td>
-                        <td style="width: 75%;">
-                                <select id="comment">
-                                    <option></option>
-                            <option>极优秀</option>
-                            <option>优秀</option>
-                            <option>较优秀</option>
-                            <option>良好</option>
-                            <option>一般</option>
-                            <option>较差</option>
-                            <option>差</option>
-                            <option>极差</option>
-                                </select>
+                        <td style="width: 76%;">
+                            <input id="weixiu_comment" style="text-align: center;" value=""/>
                         </td>
                     </tr>
                 </table>
             </div>
+            
+        </div>
 
+      <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <!--<form method="post" >
+                <div class="ui-field-contain">
+                    <label for="info">发送消息:</label>
+                    <textarea  id="writemessage"></textarea>
+                </div>
+                <div align="center">
+                    <a href="#" data-role="button" data-theme="a" data-inline="true" id="detailinfopage_smsbtn" onclick="detailinfopage_smsbtn()">发送OK</a>
+                </div>
+            </form>-->
         </div>
 
 
-        <div data-role="footer">
-            <div data-role="navbar">
-                <ul>
-                    <li><a id="updateuser" data-role="button" class="ui-btn" data-inline="true" onclick="dianji()">保存</a></li>
-                    <li><a id="deleteuser" data-role="button" class="ui-btn" data-inline="true" onclick="deleteunituser()">删除</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
+
 
 </body>
 
 </html>
+

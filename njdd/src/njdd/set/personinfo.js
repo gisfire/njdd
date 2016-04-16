@@ -10,7 +10,7 @@ var personmanagejson;
 
 //个人信息界面
 $(document).on("pageinit", "#personinfopage", function () {
-
+    document.getElementById("good").value = "四年驾龄";
     var param = "?token=1&id=" + sessionStorage.userid;
     $.ajax({
         type: "get",
@@ -271,7 +271,6 @@ function tijiao() {
     data["data"]["param"]["phone"] = tel;
     data["data"]["param"]["email"] = email;
     data["data"]["param"]["password"] = password;
-    data["data"]["param"]["jobroleid"] = '1';
     data["data"]["param"]["unitid"] = unitNameid;
     data["data"]["param"]["teamid"] = teamNameid;
     data["data"]["param"]["id"] = ID;

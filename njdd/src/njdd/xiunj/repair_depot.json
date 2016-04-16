@@ -1,0 +1,58 @@
+﻿
+        [{
+
+		        "id": "1",              
+                "distance": "42.1公里",
+                "repairdepot": "琅琊区陡岗农机修配公司",
+                "address": "安徽省滁州市琅琊区",
+				"linkman": "刘帅",
+                "phone": "15255094542",              
+                "credit": "良好"
+				
+              
+            },
+            {
+			    "id": "2",              
+                "distance": "42.2公里",
+                 "repairdepot": "滁州市琅琊天来农机修理部",
+                "address": "安徽省滁州市琅琊区",
+				 "linkman": "史正瑞",
+                "phone": "15255094542",              
+                "credit": "优秀"
+            },
+			{
+			    "id": "3",              
+                "distance": "42.3公里",
+                 "repairdepot": "琅琊区雷桥农机修理部",
+                "address": "安徽省滁州市琅琊区",
+				 "linkman": "季迟",
+                "phone": "15255094542",              
+                "credit": "优秀"
+            },
+			{  
+			   "id": "4",              
+                "distance": "42.9公里",
+                "repairdepot": "八里农机修理部",
+                "address": "安徽省滁州市琅琊区",
+				"linkman": "常士勇",
+                "phone": "15255094542",              
+                "credit": "一般"
+            },
+			{
+			    "id": "5",              
+                "distance": "42.5公里",
+                "repairdepot": "滁州第二农机修理厂",
+                "address": "安徽省滁州市琅琊区",
+				 "linkman": "刘将",
+                "phone": "15255094542",              
+                "credit": "优秀"
+            },
+            {   
+			    "id": "6",              
+                "distance": "42.666公里",
+                "repairdepot": "安徽第一农机修理厂",
+                "address": "安徽省滁州市琅琊区",
+				 "linkman": "刘辉",
+                "phone": "15255094542",              
+                "credit": "良好"
+            }]
