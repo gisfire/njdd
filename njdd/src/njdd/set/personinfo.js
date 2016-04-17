@@ -23,140 +23,95 @@ $(document).on("pageinit", "#personinfopage", function () {
                 $("#personinfopage_tel").val(item.phone);
                 $("#personinfopage_email").val(item.email);
                 $("#personinfopage_password").val(item.password);
-              
-                $("#personinfopage_teamName").append("<option >" + item.teamName + "</option>");
-                $("#personinfopage_teamName").selectmenu();
-                $("#personinfopage_teamName").selectmenu('refresh', true);
                 nuitnameid = item.unitid;
                 teamnameid = item.teamid;
                 ID = item.id;
             });
             liebiao1(); //显示所有单位的列表
-            //liebiao2(); //显示所有车队的列表
+            judgeunit(); //显示所有车队的列表
         }
     });
 
     function liebiao1() {
         var selObj = $("#personinfopage_unitName");
-        //显示所有单位的列表
-        $.ajax({
-            type: "get",
-            url: domain + url_getUnit + "?token=1",
-            async: true,
-            dataType: 'json',
-            success: function (json) {
-                if (typeof (json) == "object") {
-                    //为对象
-                    unitjson = json;
-                }
-                else {
-                    //将字符串转换为对象
-                    unitjson = JSON.parse(json);
-                }
+        var jobroleid = sessionStorage.jobroleid;
+        if (jobroleid == 1) {
+            selObj.append("<option value='" + "-1" + "'>" + "独立" + "</option>");
+            var option = $($("option", selObj).get(0));
+            option.attr('selected', 'selected');
+            selObj.selectmenu();
+            selObj.selectmenu('refresh', true);
+        }
+        else {
+            //显示所有单位的列表
+            $.ajax({
+                type: "get",
+                url: domain + url_getUnit + "?token=1",
+                async: true,
+                dataType: 'json',
+                success: function (json) {
+                    if (typeof (json) == "object") {
+                        //为对象
+                        unitjson = json;
+                    }
+                    else {
+                        //将字符串转换为对象
+                        unitjson = JSON.parse(json);
+                    }
 
-                $.each(unitjson.result.datas, function (i, item) {
-                    if (typeof (nuitnameid) != "undefined") {
-                        if (nuitnameid == item.id) {
+                    $.each(unitjson.result.datas, function (i, item) {
+                        if (typeof (nuitnameid) != "undefined") {
+                            if (nuitnameid == item.id) {
 
-                            selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                                selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                            }
+
+                            else {
+
+                                selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                            }
+                        } else {
+                            selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                         }
 
-                        else {
+                    });
 
-                            selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    var unitNames = document.getElementById("personinfopage_unitName");
+                    for (var a = 0, lenunitNames = unitNames.length; a < lenunitNames; a++) {
+                        if (unitNames.options[a].value == nuitnameid) {
+
+                            var option = $($("option", selObj).get(a));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            break;
                         }
-                    } else {
-                        selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                     }
-                   
-                });
-
-                var unitNames = document.getElementById("personinfopage_unitName");
-                for (var a = 0, lenunitNames = unitNames.length; a < lenunitNames; a++) {
-                    if (unitNames.options[a].value == nuitnameid) {
-
-                        var option = $($("option", selObj).get(a));
-                        option.attr('selected', 'selected');
-                        selObj.selectmenu();
-                        selObj.selectmenu('refresh', true);
-                        break;
-                    }
+                    ////
                 }
-                ////
-            }
 
-        });
-
+            });
+        }
 
     }
-
-
-    //function liebiao2() {
-    //    var selObj = $("#personinfopage_teamName");
-    //    //显示所有车队的列表
-    //    $.ajax({
-    //        type: "get",
-    //        url: domain + url_getTeam + "?token=1",
-    //        async: true,
-    //        dataType: 'json',
-    //        success: function (json) {
-    //            if (typeof (json) == "object") {
-    //                //为对象
-    //                teamjson = json;
-    //            }
-    //            else {
-    //                //将字符串转换为对象
-    //                teamjson = JSON.parse(json);
-    //            }
-
-    //            $.each(teamjson.result.datas, function (i, item) {
-    //                if (typeof (teamnameid) != "undefined") {
-    //                    if (teamnameid != item.id) {
-    //                        selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
-    //                    }
-
-    //                    else {
-    //                        selObj.append("<option value='" + item.id + "'>" + item.name + "</option>");
-    //                    }
-    //                }
-    //                else {
-    //                    selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
-    //                }
-    //            });
-
-    //            var teamNames = document.getElementById("personinfopage_teamName");
-    //            for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-    //                if (teamNames.options[b].value == teamnameid) {
-    //                    var option = $($("option", selObj).get(b));
-    //                    option.attr('selected', 'selected');
-    //                    selObj.selectmenu();
-    //                    selObj.selectmenu('refresh', true);
-    //                    break;
-    //                }
-
-    //            }
-    //        }
-
-    //    });
-
-
-    //}
-
-
-   
-
 });
 
 
 
 //显示所选农场的所有车队的列表
 function judgeunit() {
-   
-   
+    var selObj = $("#personinfopage_teamName");
     var unitNameid = $("#personinfopage_unitName").val();
     $("#personinfopage_teamName").empty();
-    $("#personinfopage_teamName").selectmenu();
-    $("#personinfopage_teamName").selectmenu('refresh', false);
+    var jobroleid = sessionStorage.jobroleid;
+    if (jobroleid == 1) {
+        selObj.append("<option value='" + "-1" + "'>" + "独立" + "</option>");
+        var option = $($("option", selObj).get(0));
+        option.attr('selected', 'selected');
+        selObj.selectmenu();
+        selObj.selectmenu('refresh', true);
+    }
+    else {
         $.ajax({
             type: "get",
             url: domain + url_getTeam + "?token=1",
@@ -173,8 +128,7 @@ function judgeunit() {
                 }
 
                 $.each(teamjson.result.datas, function (i, item) {
-                    if (item.teamUnitid == unitNameid)
-                    {
+                    if (item.teamUnitid == unitNameid) {
                         if (typeof (teamnameid) != "undefined") {
                             if (teamnameid != item.id) {
                                 $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
@@ -190,25 +144,9 @@ function judgeunit() {
                     }
 
                 });
-
-                //var teamNames = document.getElementById("personinfopage_teamName");
-                //for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++)
-                {
-                    //if (teamNames.options[b].value == teamnameid )
-                    {
-                        //var option = $($("option", $("#personinfopage_teamName")).get(b));
-                        //option.attr('selected', 'selected');
-                        $("#personinfopage_teamName").selectmenu();
-                        $("#personinfopage_teamName").selectmenu('refresh', true);
-                        //break;
-                    }
-
-                }
                 var teamNames = document.getElementById("personinfopage_teamName");
-                for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++)
-                {
-                    if (teamNames.options[b].value == teamnameid )
-                    {
+                for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                    if (teamNames.options[b].value == teamnameid) {
                         var option = $($("option", $("#personinfopage_teamName")).get(b));
                         option.attr('selected', 'selected');
                         $("#personinfopage_teamName").selectmenu();
@@ -222,28 +160,7 @@ function judgeunit() {
             }
 
         });
-
-    //$.ajax({
-    //    type: "get",
-    //    url: domain + url_getTeam + "?token=1",
-    //    async: true,
-    //    dataType: 'json',
-    //    success: function (data) {
-
-    //        $("#personinfopage_teamName").append("<option  value='-1'>" + "请选择" + "</option>");
-    //        $.each(data.result.datas, function (i, item) {
-
-    //            if (item.teamUnitid == unitNameid) {
-    //                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
-    //            }
-
-    //        });
-
-           
-
-    //    }
-    //});
-
+    }
 }
 
 

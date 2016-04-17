@@ -42,13 +42,13 @@
         async: true,
         dataType: 'json',
         success: function (data) {
-            $("#unit").append("<option></option>");
             $("#unit").append("<option>" + "请选择" + "</option>");
+            $("#unit").append("<option>" + "独立" + "</option>");
             $.each(data.result.datas, function (i, item) {
                 $("#unit").append("<option value='" + item.id + "'>" + item.name + "</option>");
             });
             var selObj = $("#unit");
-            var option = $($("option", selObj).get(1));
+            var option = $($("option", selObj).get(0));
             option.attr('selected', 'selected');
             selObj.selectmenu();
             selObj.selectmenu('refresh', true);
@@ -176,16 +176,16 @@ function toolschange() {
                             }
                         }
                         var opList = document.getElementById("unit");
-                        for (var j = 0, len = opList.length; j < len; j++) {
-                            if (opList.options[j].value == item.car_unitid) {
+                        //for (var j = 0, len = opList.length; j < len; j++) {
+                            //if (opList.options[j].value == item.car_unitid) {
                                 var selObj = $("#unit");
-                                var option = $($("option", selObj).get(j));
+                                var option = $($("option", selObj).get(1));
                                 option.attr('selected', 'selected');
                                 selObj.selectmenu();
                                 selObj.selectmenu('refresh', true);
-                                break;
-                            }
-                        }
+                                //break;
+                            //}
+                        //}
                         var carunitid = item.car_unitid;
                         $("#owner").empty();//清空
                         $.ajax({

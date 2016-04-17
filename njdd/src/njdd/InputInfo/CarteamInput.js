@@ -446,6 +446,7 @@ function teaminfopageclick(id) {
     replaceid = id;
     deleteuserid = replaceid;
     updateuserid = replaceid;
+    var j;
     $(document).on("pageinit", "#teammemberinfo", function () {
         $("#teammemberinfo_team").empty();
         $("#teammemberinfo_unit").empty();
@@ -460,18 +461,26 @@ function teaminfopageclick(id) {
                         $("#teammemberinfo_name").val(item.name);
                         $("#teammemberinfo_tel").val(item.phone);
                         $("#teammemberinfo_email").val(item.email);
-                        $("#regood").val(arr[i]["good"]);
-                        var selObj = $("#recomment");
-                        var teamNames = document.getElementById("recomment");
-                        for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-                            if (teamNames.options[b].text == arr[i]["comment"]) {
-                                var option = $($("option", selObj).get(b));
-                                option.attr('selected', 'selected');
-                                selObj.selectmenu();
-                                selObj.selectmenu('refresh', true);
-                                break;
-                            }
-                        }
+                        j = i;
+                        $.getJSON("../../src/common/tdtlib/JavaScript.json", function (datajson) {
+                            if (j >= datajson.length) { j = j % datajson.length; }
+                            $.each(datajson, function (z, tem) {
+                                if (z == j) {
+                                    $("#regood").val(tem.good);
+                                    var selObj = $("#recomment");
+                                    var teamNames = document.getElementById("recomment");
+                                    for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                                        if (teamNames.options[b].text == tem.comment) {
+                                            var option = $($("option", selObj).get(b));
+                                            option.attr('selected', 'selected');
+                                            selObj.selectmenu();
+                                            selObj.selectmenu('refresh', true);
+                                            break;
+                                        }
+                                    }
+                                }
+                            });
+                        });
                         userunitid = item.unitid;
                         userteamid = item.teamid;
                     }

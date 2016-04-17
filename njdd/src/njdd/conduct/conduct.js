@@ -200,6 +200,3 @@ function detailinfopage_smsbtn_click() {
 
 
 
-
-
-

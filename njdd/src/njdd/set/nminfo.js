@@ -65,7 +65,9 @@ function tijiao() {
     data["data"]["param"]["phone"] = tel;
     data["data"]["param"]["email"] = email;
     data["data"]["param"]["password"] = password;
-   
+    data["data"]["param"]["unitid"] = "";
+    data["data"]["param"]["teamid"] = "";
+    data["data"]["param"]["id"] = sessionStorage.userid;
 
 
     $.ajax({
