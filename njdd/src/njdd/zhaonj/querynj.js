@@ -345,3 +345,6 @@ function detailinfopage_smsbtn() {
         document.getElementById("writemessage").value = "";
     }
 }
+
+function getphone()
+{ window.location.href = "tel:" + $("#detailinfopage_phone").val(); }

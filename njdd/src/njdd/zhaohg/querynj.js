@@ -238,7 +238,7 @@ var unitid = sessionStorage.unitid;
                     }
 
                     $.each(njpointresult, function (i, item) {
-                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
+                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/nj.png', 20, 20);
                         mapPoint = new Point(item.lonx, item.laty, new SpatialReference({ wkid: 4326 }));
                         var graphictemp = new Graphic(mapPoint, symboltemp);
                         graphictemp.setAttributes({ "username": item.man, "address": item.address });
@@ -332,5 +332,8 @@ function detailinfopage_smsbtn() {
         document.getElementById("writemessage").value = "";
     }
 
-
+    
 }
+
+function getphone()
+{ window.location.href = "tel:" + $("#zhg_tel").val(); }
