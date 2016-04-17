@@ -28,7 +28,7 @@ $(document).on("pageinit", "#personinfopage", function () {
                 ID = item.id;
             });
             liebiao1(); //显示所有单位的列表
-            judgeunit(); //显示所有车队的列表
+            //显示所有车队的列表
         }
     });
 
@@ -41,6 +41,7 @@ $(document).on("pageinit", "#personinfopage", function () {
             option.attr('selected', 'selected');
             selObj.selectmenu();
             selObj.selectmenu('refresh', true);
+            judgeunit("");
         }
         else {
             //显示所有单位的列表
@@ -75,7 +76,7 @@ $(document).on("pageinit", "#personinfopage", function () {
                         }
 
                     });
-
+                    judgeunit(nuitnameid);
                     var unitNames = document.getElementById("personinfopage_unitName");
                     for (var a = 0, lenunitNames = unitNames.length; a < lenunitNames; a++) {
                         if (unitNames.options[a].value == nuitnameid) {
@@ -99,12 +100,11 @@ $(document).on("pageinit", "#personinfopage", function () {
 
 
 //显示所选农场的所有车队的列表
-function judgeunit() {
+function judgeunit(unitNameid) {
     var selObj = $("#personinfopage_teamName");
-    var unitNameid = $("#personinfopage_unitName").val();
     $("#personinfopage_teamName").empty();
     var jobroleid = sessionStorage.jobroleid;
-    if (jobroleid == 1) {
+    if (unitNameid == "") {
         selObj.append("<option value='" + "-1" + "'>" + "独立" + "</option>");
         var option = $($("option", selObj).get(0));
         option.attr('selected', 'selected');
@@ -129,18 +129,7 @@ function judgeunit() {
 
                 $.each(teamjson.result.datas, function (i, item) {
                     if (item.teamUnitid == unitNameid) {
-                        if (typeof (teamnameid) != "undefined") {
-                            if (teamnameid != item.id) {
-                                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                            }
-
-                            else {
-                                $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                            }
-                        }
-                        else {
-                            $("#personinfopage_teamName").append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
-                        }
+                        $("#personinfopage_teamName").append("<option value='" + item.id + "'>" + item.name + "</option>");
                     }
 
                 });

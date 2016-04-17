@@ -176,33 +176,55 @@ function toolschange() {
                             }
                         }
                         var opList = document.getElementById("unit");
-                        //for (var j = 0, len = opList.length; j < len; j++) {
+                        if (sessionStorage.jobroleid = 1) {
+                            //for (var j = 0, len = opList.length; j < len; j++) {
                             //if (opList.options[j].value == item.car_unitid) {
-                                var selObj = $("#unit");
-                                var option = $($("option", selObj).get(1));
-                                option.attr('selected', 'selected');
-                                selObj.selectmenu();
-                                selObj.selectmenu('refresh', true);
-                                //break;
+                            var selObj = $("#unit");
+                            var option = $($("option", selObj).get(1));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            //break;
                             //}
-                        //}
-                        var carunitid = item.car_unitid;
-                        $("#owner").empty();//清空
-                        $.ajax({
-                            type: "get",
-                            url: domain + url_getAlluser + "?token=1",
-                            async: true,
-                            dataType: 'json',
-                            success: function (data) {
-                                $("#owner").append("<option >" + "请选择" + "</option>");
-                                $.each(data.result.datas, function (i, item) {
-                                    if (carunitid == item.unitid) {
-                                        $("#owner").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                                    }
-                                });
-                                unit_owner(item.car_ownerid, item.car_userphone, item.remark);
+                            //}
+                            $("#owner").empty();//清空
+                            $("#owner").append("<option >" + sessionStorage.name + "</option>");
+                            var selObj1 = $("#owner");
+                            var option1 = $($("option", selObj1).get(0));
+                            option1.attr('selected', 'selected');
+                            selObj1.selectmenu();
+                            selObj1.selectmenu('refresh', true);
+                            document.getElementById("tel").value = item.car_userphone;
+                            document.getElementById("textarea").value = item.remark;
+                        } else {
+                            for (var j = 0, len = opList.length; j < len; j++) {
+                            if (opList.options[j].value == item.car_unitid) {
+                            var selObj = $("#unit");
+                            var option = $($("option", selObj).get(j));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            break;
                             }
-                        });
+                            }
+                            var carunitid = item.car_unitid;
+                            $("#owner").empty();//清空
+                            $.ajax({
+                                type: "get",
+                                url: domain + url_getAlluser + "?token=1",
+                                async: true,
+                                dataType: 'json',
+                                success: function (data) {
+                                    $("#owner").append("<option >" + "请选择" + "</option>");
+                                    $.each(data.result.datas, function (i, item) {
+                                        if (carunitid == item.unitid) {
+                                            $("#owner").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                                        }
+                                    });
+                                    unit_owner(item.car_ownerid, item.car_userphone, item.remark);
+                                }
+                            });
+                        }
                     }
                 });
             }

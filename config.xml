@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
@@ -7,9 +7,9 @@
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
-    <name>农机远程指挥调度系统</name>
+    <name>农机作业好助手</name>
     <description>
-     农机远程指挥调度系统
+     农机作业好助手
     </description>
     <author email="#" name="#">
         gislt

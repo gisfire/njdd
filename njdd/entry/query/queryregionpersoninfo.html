@@ -18,23 +18,37 @@
 <body>
     <div data-role="page" id="detailinfopage">
         <div data-role="header">
-            <a id="a_back" data-role="button" data-rel="back" href="queryregionnjinfo.html" class="ui-btn-left" data-icon="back">返回</a>
-            <h3>详细信息
-            </h3>
+            <a data-role="button" href="queryregionnjinfo.html" data-icon="back" data-transition="slide">返回</a>
+            <h1>详细信息</h1>
         </div>
 
-
-        <div data-role="content" class="ui-content">
-            <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
+        <div data-role="main" class="ui-content">
+            <!--具体信息-->
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
                     <tr>
-                        <td style="width: 23%">
-                            <label for="name" style="float: right; font-size: 15px; text-align: right;">
-                                用户名：  
+                        <td>
+                            <label for="name">
+                                &nbsp;用户名：  
                             </label>
                         </td>
-                        <td style="width: 76%;">
-                            <input name="name" id="detailinfopage_username" placeholder="您的姓名..." value="" style="text-align: center;" type="text" />
+                        <td>
+                            <input name="name" id="detailinfopage_username" placeholder="您的姓名..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+              <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mobile_phone">
+                                &nbsp;&nbsp;手机：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="mobile_phone" id="detailinfopage_phone" placeholder="您的手机号码..." value="" type="tel" />
                         </td>
                     </tr>
                 </table>
@@ -42,86 +56,70 @@
 
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
+                <table>
                     <tr>
-                        <td style="width: 23%">
-                            <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
-                                手机：  
-                            </label>
-                        </td>
-                        <td style="width: 76%;">
-                            <input name="mobile_phone" id="detailinfopage_phone" placeholder="您的手机号码..." value="" style="text-align: center;" type="tel" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-
-            <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
-                    <tr>
-                        <td style="width: 23%">
-                            <label for="email" style="float: right; font-size: 15px; text-align: right;">
+                        <td>
+                            <label for="leixing">
                                 农机类型：  
                             </label>
                         </td>
-                        <td style="width: 76%;">
-                            <input name="email" id="detailinfopage_car_type" placeholder="农机类型..." value="" style="text-align: center;" type="email" />
+                        <td>
+                            <input name="leixing" id="detailinfopage_car_type" placeholder="农机类型..." value="" type="text" />
                         </td>
                     </tr>
                 </table>
             </div>
 
-
-            <div class="ui-field-contain" data-controltype="selectinput">
-                <table style="width: 100%">
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
                     <tr>
-                        <td style="width: 23%">
-                            <label for="danwei" style="float: right; font-size: 15px; text-align: right;">
+                        <td>
+                            <label for="danwei">
                                 所属农场：  
                             </label>
                         </td>
-                        <td style="width: 76%;">
-                            <input id="detailinfopage_unit_name" placeholder="您的所属农场..." style="text-align: center;"/>
-                            
+                        <td>
+                            <input name="danwei" id="detailinfopage_unit_name" placeholder="您的所属农场..." value="" type="text" />
                         </td>
                     </tr>
                 </table>
             </div>
-
-
-
-            <div class="ui-field-contain" data-controltype="selectinput">
-                <table style="width: 100%">
+         
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
                     <tr>
-                        <td style="width: 23%">
-                            <label for="car_group" style="float: right; font-size: 15px; text-align: right;">
-                                车牌号：  
+                        <td>
+                            <label for="name">
+                                &nbsp;车牌号：  
                             </label>
                         </td>
-                        <td style="width: 76%;">
-                            <input name="name" id="detailinfopage_car_code" placeholder="车牌号..." value="" type="text" style="text-align: center;"/>
+                        <td>
+                            <input name="name" id="detailinfopage_car_code" placeholder="车牌号..." value="" type="text" />
                         </td>
                     </tr>
                 </table>
             </div>
+
+
             <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
+                <table>
                     <tr>
-                        <td style="width: 23%">
-                            <label for="mima" style="float: right; font-size: 15px; text-align: right;">
-                                马力：  
+                        <td>
+                            <label for="mali">
+                                &nbsp;&nbsp;马力： 
                             </label>
                         </td>
-                        <td style="width: 76%">
-                            <input name="mima" id="detailinfopage_car_horsepower" placeholder="马力..." style="text-align: center;" type="tel" />
+                        <td>
+                            <input name="mali" id="detailinfopage_car_horsepower" placeholder="马力..." value="" type="text" />
                         </td>
                     </tr>
                 </table>
-               
             </div>
 
+          
+           
         </div>
+
       <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
             <form method="post" >
                 <div class="ui-field-contain">

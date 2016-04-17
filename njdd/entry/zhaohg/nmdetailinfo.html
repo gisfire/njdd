@@ -20,28 +20,29 @@
         <div data-role="header">
             <a data-role="button" href="nminfo.html" data-icon="back" data-transition="slide">返回</a>
             <h1>详细信息</h1>
-             <button class="ui-btn ui-icon-phone ui-btn-icon-left" onclick="getphone()">联系他</button>
+            <button class="ui-btn ui-icon-phone ui-btn-icon-left" onclick="getphone()">联系他</button>
         </div>
 
         <div data-role="main" class="ui-content">
             <!--具体信息-->
-             <div class="ui-field-contain" data-controltype="textinput">
+            <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="name" style="float: right; font-size: 15px; text-align: right;">
-                               姓名：  
+                                姓名：  
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="name" id="zhg_name" value="" style="text-align: center;"/>
+                            <input name="name" id="zhg_name" value="" style="text-align: center;" />
                         </td>
                     </tr>
                 </table>
             </div>
 
             <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
+                
+                <!--<table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
@@ -49,10 +50,10 @@
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="mobile_phone" id="zhg_address" value="" style="text-align: center;"/>
+                            <input name="mobile_phone" id="zhg_address" value="" style="text-align: center;" />
                         </td>
                     </tr>
-                </table>
+                </table>-->
             </div>
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
@@ -63,32 +64,54 @@
                             </label>
                         </td>
                         <td style="width: 76%;">
-                            <input name="email" id="zhg_tel" style="text-align: center;"/>
+                            <input name="email" id="zhg_tel" style="text-align: center;" />
                         </td>
                     </tr>
                 </table>
             </div>
-           
+
 
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="" style="float: right; font-size: 15px; text-align: right;" >
+                            <label for="" style="float: right; font-size: 15px; text-align: right;">
                                 作业面积：  
                             </label>
                         </td>
                         <td style="width: 75%;">
-                            <input id="zhg_area" style="text-align: center;" value="" type="tel"/>
+                            <input id="zhg_area" style="text-align: center;" value="" type="tel" />
                         </td>
                     </tr>
                 </table>
             </div>
+            <div data-role="content" id="main-content" class="ui-content">
 
+                    <ul data-role="listview" id="zhhg_listview">
+                        <li>
+                            <a href="detailmap.html" id="1" onclick="zhhg_btn_click(this.id)" data-transition="slide">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td style="width: 23%">
+                                            <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
+                                                地址：  
+                                            </label>
+                                        </td>
+                                        <td style="width: 76%;">
+                                            <input name="mobile_phone" id="zhg_address" value="" style="text-align: center;" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                </div>
         </div>
 
-      <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
         </div>
 
 

@@ -8,66 +8,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>农机综合调度指挥系统</title>
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/conduct/conduct.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
     <script src="../../src/common/getmessages.js"></script>
-    <script src="../../src/njdd/xiunj/querynjinfo.js"></script>
+
 </head>
 <body>
-    <div data-role="page" id="njinfopage">
-        <div data-role="header">
-            <a data-role="button" href="zxld.html" data-ajax="false" data-icon="back">返回</a>
-            <h1>维修点信息</h1>
-           
-        </div>
-        <!--具体信息-->
-        <div data-role="main" class="ui-content">
-            <div>
-                <ul data-role="listview" id="njinfopage_listview">
-                    <li>
-                        <a href="queryperson.html" id="1" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">琅琊区陡岗农机修配公司</p>
-                            <p>42.1公里</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="queryperson.html" id="2" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">滁州市琅琊天来农机修理部</p>
-                            <p>42.2公里</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="queryperson.html" id="3" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">琅琊区雷桥农机修理部</p>
-                            <p>42.3公里</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="queryperson.html" id="4" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">八里农机修理部</p>
-                            <p>42.9公里</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="queryperson.html" id="5" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">滁州第二农机修理厂</p>
-                            <p>42.5公里</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="queryperson.html" id="6" onclick="njinfo_btn_click(this.id)" data-transition="slide">
-                            <p style="font-weight: bolder">滁州第一农机修理厂</p>
-                            <p>42.666公里</p>
-                        </a>
-                    </li>
-                </ul>
+    
+
+  
+        <div data-role="page" id="njinfopage">
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header">
+               <a data-role="button" href="zxld.html" data-icon="back">返回</a>
+                <h1>农机信息</h1>
+                
+            </div>
+            <div data-role="content" id="main-content" class="ui-content">
+              
+            <ul data-role="listview" id="logmanagepage_listview">
+            </ul>
+                
+        
+            </div>
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" >
+     
             </div>
         </div>
-        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            <h2></h2>
-        </div>
-
-    </div>
+    
+    
+  
+    
 
 </body>
-<script src="../../src/common/config.js"></script>
+
+</html>

@@ -17,8 +17,6 @@ var dianx;
 var diany;
 var unitid = sessionStorage.unitid;
 (function (window) {
-    $(document).ready(function () {
-       
         (function () {
             var screen = $.mobile.getScreenHeight(),
             header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
@@ -115,6 +113,12 @@ var unitid = sessionStorage.unitid;
 
                     setPosition(function () {
                         zoomToPoint();
+                        zoom();
+                       
+                        //lineshow([[118.30129779999999, 32.2716892], [118.311687,32.278041]]);//滁院南到滁院校门口
+                        lineshow([[118.310344, 32.274786], [118.311687,32.278041]]);
+                        lineshow([[118.310344, 32.274786], [118.300977,32.271802]]);
+                        lineshow([[118.30129779999999, 32.2716892], [118.300977,32.271802]]);
                     });
                 })();
 
@@ -135,11 +139,33 @@ var unitid = sessionStorage.unitid;
                     }
                 }
 
+                function lineshow([[x1,y1], [x2,y2]]){
+                    var polyline = new esri.geometry.Polyline([[x1,y1], [x2,y2]]);
+                    var symbol = new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 0]), 2);
+                    var graphic = new esri.Graphic(polyline, symbol);
+                    map.graphics.add(graphic);
+                }
+                function zoom() {
+                    var pt1 = new Point(118.311687,32.278041, new SpatialReference({ wkid: 4326 }));
+
+
+                    var symboltemp2 = new PictureMarkerSymbol('../../dep/image/png/free.png', 30, 30);
+                    //pt1 = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
+                    var graphictemp2 = new Graphic(pt1, symboltemp2);
+                    graphictemp2.setAttributes({ "x": 118.311687 ,"y": 32.278041 });
+                    var content = "<b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
+                    var infoTemplate = new InfoTemplate("信息", content);
+                    graphictemp2.setInfoTemplate(infoTemplate);
+                    njpointlayer2.add(graphictemp2);
+                    map.centerAndZoom(pt1, 15);
+
+                }
+
                 function zoomToPoint() {
                     var pt1 = new Point(currentX, currentY, new SpatialReference({ wkid: 4326 }));
 
 
-                    var symboltemp2 = new PictureMarkerSymbol('../../dep/image/png/user.png', 20, 20);
+                    var symboltemp2 = new PictureMarkerSymbol('../../dep/image/png/user.png',30, 30);
                     //pt1 = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                     var graphictemp2 = new Graphic(pt1, symboltemp2);
                     graphictemp2.setAttributes({ "x": currentX, "y": currentY });
@@ -147,13 +173,12 @@ var unitid = sessionStorage.unitid;
                     var infoTemplate = new InfoTemplate("信息", content);
                     graphictemp2.setInfoTemplate(infoTemplate);
                     njpointlayer2.add(graphictemp2);
-                    map.centerAndZoom(pt1, 14);
+                    map.centerAndZoom(pt1, 15);
 
                 }
 
+                ////////
                 $("#btn_sumbit").click(function () {
-
-
 
                     if (circle != null) {
                         //zaici();
@@ -225,96 +250,82 @@ var unitid = sessionStorage.unitid;
                     var a = 0;
 
 
-                    for (var b = 0; b < datas.length; b++) {
-                        var pt = new Point(datas[b].lonx, datas[b].laty);
+                    for (var b = 0; b < getdata.result.datas.length; b++) {
+                        var pt = new Point(getdata.result.datas[b].x, getdata.result.datas[b].y);
                         if (circle.contains(pt)) {
-                            items[a] = datas[b];
-                            njpointresult[a] = datas[b];
+                            items[a] = getdata.result.datas[b];
+                            njpointresult[a] = getdata.result.datas[b];
                             njpointresult1[a] = njpointresult[a];
                             a++;
 
 
                         }
+
+
                     }
-                  
-                            $.each(njpointresult, function (i, item) {
-                                var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
-                                mapPoint = new Point(item.lonx, item.laty, new SpatialReference({ wkid: 4326 }));
-                                var graphictemp = new Graphic(mapPoint, symboltemp);
-                                graphictemp.setAttributes({ "username": item.man,"address": item.address});
-                                var content = "<b>联系人</b>:<strong>${username}</strong> <br/><b>维修点</b>: <strong>${address}</strong>";
-                                var infoTemplate = new InfoTemplate("信息", content);
-                                graphictemp.setInfoTemplate(infoTemplate);
-                                njpointlayer.add(graphictemp);
 
-                            });
-
-
-                    $(document).on("pagebeforecreate", "#njinfopage", function () {
-                        $("#logmanagepage_listview").empty();
- 
-                            {
-
-                                $.each(njpointresult, function (i, item) {
-
-                                    njinfopageuser(item);
-
-                                });
-
-                                //alert("查询所有车队");
-                            }
-                       
-
+                    $.each(njpointresult, function (i, item) {
+                        var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
+                        mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
+                        var graphictemp = new Graphic(mapPoint, symboltemp);
+                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
+                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
+                        var infoTemplate = new InfoTemplate("信息", content);
+                        graphictemp.setInfoTemplate(infoTemplate);
+                        njpointlayer.add(graphictemp);
 
                     });
+                    //alert("查询所有车队");
+
 
                 }
-
-
-                function njinfopageuser(item) {
-                    if (item.unit_name == null) {
-                        item.unit_name = "无";
-                    }
-                    //模板渲染                   
-                    var html = tmpl("tmpl_logmanagepage_detailinfo", item);
-                    $(html).appendTo("#logmanagepage_listview").trigger('create');
-                }
-
-
-
 
 
                 //请求数据
                 function drawData() {
+                    var jsondata;
 
- 
+                    $.ajax({
+                        type: "get",
+                        url: domain + url_userStatus + "?token=1",
+                        async: false,
+                        success: function (data) {
+                            getdata = data;
+                            jsondata = data.result.datas;
+                        },
+                        error: function (errorMsg) {
+                            //alert("请求数据失败\n" + errorMsg.toString());
+                        }
+                    });
+
                     relateGeometries(); //关联圆与点
 
                 }
 
             });
-    });
+   
 })(window);
 
 
 
-function njinfo_btn_click(man) {
+
+function njinfo_btn_click(userid) {
 
     userphone = null;
     $.each(njpointresult1, function (i, item) {
         if (item.unit_name == null) {
             item.unit_name = "无";
         }
-        if (item.man == man) {
+        if (item.userid == userid) {
             userphone = item.phone;
-            $(document).on("pageinit", "#querypersonpage", function () {
-                $("#weixiu_name").val(item.address);
-                $("#weixiu_address").val(item.distance);
-                $("#weixiu_diatance").val(item.len);
-                $("#weixiu_userName").val(item.man);
-                $("#weixiu_tel").val(item.phone);
-                $("#weixiu_comment").val(item.rep);
-          
+            $(document).on("pageinit", "#detailinfopage", function () {
+                $("#detailinfopage_username").val(item.username);
+
+                $("#detailinfopage_car_type").val(item.car_type);
+                $("#detailinfopage_car_horsepower").val(item.car_horsepower);
+                $("#detailinfopage_unit_name").val(item.unit_name);
+                $("#detailinfopage_car_code").val(item.car_code);
+                $("#detailinfopage_phone").val(item.phone);
 
             });
             return;
@@ -332,6 +343,4 @@ function detailinfopage_smsbtn() {
 
         document.getElementById("writemessage").value = "";
     }
-
-
 }

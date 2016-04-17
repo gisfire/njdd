@@ -8,7 +8,7 @@ var mapPoint;
 var unitname;
 //var njpointresult;
 //njpointresult = new Array();
-//var njpointlayer;
+
 var graphictemp;
 var pt;
 var njpointresult1;
@@ -98,7 +98,7 @@ var diany;
                     var imgMap = new TDTVecLayer();
                     map.addLayer(imgMap);
                     gl = new GraphicsLayer({ id: "graphicsLayer" });
-                    njpointlayer = new GraphicsLayer({ id: "graphicsLayer1" });
+                    njpointlayer = new GraphicsLayer({ id: "graphicsLayer3" });
                     //drawData();
                     map.addLayer(gl);
                     map.addLayer(njpointlayer);
@@ -176,11 +176,10 @@ var diany;
                     }
                     relateGeometries();
 
-                    }
-                    //else {
-                    //    alert("请点击地图查询范围");
+                    } else {
+                        alert("请点击地图查询范围");
 
-                    //}
+                    }
 
                 });
 
@@ -203,7 +202,7 @@ var diany;
                         });
                        dianx =e.mapPoint.x;
                        diany =e.mapPoint.y;
-                       gl.clear();
+                        gl.clear();
                         var polycircle = new Graphic(circle, symbol);
                         gl.add(polycircle);
                         lastGraphic = polycircle;
@@ -216,11 +215,11 @@ var diany;
 
                 //判断点是否在圆内
                 function relateGeometries() {
-                    njpointlayer.clear();
+                  njpointlayer.clear();
                     
                     var njpointresult;
                     njpointresult = new Array();
-                 
+                    //njpointresult = new Array();
                     var a = 0;
                     
 
@@ -249,8 +248,8 @@ var diany;
                                         var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
                                         mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                                         var graphictemp = new Graphic(mapPoint, symboltemp);
-                                        graphictemp.setAttributes({ "username": item.username, "car_type": item.car_type, "status": item.status });
-                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>农机类型</b>:<strong>${car_type}</strong> <br/><b>农机状态</b>: <strong>${status}</strong>";
+                                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
+                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
                                         var infoTemplate = new InfoTemplate("信息", content);
                                         graphictemp.setInfoTemplate(infoTemplate);
                                         njpointlayer.add(graphictemp);
@@ -268,8 +267,8 @@ var diany;
                                         var symboltemp = new PictureMarkerSymbol('../../dep/image/png/free.png', 20, 20);
                                         mapPoint = new Point(item.x, item.y, new SpatialReference({ wkid: 4326 }));
                                         var graphictemp = new Graphic(mapPoint, symboltemp);
-                                        graphictemp.setAttributes({ "username": item.username, "car_type": item.car_type, "status": item.status });
-                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>农机类型</b>:<strong>${car_type}</strong> <br/><b>农机状态</b>: <strong>${status}</strong>";
+                                        graphictemp.setAttributes({ "username": item.username, "x": item.x, "y": item.y });
+                                        var content = "<b>用户姓名</b>: <strong>${username}</strong> <br/><b>经度</b>:<strong>${x}</strong> <br/><b>纬度</b>: <strong>${y}</strong>";
                                         var infoTemplate = new InfoTemplate("信息", content);
                                         graphictemp.setInfoTemplate(infoTemplate);
                                         njpointlayer.add(graphictemp);
