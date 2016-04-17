@@ -8,4 +8,7 @@ $(document).ready(function () {
         $("#header_manager").hide();
         $("#header_personadd").hide();
     }
+    if (jobroleid == 3) {
+        $("#nczpersoncar").hide();
+    }
 });

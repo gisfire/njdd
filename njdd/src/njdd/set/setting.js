@@ -26,28 +26,55 @@ $(document).on("pageinit", "#setpage", function () {
                 var selObj = $("#setpage_selectcar");
                 selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.unitid == item.car_unitid) {
-                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                    if (sessionStorage.jobroleid == 1) {
+                        if (sessionStorage.userid == item.car_ownerid) {
+                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                        }
+                    }
+                    else {
+                        if (sessionStorage.unitid == item.car_unitid) {
+                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                        }
                     }
                 });
                 var opList = document.getElementById("setpage_selectcar");
-                if (sessionStorage.carid == "") {
-                    var option = $($("option", selObj).get(0));
+                //if (sessionStorage.carid == "") {
+                if (sessionStorage.jobroleid == 1) {
+                    var option = $($("option", selObj).get(1));
                     option.attr('selected', 'selected');
                     selObj.selectmenu();
                     selObj.selectmenu('refresh', true);
                 }
-                else {
-                    for (var j = 0, len = opList.length; j < len; j++) {
-                        if (opList.options[j].value == sessionStorage.carid) {
-                            var option = $($("option", selObj).get(j));
-                            option.attr('selected', 'selected');
-                            selObj.selectmenu();
-                            selObj.selectmenu('refresh', true);
-                            break;
+                else{
+                    if (sessionStorage.carid == "" || sessionStorage.carid == null) {
+                        var option = $($("option", selObj).get(0));
+                        option.attr('selected', 'selected');
+                        selObj.selectmenu();
+                        selObj.selectmenu('refresh', true);
+                    }
+                    else {
+                        for (var j = 0, len = opList.length; j < len; j++) {
+                            if (opList.options[j].value == sessionStorage.carid) {
+                                var option = $($("option", selObj).get(j));
+                                option.attr('selected', 'selected');
+                                selObj.selectmenu();
+                                selObj.selectmenu('refresh', true);
+                                break;
+                            }
                         }
                     }
                 }
+                //else {
+                //    for (var j = 0, len = opList.length; j < len; j++) {
+                //        if (opList.options[j].value == sessionStorage.carid) {
+                //            var option = $($("option", selObj).get(j));
+                //            option.attr('selected', 'selected');
+                //            selObj.selectmenu();
+                //            selObj.selectmenu('refresh', true);
+                //            break;
+                //        }
+                //    }
+                //}
             }
         },
         error: function (errorMsg) {

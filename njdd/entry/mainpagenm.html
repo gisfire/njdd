@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>农机综合调度指挥系统</title>
+    <title>农机作业好助手</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,18 +59,16 @@
 <body>
     <div data-role="page" id="mainpage">
         <div data-role="header">
-            <h1>农机远程指挥调度系统</h1>
+            <h1>农机作业好助手</h1>
             <a href="manage/setnm.html" id="mainpage_setbtn" data-icon="gear"  data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
         </div>
        
         <table style="width: 100%">
             <tr>
-                <td style="width: 15%; text-align: right; vertical-align: middle;">
-                    <label for="" class="select">我的角色：</label>
-                </td>
-                <td style="width: 50%;">
+                
+                <td style="width: 100%;">
                     
-                   <input type="button" data-icon="user" value="农民">
+                   <input type="button" data-icon="user" value="我的角色：种植户">
                 </td>
             </tr>
         </table>
@@ -113,15 +111,15 @@
                 </div>
                 <div class="ui-block-b">
                     <a href="../entry/essence/addEssence.html" data-ajax="false" id="header_addEssence" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                    <span id="_addEssence">地理要素添加</span>
+                    <span id="_addEssence">地块操作</span>
                 </div>
                 <div class="ui-block-b">
                     <a href="../entry/query/QuetyMechanicsInfo.html"data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon "></a>
-                    <span>农机资料信息</span>
+                    <span>农机信息</span>
                 </div>
                  <div class="ui-block-d">
                          <a href="../entry/tianqi/tianqi.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
-                         <span>天气查询</span>
+                         <span>查天气</span>
                      </div>
                    <!-- <div class="ui-block-d">
                         <a href="../entry/InputInfo/InfoInput.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
@@ -157,7 +155,8 @@
     </div>
     <script>
         $(function () {
-            var imageMap = { "超速统计": "stat_overspeed", "地理要素添加": "add_essence", "里程统计": "stat_distance", "历史轨迹": "history_route", "利用率统计": "stat_usage", "农机资料信息": "car_info", "找农机": "query_car", "任务执行": "task_execution", "修农机": "system_log", "天气查询": "add_info", "指挥调度": "conduct", "作业面积统计": "stat_area" };
+
+            var imageMap = { "超速统计": "stat_overspeed", "地块操作": "add_essence", "里程统计": "stat_distance", "历史轨迹": "history_route", "利用率统计": "stat_usage", "农机信息": "car_info", "找农机": "query_car", "任务执行": "task_execution", "修农机": "system_log", "信息录入": "add_info", "指挥调度": "conduct", "面积统计": "stat_area" };
             //根据span内容设置backgroundImage
             var btns = $('a.ui-btn');
             for (var index in btns) {

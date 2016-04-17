@@ -53,9 +53,15 @@ $(document).on("pageinit", function () {
 
 var checkText;
 var status1;
+var savedate_life;
 var temperature1;
 var temperature2;
-var tianqi;
+var sta = status1;
+var tem1=temperature1;
+var tem2 = temperature2;
+var sav = savedate_life;
+var direction1;
+var power1;
 
 function address() {
     checkText = $("#selectCity").find("option:selected").text(); //获取Select选择的Text 
@@ -65,10 +71,23 @@ function address() {
         day: 0,
         password: "DJOYnieT8234jlsK"
     }), function (json) {
-        alert('地址：' + city + '\n天气：' + status1 + '\n温度' + temperature1 + '°' + '\n晚间温度' + temperature2);
-        $("#main-content").html('地址：' + city + '\n天气：' + status1 + '\n温度' + temperature1 + '°' + '\n晚间温度' + temperature2 + '°');
+       
+        //$("#main-content").html('地址：' + city + '\n天气：' + status1 + '\n温度' + temperature1 + '°' + '\n晚间温度' + temperature2 + '°');
+        sta = status1;
+        tem1 = temperature1;
+        tem2 = temperature2;
+      
+        //document.getElementById("tianqi").innerText = "hello world";
+        $("#city").html(checkText);
+        $("#sav").html(savedate_life);
+        $("#sta").html(sta);
+        $("#tem1").html(tem1+'°');
+        $("#tem2").html(tem2 + '°');
+        $("#dir1").html(direction1);
+        $("#pow1").html(power1);
+      
     });
-  
+   
     /*
     返回的数据
     city='北京';
@@ -93,12 +112,10 @@ function address() {
     temperature1='3';//白天温度
     temperature2='-2';//晚上温度
     */
-    //logmanagepagecar();
-
 }
 
-function logmanagepagecar() {
+function logmanagepagecar(item) {
     //模板渲染
-    var html = tmpl("tmpl_logmanagepage_detailinfo");
+    var html = tmpl("tmpl_logmanagepage_detailinfo", item);
     $(html).appendTo("#logmanagepage_listview").trigger('create');
 };

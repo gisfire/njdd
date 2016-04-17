@@ -18,27 +18,43 @@
                 var selObj = $("#number");
                 selObj.append("<option>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.unitid == item.car_unitid) {
-                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                    if (sessionStorage.jobroleid == 1) {
+                        if (sessionStorage.userid == item.car_ownerid) {
+                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                        }
+                    }
+                    else {
+                        if (sessionStorage.unitid == item.car_unitid) {
+                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
+                        }
                     }
                 });
-                if (sessionStorage.carid == "" || sessionStorage.carid == null) {
-                    var option = $($("option", selObj).get(b));
+                if (sessionStorage.jobroleid == 1) {
+                    var option = $($("option", selObj).get(1));
                     option.attr('selected', 'selected');
                     selObj.selectmenu();
                     selObj.selectmenu('refresh', true);
-                } else {
-                    var teamNames = document.getElementById("number");
-                    for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-                        if (teamNames.options[b].value == sessionStorage.carid) {
-                            var option = $($("option", selObj).get(b));
-                            option.attr('selected', 'selected');
-                            selObj.selectmenu();
-                            selObj.selectmenu('refresh', true);
-                            break;
+                }
+                else {
+                    if (sessionStorage.carid == "" || sessionStorage.carid == null) {
+                        var option = $($("option", selObj).get(b));
+                        option.attr('selected', 'selected');
+                        selObj.selectmenu();
+                        selObj.selectmenu('refresh', true);
+                    } else {
+                        var teamNames = document.getElementById("number");
+                        for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
+                            if (teamNames.options[b].value == sessionStorage.carid) {
+                                var option = $($("option", selObj).get(b));
+                                option.attr('selected', 'selected');
+                                selObj.selectmenu();
+                                selObj.selectmenu('refresh', true);
+                                break;
+                            }
                         }
                     }
                 }
+                
             }
         },
         error: function (errorMsg) {

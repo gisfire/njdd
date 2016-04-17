@@ -338,6 +338,7 @@ function updateTools() {
         dataType: 'json',
         success: function () {
             confirm("修改成功！");
+            readycode();
         },
         error: function (errorMsg) {
             alert(errorMsg);

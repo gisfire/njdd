@@ -282,6 +282,7 @@ function updateTeam() {
             dataType: 'json',
             success: function () {
                 confirm("修改成功！");
+                readyteam();
             },
             error: function (errorMsg) {
                 alert(errorMsg);
