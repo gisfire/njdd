@@ -52,8 +52,42 @@ var selecttype;
                 allusergraphicLayer = new GraphicsLayer();
                 map.addLayer(allusergraphicLayer);
                 getAllUsers("0");
+                var workdata1 = "POLYGON((118.2 32.2,118.312675 32.276035,118.2578125 32.35,118.2 32.2))";
+                var dataadd1 = ["章子君", "农田", ""];
+                var workdata2 = "POLYGON((119.2 32.35,119.312675 32.276035,119.2578125 32.232.35,119.2 32.35))";
+                var dataadd2 = ["吴恬", "教学楼", ""];
+                addpolygon(workdata1, dataadd1);
+                addpolygon(workdata2, dataadd2);
             }
             )();
+
+            function addpolygon(polygondata,adddata) {
+                
+                var wkt = new Wkt.Wkt();
+                wkt.read(polygondata);
+                var config = {
+                    spatialReference: {
+                        wkid: 4326 // WGS84 unprojected
+                    }
+                };
+                // 根据config将wkt转为esri对象
+                var obj = wkt.toObject(config);
+                var symbol = null;
+                switch (obj.type) {
+                    case "polyline":
+                        symbol = new SimpleLineSymbol();
+                        break;
+                    case "polygon":
+                        symbol = new SimpleFillSymbol();
+                        break;
+                }
+                var graphic = new Graphic(obj, symbol);
+                graphic.setAttributes({ "ownername": adddata[0], "elementtype": adddata[1], "remark": adddata[2] });
+                var content = "<b>所有权人</b>: <strong>${ownername}</strong> <br/><b>要素类型</b>:<strong>${elementtype}</strong> <br/><b>备注</b>: <strong>${remark}</strong>";
+                var infoTemplate = new InfoTemplate("信息", content);
+                graphic.setInfoTemplate(infoTemplate);
+                gl.add(graphic);
+            }
 
             function condoctpage_querybtn_click() {
                 var selectval = $("#condouctpage_select").val();
