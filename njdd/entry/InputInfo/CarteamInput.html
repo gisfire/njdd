@@ -20,16 +20,16 @@
         <style type="text/css"> 
            #textarea { overflow: hidden; width: 100%; min-height: 150px; padding:10px; } 
        </style>
+        <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
         <script src="../../src/njdd/InputInfo/autoTextarea.js"></script>
-        
     </head>
     <body>
         <div data-role="page" id="carteaminputpage">
-            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="Div5">
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header">
                 <a data-role="button" href="InfoInput.html" data-ajax="false" data-icon="back">返回</a>
                 <h1>车队信息编辑</h1>
             </div>
-            <div data-role="content">
+            <div data-role="content" id="main-content" class="ui-content">
                 <div class="ui-field-contain" data-controltype="textinput">
                     <table style="width: 100%">
                         <tr>
@@ -63,7 +63,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 23%">
-                                <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
+                                <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位:</label>
                             </td>
                             <td style="width: 75%;">
                                 <select data-native-menu="false" name="unitname" id="unitid" onchange="judgeunit_user()"></select>
@@ -92,7 +92,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 23%">
-                                <label for="tel1" style="float: left; font-size: 15px; text-align: right;">队长电话：</label>
+                                <label for="tel1" style="float: left; font-size: 15px; text-align: right;">队长电话:</label>
                             </td>
                             <td style="width: 76%;">
                                 <input type="text" name="" id="captainphone" style="text-align: center;" disabled="disabled" />
@@ -106,7 +106,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 23%">
-                                <label style="float: left; font-size: 15px; text-align: right;">车队人员：</label>
+                                <label style="float: left; font-size: 15px; text-align: right;">车队人员:</label>
                             </td>
                             <td style="width: 75%;">
                                 <a data-role="button" href="teammember.html">一键查看</a>
@@ -117,13 +117,14 @@
 
 
                 <div class="ui-field-contain" data-controltype="textinput">
-                    <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
+                    <p style="float: left; font-size: 15px; text-align: right;">备注:</p>
                     <!--有CSS样式-->
                     <textarea id="textarea"></textarea>
                 </div>
+                
             </div>
 
-            <div data-role="footer">
+            <div data-role="footer" class="page_footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer">
                 <!--删除与保存按钮-->
                 <div>
                     <label id="teamadd" style="color: #f00; display: none;">请填写车队名称</label>
@@ -137,13 +138,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
     </body>
 <script src="../../dep/tmpl.js"></script>
 <script type="text/html" id="tmpl_teaminfopage_detailinfo">
     <li>
         <a href="teammemberinfo.html" id="<%=id%>" onclick="teaminfopageclick(this.id)" data-transition="slide"><%=name%></a>
     </li>
+    <hr />
 </script>
 <script type="text/html" id="user_tmpl">
     <label for="add_<%=id%>"><%=name%>(<%=phone%>)</label>

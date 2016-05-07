@@ -9,6 +9,15 @@ var deleteuserid;
 var datajson = [];
 //alluser变量
 $(document).on("pagecreate", "#carteaminputpage", function () {
+    (function () {
+        var screen = $.mobile.getScreenHeight(),
+                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                    content = screen - header - footer - contentCurrent;
+        $("#main-content").height(content);
+        $("#carteaminputpage").height(screen);
+    })();
     readyteam();
     document.getElementById("teamnameinput").value = "";
 
