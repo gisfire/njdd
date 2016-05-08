@@ -12,21 +12,22 @@
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../dep/tmpl.js"></script>
       <script type="text/javascript" src="../../src/common/config.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 </head>
 <body>
     <div data-role="page" id="persmessage">
-        <div data-role="header">
+        <div data-role="header"  data-fullscreen="true" data-tap-toggle="false"  class="page_header" id="main-header">
             <a data-role="button" href="message.html" data-ajax="false" data-icon="back">返回</a>
             <h1>具体信息管理</h1>
         </div>
         <!--具体信息-->
-        <div data-role="main" class="ui-content">
+        <div data-role="content" id="main-content" class="ui-content">
             <div>
                 <ul data-role="listview" id="persmessage_listview">
                 </ul>
             </div>
         </div>
-        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
             <label>
                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                 <span class="input-group-btn"style="float:right">

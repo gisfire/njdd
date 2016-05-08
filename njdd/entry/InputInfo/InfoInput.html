@@ -17,6 +17,7 @@
         <script src="../../src/common/jobrolectrl.js"></script>
         <script src="../../src/common/getmessages.js"></script>
         <script src="../../src/common/shouye.js"></script>
+        <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
         <!--class=test_box的输入框样式，是为了随着输入文本的增加而改变高度-->
         <style> 
             .test_box {
@@ -35,12 +36,12 @@
         <!--页面1——信息录入主页面-->
         <div data-role="page" id="infoinputpage">
             <!--头部内容-->
-            <div data-role="header" data-position="fixed" data-tap-toggle="false"  id="page-header">
+            <div data-role="header" data-fullscreen="true" data-tap-toggle="false"  class="page_header" id="main-header">
                 <a data-role="button"  data-ajax="false" data-icon="home"  onclick="shouye()">首页</a>
                 <h1>信息录入</h1>                
             </div>
             <!--中间内容-->
-            <div data-role="content">
+            <div data-role="content" id="main-content" class="ui-content">
                 <!--工作农机车牌号复选框-->
                 <div data-role="fieldcontain">
                     <label for="day">工作农机车牌号：</label>
@@ -56,7 +57,7 @@
                       
             </div>
             <!--底部部分-->
-            <div data-role="footer">
+            <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
             </div>
         </div>
 

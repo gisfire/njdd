@@ -335,8 +335,16 @@ function addTeam() {
     }
 }
 
-//车队成员添加界面的显示
+//车队成员界面的显示
 $(document).on("pagebeforecreate", "#teaminfopage", function () {
+    (function () {
+        var screen = $.mobile.getScreenHeight(),
+                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                    content = screen - header - footer - contentCurrent;
+        $("#main-content").height(content);
+    })();
     teamteamid = $("#carteamname").val();
     var pramestr = "?token=1&teamID=" + teamteamid;
     $.ajax({
@@ -370,6 +378,14 @@ $(document).on("pagebeforecreate", "#teaminfopage", function () {
 
 //车队人员添加显示内容
 $(document).on("pagebeforecreate", "#teammemberaddpage", function () {
+    (function () {
+        var screen = $.mobile.getScreenHeight(),
+                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                    content = screen - header - footer - contentCurrent;
+        $("#main-content").height(content);
+    })();
     $.ajax({
         url: domain + url_getAlluser + "?token=1",
         type: 'get',
@@ -458,6 +474,14 @@ function teaminfopageclick(id) {
     updateuserid = replaceid;
     var j;
     $(document).on("pageinit", "#teammemberinfo", function () {
+        (function () {
+            var screen = $.mobile.getScreenHeight(),
+                        header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                        footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                        contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                        content = screen - header - footer - contentCurrent;
+            $("#main-content").height(content);
+        })();
         $("#teammemberinfo_team").empty();
         $("#teammemberinfo_unit").empty();
         $.ajax({

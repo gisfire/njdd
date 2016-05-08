@@ -4,6 +4,14 @@ var userteamid;
 var deleteuserid;
 var datajson;//
 $(document).on("pagebeforecreate", "#managepage", function () {
+    (function () {
+        var screen = $.mobile.getScreenHeight(),
+                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                    content = screen - header - footer - contentCurrent;
+        $("#main-content").height(content);
+    })();
     $.ajax({
         url: domain + url_getAlluser + "?token=1",
         type: 'get',
@@ -47,6 +55,14 @@ function managepage_btn_click(unituserid) {
     updateuserid = replaceid;
 
     $(document).on("pageinit", "#informationpage", function () {
+        (function () {
+            var screen = $.mobile.getScreenHeight(),
+                        header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                        footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                        contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                        content = screen - header - footer - contentCurrent;
+            $("#main-content").height(content);
+        })();
         var j = 0;
         $("#informationpage_unit").empty();
         $("#informationpage_team").empty();

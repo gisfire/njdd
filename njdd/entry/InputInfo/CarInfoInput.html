@@ -17,6 +17,7 @@
     <script src="../../src/common/classie.js"></script>
     <script src="../../src/common/getmessages.js"></script>
     <script src="../../src/njdd/InputInfo/autoTextarea.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <!--textarea样式-->
     <style type="text/css">
         #textarea {
@@ -30,12 +31,12 @@
 </head>
 <body>
     <div data-role="page" id="carinfoinputpage">
-        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="Div2">
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header">
             <!--点击返回，将返回到（页面1——信息录入主页面）-->
             <a data-role="button" href="InfoInput.html" data-ajax="false" data-icon="back">返回</a>
             <h1>农机车信息编辑</h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" id="main-content" class="ui-content">
             <!--农机编号下拉框-->
             <div class="ui-field-contain" data-controltype="textinput">
                 
@@ -152,7 +153,7 @@
             </div>
         </div>
 
-        <div data-role="footer" id="footer">
+        <div data-role="footer" class="page_footer" id="main-footer">
             <!--删除与保存按钮-->
             <div>
                 <label id="caradd" style="color: #f00; display: none;">请填写农机编号！</label>

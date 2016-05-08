@@ -16,6 +16,7 @@
     <script type="text/javascript" src="http://120.27.93.15:8080/arcgis_js_api/library/3.9/3.9/init.js"></script>
     <script type="text/javascript" src="../../src/njdd/InputInfo/UnitInput.js"></script>
     <script src="../../src/common/getmessages.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <style type="text/css">
         #textarea {
             overflow: hidden;
@@ -32,14 +33,14 @@
     <!--机车类型录入页面-->
     <div data-role="page" id="unitinputpage">
         <!--头部部分-->
-        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="page-header1">
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header">
             <!--点击返回，将返回到（页面1——信息录入主页面）-->
             <a data-role="button" href="InfoInput.html" data-ajax="false" data-icon="back">返回</a>
             <h1>所属单位编辑</h1>
         </div>
 
         <!--中间部分-->
-        <div data-role="content">
+        <div data-role="content" id="main-content" class="ui-content">
             <!--农机类型下拉框-->
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
@@ -73,7 +74,7 @@
                 <textarea id="textarea"></textarea>
             </div>
         </div>
-        <div data-role="footer">
+        <div data-role="footer" class="page_footer" id="main-footer">
             <!--删除与保存按钮-->
             <label id="unitadd" style="color: #f00; display: none;">请填写所属单位！</label>
             <label id="unitupdate" style="color: #f00; display: none;">请修改所属单位或备注！</label>

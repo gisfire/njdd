@@ -10,48 +10,52 @@
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
-   <!-- <script src="../../src/njdd/manage/person.js"></script>-->
+    <!-- <script src="../../src/njdd/manage/person.js"></script>-->
     <script src="../../src/njdd/set/setting.js"></script>
     <script src="../../src/common/getmessages.js"></script>
     <script src="../../src/common/config.js"></script>
-      <script src="../../src/common/shouye.js"></script>
+    <script src="../../src/common/shouye.js"></script>
     <script src="../../src/common/jobrolectrl.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 </head>
 <body>
     <div data-role="page" id="setpage">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false" id="page-header">
-            <a data-role="button"   data-transition="slideup" data-ajax="false" data-icon="back" onclick="shouye()">返回</a>
+        <div data-role="header" class="page_header" id="main-header" data-tap-toggle="false" id="page-header">
+            <a data-role="button" data-transition="slideup" data-ajax="false" data-icon="back" onclick="shouye()">返回</a>
             <h1>设置</h1>
         </div>
         <!--具体信息-->
+        <div data-role="content" id="main-content" class="ui-content">
+            <div data-role="listview">
+                <div id="选择车牌号">
+                    <p>
+                        <label for="speed">工作农机车牌号：</label>
+                    </p>
 
-        <div data-role="listview">
-            <div id="选择车牌号">
-                <p>
-                    <label for="speed">工作农机车牌号：</label></p>
-
-                <p align="center">
-                    <select name="speed" id="setpage_selectcar">
-                    </select>
-                </p>
+                    <p align="center">
+                        <select name="speed" id="setpage_selectcar">
+                        </select>
+                    </p>
 
 
-                <div data-role="listview" data-type="vertical">
-                    <h1>
-                        <a href="#" data-icon="star" data-role="button" id="setpage_surebtn" onclick="setpage_selectcar_change()">确&nbsp;&nbsp;定</a>
-                        <a href="../login/entry.html" data-icon="alert" data-ajax="false" data-role="button">退&nbsp;&nbsp;出</a>
-                        <a href="person information.html"data-icon="info" data-role="button"  data-ajax="false" id="dianjixinxi" >个人信息</a>
-                        <a href="personCar.html" id="nczpersoncar" data-icon="info" data-role="button"  data-ajax="false">个人车辆</a>
-                        <a href="manage.html" data-icon="gear" id="header_manager" data-ajax="false" data-role="button">用户管理</a>
-                        <a href="personAdd.html" data-icon="gear" id="header_personadd" data-ajax="false" data-role="button">用户添加</a>
-                        <a href="../message/message.html" data-icon="gear" data-ajax="false" data-role="button">未读消息</a>
-                         
-                    </h1>
+                    <div data-role="listview" data-type="vertical">
+                        <h1>
+                            <a href="#" data-icon="star" data-role="button" id="setpage_surebtn" onclick="setpage_selectcar_change()">确&nbsp;&nbsp;定</a>
+                            <a href="../login/entry.html" data-icon="alert" data-ajax="false" data-role="button">退&nbsp;&nbsp;出</a>
+                            <a href="person information.html" data-icon="info" data-role="button" data-ajax="false" id="dianjixinxi">个人信息</a>
+                            <a href="personCar.html" id="nczpersoncar" data-icon="info" data-role="button" data-ajax="false">个人车辆</a>
+                            <a href="manage.html" data-icon="gear" id="header_manager" data-ajax="false" data-role="button">用户管理</a>
+                            <a href="personAdd.html" data-icon="gear" id="header_personadd" data-ajax="false" data-role="button">用户添加</a>
+                            <a href="../message/message.html" data-icon="gear" data-ajax="false" data-role="button">未读消息</a>
+
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
-
-
+        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
+           
+        </div>
     </div>
 </body>
 

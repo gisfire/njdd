@@ -13,13 +13,13 @@
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
  <!--   <script src="../../src/njdd/set/personinfo.js"></script>-->
-   
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <script src="../../src/njdd/set/nminfo.js"></script>
 </head>
 <body>
 
     <div data-role="page" id="personinfopage">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-fullscreen="true" data-tap-toggle="false"  class="page_header" id="main-header">
             <a id="a_back" data-role="button" data-rel="back" href="setnm.html" class="ui-btn-left" data-ajax="false" data-icon="back">返回</a>
             <h3>个人信息  
             </h3>
@@ -27,7 +27,7 @@
             </a>
         </div>
 
-        <div data-role="content" class="ui-content">
+        <div data-role="content" id="main-content" class="ui-content">
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
@@ -98,7 +98,7 @@
             
         </div>
          
-        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
            
         </div>
     </div>

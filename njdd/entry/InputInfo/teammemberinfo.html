@@ -13,18 +13,19 @@
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
     <script src="../../src/common/getmessages.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 </head>
 
 <body>
     <div data-role="page" id="teammemberinfo">
-        <div data-role="header">
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header">
             <a id="a_back" data-role="button" data-rel="back" href="teammember.html" data-ajax="false" class="ui-btn-left" data-icon="back">返回</a>
             <h3>车队成员信息
             </h3>
         </div>
 
 
-        <div data-role="content" class="ui-content">
+        <div data-role="content" id="main-content" class="ui-content">
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
@@ -149,7 +150,7 @@
         </div>
 
 
-        <div data-role="footer">
+        <div data-role="footer" class="page_footer" id="main-footer">
             <div data-role="navbar">
                 <ul>
                     <li><a id="updateteammember" data-role="button" class="ui-btn" data-inline="true" onclick="saveTeammember()">保存</a></li>

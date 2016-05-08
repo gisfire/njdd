@@ -13,18 +13,19 @@
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
     <script src="../../src/common/getmessages.js"></script>
+    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 </head>
 <body>
 
     <div data-role="page" id="informationpage">
-        <div data-role="header">
+        <div data-role="header" data-fullscreen="true" data-tap-toggle="false"  class="page_header" id="main-header">
             <a id="a_back" data-role="button" data-rel="back" href="manage.html" class="ui-btn-left" data-icon="back">返回</a>
             <h3>用户管理信息  
             </h3>
         </div>
 
 
-        <div data-role="content" class="ui-content">
+        <div data-role="content" id="main-content" class="ui-content">
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
@@ -150,7 +151,7 @@
         </div>
 
 
-        <div data-role="footer">
+        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
             <div data-role="navbar">
                 <ul>
                     <li><a id="updateuser" data-role="button" class="ui-btn" data-inline="true" onclick="dianji()">保存</a></li>

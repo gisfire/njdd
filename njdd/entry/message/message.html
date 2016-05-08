@@ -15,18 +15,18 @@
 </head>
 <body>
     <div data-role="page">
-        <div data-role="header" class="page_header">
+        <div data-role="header" class="page_header" data-tap-toggle="false" data-fullscreen="true" id="main-header">
             <a data-role="button" href="../manage/set.html" data-ajax="false" data-icon="back">返回</a>
             <h1>信息管理</h1>
         </div>
         <!--具体信息-->
-        <div data-role="main" class="ui-content">
+        <div data-role="content" id="main-content" class="ui-content">
             <div>
                 <ul data-role="listview" id="all_listview">
                 </ul>
             </div>
         </div>
-        <div data-role="footer" class="page_footer">
+        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
             <h2></h2>
         </div>
 

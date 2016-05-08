@@ -7,6 +7,14 @@ function setpage_selectcar_change() {
 }
 
 $(document).on("pageinit", "#setpage", function () {
+    (function () {
+        var screen = $.mobile.getScreenHeight(),
+                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
+                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
+                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
+                    content = screen - header - footer - contentCurrent;
+        $("#main-content").height(content);
+    })();
     //显示所有农机车牌  
     $.ajax({
         url: domain + url_getCarInfo + "?token=1",
