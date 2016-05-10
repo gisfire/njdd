@@ -50,17 +50,21 @@
     <script src="../../src/njdd/xiunj/querynj.js"></script>
     
     <script type="text/html" id="tmpl_logmanagepage_detailinfo">
-        <li><a href="queryperson.html" id="<%=man%>" data-transition="slide" onclick="njinfo_btn_click(this.id)" >
-                <div class="ui-grid-b" align="center" style="border: 1px solid white;">
-                    <div class="ui-block-a" style="border: 1px solid white;"><span>维修点</span></div>
-                    <div class="ui-block-b" style="border: 1px solid white;"><span><%=address%></span></div> 
-                    <div class="ui-block-a" style="border: 1px solid white;"><span>联系人</span></div>
-                 <div class="ui-block-b" style="border: 1px solid white;"><span><%=man%></span></div>          
-                    
-           
-        </div>
-    </a>
-    </li>
-</script>
+      
+        <li data-inset="true"  data-theme="d" data-role="list-divider"><a href="queryperson.html" id="<%=man%>" data-transition="slide" onclick="njinfo_btn_click(this.id)" >
+            
+                                                               维修点：<%=address%>          <span class="ui-li-count">  联系人：<%=man%>   </span>
+                                                                           <!--    <div class="ui-grid-b" align="center" style="border: 1px solid white;">
+                                                                                       <div class="ui-block-a" style="border: 1px solid white;"><span>维修点</span></div>
+                                                                                       <div class="ui-block-b" style="border: 1px solid white;"><span><%=address%></span></div> 
+                                                                                       <div class="ui-block-a" style="border: 1px solid white;"><span>联系人</span></div>
+                                                                                       <div class="ui-block-b" style="border: 1px solid white;"><span><%=man%></span></div>                   
+                                                                                   </div>-->
+            
+                                                                       </a>
+        </li>
+        
+       
+    </script>
 
 </html>

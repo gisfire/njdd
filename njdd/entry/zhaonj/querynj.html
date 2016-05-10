@@ -49,18 +49,21 @@
     <script src="../../src/njdd/zhaonj/querynj.js"></script> 
     
     <script type="text/html" id="tmpl_logmanagepage_detailinfo">
-        <li><a href="queryperson.html" id="<%=userid%>" data-transition="slide" onclick="njinfo_btn_click(this.id)" >
-                <div class="ui-grid-b" align="center" style="border: 1px solid white;">
-                    <div class="ui-block-a" style="border: 1px solid white;"><span>农机手姓名</span></div>
-                    <div class="ui-block-b" style="border: 1px solid white;"><span><%=username%></span></div> 
-                    <div class="ui-block-a" style="border: 1px solid white;"><span>状态</span></div>
-                 <div class="ui-block-b" style="border: 1px solid white;"><span><%=status%></span></div>          
-                    
-           
-        </div>
-    </a>
-    </li>
-</script>
+      
+        
+        
+         <li data-inset="true"  data-theme="d" data-role="list-divider"><a href="queryperson.html" id="<%=userid%>" data-transition="slide" onclick="njinfo_btn_click(this.id)" >
+            
+                                                               农机手：<%=username%>          <span class="ui-li-count">  状态：<%=status%>   </span>
+                                                                        
+            
+                                                                       </a>
+        </li>
+        
+        
+        
+
+    </script>
 
     
     

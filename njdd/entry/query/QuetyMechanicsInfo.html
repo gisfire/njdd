@@ -17,46 +17,47 @@
         <script type="text/javascript" src="../../src/common/classie.js"></script>
         <script src="../../src/common/getmessages.js"></script>
         <script src="../../src/common/shouye.js"></script>
-        <link href="../../src/njdd/query/query.css" rel="stylesheet"/>
+      <!--  <link href="../../src/njdd/query/query.css" rel="stylesheet"/>-->
     </head>
     <body>
-        <div data-role="page" id="main-page">
+        <div data-role="page" id="main-page" data-theme="c">
             <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" data-theme="a">
                 <a data-role="button"  data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
                 <h1>农机信息</h1>
                 
             </div>
-            <div data-role="content" id="main-content" class="ui-content" >
-              
+            <div data-role="content" id="main-content" class="ui-content"  data-theme="c" >
+           <!--   
                 <ul data-role="listview" id="quetymechanicsinfopage_listview">
                 </ul>
-                
+                -->
 
-                <h2>信息列表</h2>
-    <ul data-role="listview" data-inset="true">
-      <li data-role="list-divider">农机手：曹松 <span class="ui-li-count">电话：15255094542</span></li>   
-      <li><a href="#">   
-        <h2>皖M65465</h2>
-        <p>马力：<b>1000</b></p>
-        <p>速度：<b>10km/h</b></p>      
+                <ul data-role="listview" data-inset="true" id="quetymechanicsinfopage_listview" data-theme="d" >
+                    
+
+                    <li data-role="list-divider">农机手：曹松 <span class="ui-li-count">电话：15255094542</span></li>   
+                    <li><a>   
+                            <h2>皖M65465</h2>
+                            <p>马力：<b>1000</b></p>
+                            <p>速度：<b>10km/h</b></p>      
       
-        <p class="ui-li-aside">收割机</p></a>
-      </li>
-      <li><a href="#">
-        <h2>皖M65478</h2>
-        <p>马力：<b>1000</b></p>
-        <br>
-          <p>速度：<b>10km/h</b></p>    
-        <p class="ui-li-aside">剥粒机</p></a>
-      </li>
-      <li data-role="list-divider">农机手：华竹根 <span class="ui-li-count">电话：15755059322</span></li>   
-      <li><a href="#">   
-        <h2>皖A25465</h2>
-        <p>马力：<b>1000</b></p>
+                            <p class="ui-li-aside">收割机</p></a>
+                    </li>
+                    <li><a >
+                            <h2>皖M65478</h2>
+                            <p>马力：<b>1000</b></p>
+                            <br>
+                            <p>速度：<b>10km/h</b></p>    
+                            <p class="ui-li-aside">剥粒机</p></a>
+                    </li>
+                    <li data-role="list-divider">农机手：华竹根 <span class="ui-li-count">电话：15755059322</span></li>   
+                    <li><a>   
+                            <h2>皖A25465</h2>
+                            <p>马力：<b>1000</b></p>
       
-        <p class="ui-li-aside">大型耕田机</p></a>
-      </li>
-    </ul>
+                            <p class="ui-li-aside">大型耕田机</p></a>
+                    </li>
+                </ul>
                 
 
         
@@ -64,7 +65,7 @@
             
      
 
-            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer">
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" data-theme="a">
 
 
                 <div role="main" class="ui-content" data-role="fieldcontain" align="center">
@@ -85,32 +86,72 @@
   
 <script type="text/javascript" src="../../dep/tmpl.js"></script> 
 <script type="text/javascript" src="../../src/njdd/query/queryMechanicesjson.js"></script>
-    
-    <script type="text/html" id="tmpl_quetymechanicsinfopage_detailinfo">
-        <li><a href="#" id="<%=id%>" data-transition="slide">
-                <div class="ui-grid-a" align="center" style="border: 1px solid white;">
 
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手姓名</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_username%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手电话</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userphone%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>车辆牌照</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_code%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>型号</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>马力</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_horsepower%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机车类型</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype_remark%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属单位</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userunit%></span></div>
-                    <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属车队</span></div>
-                    <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userteam%></span></div>     
+    <script type="text/html" id="tmpl_quetymechanicsinfopage_detailinfo" data-theme="c">
+        <!--    <li><a href="#" id="<%=id%>" data-transition="slide">
+            <div class="ui-grid-a" align="center" style="border: 1px solid white;">
+
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手姓名</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_username%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手电话</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userphone%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>车辆牌照</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_code%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>型号</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>马力</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_horsepower%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机车类型</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype_remark%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属单位</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userunit%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属车队</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userteam%></span></div>     
                     
-           
-        </div>
+            -->
+                    
+        <!--  <li data-theme="c" data-role="list-divider">农机手：曹松 <span class="ui-li-count">电话：15255094542</span></li>   
+            <li data-theme="c" ><a href="#">   
+                                    <h2>皖M65465</h2>
+                                    <p>马力：<b>1000</b></p>
+                                    <p>速度：<b>10km/h</b></p>      
+      
+                                    <p class="ui-li-aside">收割机</p></a>
+            </li>
+            <li><a href="#">
+                    <h2>皖M65478</h2>
+                    <p>马力：<b>1000</b></p>
+                    <br>
+                    <p>速度：<b>10km/h</b></p>    
+                    <p class="ui-li-aside">剥粒机</p></a>
+            </li>-->
+        
+
+        <li  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=car_username%> <span class="ui-li-count">电话：<%=car_userphone%></span></li>   
+        <li  data-inset="true" data-theme="d"  ><a >   
+                                                    <h2><%=car_code%></h2>
+                                                    <p>马力：<b><%=car_horsepower%></b></p> 
+               
+                                                    <p class="ui-li-aside"><%=cartype_remark%></p></a>
+        </li>
+         <br/>  
+
+              <style>
+.ui-bar-d
+{
+color:green;
+background-color:yellow;
+}
+.ui-body-d
+{
+font-weight:bold;
+color:purple;
+}
+</style>          
+
+<!--                </div>
     </a>
-    </li>
+    </li>-->
 </script>
     
 
