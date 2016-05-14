@@ -8,33 +8,31 @@
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
-     <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <script type="text/javascript">
-        
         $(
+    function () {
+        $('.error').hide();
+        $('input').each(
             function () {
-                $('.error').hide();
-                $('input').each(
+                $(this).blur(
                     function () {
-                        $(this).blur(
-                            function () {
-                                var name = $(this).attr('name'); //获得表单name属性的值
-                                var val = $(this).val();
-                                var len = val.length;
-                                if (name=='user_name'||name=='user_tel'||name=='user_passworld'||name=="user_passworldsure") {
-                                    if ($(this).val().length < 1) {
-                                        $(this).siblings().find('.error').show();
-                                        alert($(this).siblings().val());
-                                    }
-                                }
-
+                        var name = $(this).attr('name'); //获得表单name属性的值
+                        var val = $(this).val();
+                        var len = val.length;
+                        if (name=='user_name'||name=='user_tel'||name=='user_passworld'||name=="user_passworldsure") {
+                            if ($(this).val().length < 1) {
+                                $(this).siblings().find('.error').show();
+                                alert($(this).siblings().val());
                             }
-                        );
+                        }
+
                     }
                 );
-
             }
         );
+
+    }
+    );
     </script>
 
     <style type="text/css">
@@ -47,7 +45,7 @@
 <body>
 
     <div data-role="page" id="entrypage_signin">
-        <div data-role="header" data-theme="f">
+        <div data-role="header">
             <h1>农机作业好助手</h1>
             <div data-role="navbar">
                 <ul>

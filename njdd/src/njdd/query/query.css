@@ -1,36 +1,33 @@
 ﻿
 
 /*页面整体色彩*/
-/*.ui-page
+.ui-page
 {
     background: white;
     outline: none;
-}*/
+}
 
 
 .ui-bar-f {
-/*padding: 10px 10px;*/
-background-color:	rgb(217,166,69);
+padding: 10px 10px;
+background-color:	black;
 
-/*border-bottom: 2px solid 	#e2e2e2;*/
-color:rgb(217,166,69);  
-  /*页面主内容下分割线*/
+border-bottom: 2px solid 	#e2e2e2;
+color: black;    /*页面主内容下分割线*/
 
 
-/*background:transparent;*/
-/*<!--背景透明-->*/ 
+background:transparent;/*<!--背景透明-->*/ 
 
-color:black;
- /*<!--字体颜色-->*/ 
+color:rgba(85,85,85,1); /*<!--字体颜色-->*/ 
 
-background-color:rgba(214,166,69,1)
+background-color:rgba(217,217,217,1)
           /*最后一个参数设置透明度，前面三个是RGB颜色值*/
 }
 
 
 
 /*列表渲染颜色*/
-/*.ui-block-a, 
+.ui-block-a, 
 .ui-block-b, 
 .ui-block-c 
 {
@@ -40,7 +37,7 @@ height: 30px;
 font-weight: bold;
 text-align: center;
 padding: 5px;
-}*/
+}
 
 
 

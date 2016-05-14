@@ -17,53 +17,49 @@
         <script type="text/javascript" src="../../src/common/classie.js"></script>
         <script src="../../src/common/getmessages.js"></script>
         <script src="../../src/common/shouye.js"></script>
-    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
+        <link href="../../src/njdd/query/query.css" rel="stylesheet" />
     </head>
     <body>
-        <div data-role="page" id="main-page" data-theme="c">
-            
-            
-              <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" data-theme="f">
-                <a data-role="button"   data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
-                <h1>日志管理</h1>
+        <div data-role="page" id="main-page"  data-theme="c">
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" data-theme="a">
+                <a data-role="button" class="gg"  data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
+                <h1>农机信息</h1>
                 
             </div>
-
-  
-              <div data-role="content" id="main-content" class="ui-content" data-theme="c">
+            <div data-role="content" id="main-content" class="ui-content">
               
-                <ul data-role="listview" data-inset="true" id="logmanagepage_listview" data-theme="d" >
+                <ul data-role="listview" id="logmanagepage_listview" data-theme="d" >
+                    
+                   
 
                 </ul>  
-       
+                
+        
             </div>
-            
-            
-     
-
-
-            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" data-theme="a">
-
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" data-theme="f">
+    
                 
                 
+                
+
                 <div role="main" class="ui-content" data-role="fieldcontain" align="center">
                     <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
                     <select id="select-native-njbh" data-native-menu="false" data-inline="true" data-role="none" style="width: 40%">
                     </select>
                 </div>
 
-                <div role="main" class="ui-content" data-role="fieldcontain" align="center">
+                <div data-role="fieldcontain">
                     <label for="input_startime" style="float: left; font-size: 15px; text-align: right;">开始时间:</label>
                     <input type="date" name="input_startime" id="input_startime" value="" data-role="none" style='display: inline-block; width: 60%' />
                 </div>
 
-                <div role="main" class="ui-content" data-role="fieldcontain" align="center">
+                <div data-role="fieldcontain">
                     <label for="input_endtime" style="float: left; font-size: 15px; text-align: right;">结束时间:</label>
                     <input type="date" name="input_endtime" id="input_endtime" value="" data-role="none" data-inline="false" style='display: inline-block; width: 60%;' />
                 </div>
 
-                
-                <a data-role="button" id="btn_start" style="width: 100%; margin: auto;">查   询</a>
+                <a data-role="button" id="btn_start" style='width: 100%;'>查询</a>
+
             </div>
         </div>
    
@@ -71,24 +67,47 @@
     
   
 <script type="text/javascript" src="../../dep/tmpl.js"></script> 
-<!--<script type="text/javascript" src="../../src/njdd/query/queryMechanicesjson.js"></script>-->
 <script type="text/javascript" src="../../src/njdd/query/logmanner.js"></script>
-    <script type="text/html" id="tmpl_logmanagepage_detailinfo" data-theme="c">
-     
-        
-
-        <li  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=username%>  <span class="ui-li-count">时间：<%=recordtime%></span></li>   
-        <li  data-inset="true" data-theme="d"  ><a >   
+    
+    <script type="text/html" id="tmpl_logmanagepage_detailinfo">
+    
+        <!--  <div class="ui-grid-a"  style="border: 1px solid white;">-->
+        <!-- <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手姓名</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=username%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>车辆牌照</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=carcode%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>位置经度</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=x%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>位置纬度</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=y%></span></div>
+            <div class="ui-block-a" style="border: 1px solid transparent;"><span>时间</span></div>
+            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=recordtime%></span></div>    -->  
+             
+                                                    
+               
+            
+          
+               
+        <li  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=username%> <span class="ui-li-count">时间：<%=recordtime%></span></li>   
+        <li  data-inset="true"   ><a >   
                                                     <h2><%=carcode%></h2>
                                                     <p>经度：<b><%=x%></b></p> 
-               
-                                                    <p >纬度：<b><%=y%></b></p></a>
-        </li>
-        <br/>  
+                                                    <p>纬度：<b><%=y%></b></p> 
+                                                  
 
-   
-</script>
+                                                </a>
+        </li>
+         <br/>  
+        
+     
+       
+     
+       
+        
+        
+    </script>
+    
     
 
-
 </html>
+
