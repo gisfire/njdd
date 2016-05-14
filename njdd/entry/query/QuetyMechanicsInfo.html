@@ -17,46 +17,28 @@
         <script type="text/javascript" src="../../src/common/classie.js"></script>
         <script src="../../src/common/getmessages.js"></script>
         <script src="../../src/common/shouye.js"></script>
-      <!--  <link href="../../src/njdd/query/query.css" rel="stylesheet"/>-->
+        <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     </head>
     <body>
         <div data-role="page" id="main-page" data-theme="c">
-            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" data-theme="a">
+            
+
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" data-theme="f">
                 <a data-role="button"  data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
                 <h1>农机信息</h1>
                 
             </div>
+            
+
             <div data-role="content" id="main-content" class="ui-content"  data-theme="c" >
-           <!--   
-                <ul data-role="listview" id="quetymechanicsinfopage_listview">
-                </ul>
-                -->
+                <!--   
+                    <ul data-role="listview" id="quetymechanicsinfopage_listview">
+                    </ul>
+                    -->
 
                 <ul data-role="listview" data-inset="true" id="quetymechanicsinfopage_listview" data-theme="d" >
-                    
+ 
 
-                    <li data-role="list-divider">农机手：曹松 <span class="ui-li-count">电话：15255094542</span></li>   
-                    <li><a>   
-                            <h2>皖M65465</h2>
-                            <p>马力：<b>1000</b></p>
-                            <p>速度：<b>10km/h</b></p>      
-      
-                            <p class="ui-li-aside">收割机</p></a>
-                    </li>
-                    <li><a >
-                            <h2>皖M65478</h2>
-                            <p>马力：<b>1000</b></p>
-                            <br>
-                            <p>速度：<b>10km/h</b></p>    
-                            <p class="ui-li-aside">剥粒机</p></a>
-                    </li>
-                    <li data-role="list-divider">农机手：华竹根 <span class="ui-li-count">电话：15755059322</span></li>   
-                    <li><a>   
-                            <h2>皖A25465</h2>
-                            <p>马力：<b>1000</b></p>
-      
-                            <p class="ui-li-aside">大型耕田机</p></a>
-                    </li>
                 </ul>
                 
 
@@ -71,13 +53,13 @@
                 <div role="main" class="ui-content" data-role="fieldcontain" align="center">
                     
 
-                   <!-- <label style="float: left; font-size: 15px; text-align: right;">车辆类型：</label>-->
+                    <!-- <label style="float: left; font-size: 15px; text-align: right;">车辆类型：</label>-->
                     车辆类型：<select id="quetymechanicsinfopage_selectname" data-native-menu="false" data-inline="true" data-role="none" style="width: 60%">
-                    </select>
+                         </select>
     
                 </div>
                 
-                 <a data-role="button" id="btn_start" style="width: 100%; margin: auto;">查   询</a>
+                <a data-role="button" id="btn_start" style="width: 100%; margin: auto;">查   询</a>
             </div>
         </div>
    
@@ -136,18 +118,7 @@
         </li>
          <br/>  
 
-              <style>
-.ui-bar-d
-{
-color:green;
-background-color:yellow;
-}
-.ui-body-d
-{
-font-weight:bold;
-color:purple;
-}
-</style>          
+       
 
 <!--                </div>
     </a>
