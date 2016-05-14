@@ -10,7 +10,7 @@
     <script src="../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../dep/tmpl.js"></script>    
     <script src="../src/common/config.js"></script>
-  
+   <link href="../src/common/backgroundStyle.css" rel="stylesheet" />
     
    <!-- <script src="../src/njdd/set/setting.js"></script>-->
     <style>
@@ -58,7 +58,7 @@
 </head>
 <body>
     <div data-role="page" id="mainpage">
-        <div data-role="header">
+        <div data-role="header" data-theme="f">
             <h1>农机作业好助手</h1>
             <a href="manage/set.html" id="mainpage_setbtn" data-icon="gear"  data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
         </div>
@@ -149,7 +149,15 @@
         </div>
 
         <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
-            <h2></h2>
+           
+            
+             <div data-role="navbar" >
+   <ul> 
+                        <li><a href="message/message.html" data-role="button" id="btn_editconserve">消息</a></li>
+                      
+                        <li><a href="manage/person information.html" data-role="button" id="btn_cancelEdit">我的</a></li>
+                    </ul>    
+                </div>
         </div>
     </div>
     <script>
@@ -159,17 +167,21 @@
             //根据span内容设置backgroundImage
             var btns = $('a.ui-btn');
             for (var index in btns) {
-                var btn = btns[index];
-                var btnText = $(btn).parent().find('span').text();
-                //图片路径
-                if (btnText != "") {
-                    var bgImgePath = 'url(../dep/jquery-mobile/images/icons-png/' + imageMap[btnText] + '.png)';
-                    $(btn).css('backgroundImage', bgImgePath);
-                    if (index == btns.length - 1) {
-                        //避免jquery ui动态渲染dom影响
-                        break;
+
+                if (index <= 13) {
+                    var btn = btns[index];
+                    var btnText = $(btn).parent().find('span').text();
+                    //图片路径
+                    if (btnText != "") {
+                        var bgImgePath = 'url(../dep/jquery-mobile/images/icons-png/' + imageMap[btnText] + '.png)';
+                        $(btn).css('backgroundImage', bgImgePath);
+                        if (index == btns.length - 1) {
+                            //避免jquery ui动态渲染dom影响
+                            break;
+                        }
                     }
                 }
+               
             }
 
             //根据span内容宽度设置css样式，如span内文本为4个字符，class为text4*/ 
