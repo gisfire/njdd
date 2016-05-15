@@ -57,10 +57,10 @@
     </style>
 </head>
 <body>
-    <div data-role="page" id="mainpage">
+    <div data-role="page" id="mainpage" data-theme="f">
         <div data-role="header" data-theme="f">
             <h1>农机作业好助手</h1>
-            <a href="manage/set.html" id="mainpage_setbtn" data-icon="gear"  data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
+            <a href="manage/set.html" id="mainpage_setbtn" data-icon="gear"   data-ajax="false" data-iconpos="right" class="ui-btn-right">Admin</a>
         </div>
         
           <table style="width: 100%">
@@ -88,7 +88,7 @@
 
         <div class="divider"></div>
 
-        <div data-role="main" class="ui-content">
+        <div data-role="main" class="ui-content" >
             <div class="ui-grid-c">
                 <div class="ui-block-a">
                     <a href="../entry/statistics/statUsage.html" data-ajax="false" class="ui-btn ui-corner-all ui-shadow ui-icon"></a>
@@ -148,15 +148,16 @@
             </div>
         </div>
 
-        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;"data-theme="a">
            
             
              <div data-role="navbar" >
-   <ul> 
-                        <li><a href="message/message.html" data-role="button" id="btn_editconserve">消息</a></li>
+                 <ul>
+                    
+                     <li><a href="message/message.html" data-role="button" id="btn_editconserve">消息</a></li>
                       
-                        <li><a href="manage/person information.html" data-role="button" id="btn_cancelEdit">我的</a></li>
-                    </ul>    
+                     <li><a href="manage/person information.html" data-role="button" id="btn_cancelEdit">我的</a></li>
+                 </ul>    
                 </div>
         </div>
     </div>
