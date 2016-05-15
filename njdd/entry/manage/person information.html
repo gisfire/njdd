@@ -12,6 +12,7 @@
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
+    <script src="../../src/common/shouye.js"></script>
     <script src="../../src/njdd/set/personinfo.js"></script>
     <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 
@@ -20,7 +21,7 @@
 
     <div data-role="page" id="personinfopage" >
         <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header" data-theme="f">
-            <a id="a_back" data-role="button" data-rel="back" href="set.html" class="ui-btn-left" data-ajax="false" data-icon="back">返回</a>
+            <a id="a_back" data-role="button" data-transition="slideup" data-ajax="false" data-icon="back" class="ui-btn-left" onclick="shouye()">返回</a>
             <h3>个人信息  
             </h3>
             <a id="a_save" data-role="button" href="#" data-icon="check" data-iconpos="left" data-ajax="false" class="ui-btn-right" onclick="tijiao()">保存  

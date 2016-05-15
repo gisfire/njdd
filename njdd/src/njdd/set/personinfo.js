@@ -18,7 +18,12 @@ $(document).on("pageinit", "#personinfopage", function () {
                     content = screen - header - footer - contentCurrent;
         $("#main-content").height(content);
     })();
-    document.getElementById("good").value = "四年驾龄";
+    if (sessionStorage.jobroleid == 2) {
+        document.getElementById("good").value = "十年工龄";
+    }
+    else {
+        document.getElementById("good").value = "四年驾龄";
+    }
     var param = "?token=1&id=" + sessionStorage.userid;
     $.ajax({
         type: "get",
@@ -43,7 +48,7 @@ $(document).on("pageinit", "#personinfopage", function () {
     function liebiao1() {
         var selObj = $("#personinfopage_unitName");
         var jobroleid = sessionStorage.jobroleid;
-        if (jobroleid == 1) {
+        if (jobroleid == 1 || jobroleid == 2) {
             selObj.append("<option value='" + "-1" + "'>" + "独立" + "</option>");
             var option = $($("option", selObj).get(0));
             option.attr('selected', 'selected');
