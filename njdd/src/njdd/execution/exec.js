@@ -66,7 +66,7 @@
                 taskid = "";
                 userid = sessionStorage.userid;
                 carid = sessionStorage.carid;
-                intervalTime = 120000;
+                intervalTime = 5000;
                 elemBtnStart = document.querySelector("#btn_start");
                 elemBtnPause = document.querySelector("#btn_pause");
                 elemBtnCompt = document.querySelector("#btn_compt");
@@ -383,6 +383,7 @@
                     drawPoint();
                     saveInfo();
                     checkProblem();
+                    alert("更新");
                 });
             }, intervalTime);
 
