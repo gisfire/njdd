@@ -13,7 +13,7 @@ $(document).on("pageinit", "#mainpage", function () {
     }
 
     $("#mainpage_setbtn").html(sessionStorage.name);
-    $("#mainpage_setbtn").html(sessionStorage.name);
+    //$("#mainpage_setbtn").html(sessionStorage.name);
    
     $.ajax({
         url: domain + url_getCarInfo + "?token=1",

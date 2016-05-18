@@ -8,26 +8,31 @@
 }*/
 
 
-.ui-bar-f {
-/*padding: 10px 10px;*/
+/*.ui-bar-f {
+
 background-color:	rgb(217,166,69);
 
-/*border-bottom: 2px solid 	#e2e2e2;*/
+
 color:rgb(217,166,69);  
+
+
+color:black;
+
+
+background-color:rgba(214,166,69,1)
+         
+}*/
+
+
+/*padding: 10px 10px;*/
+/*border-bottom: 2px solid 	#e2e2e2;*/
   /*页面主内容下分割线*/
 
 
 /*background:transparent;*/
 /*<!--背景透明-->*/ 
-
-color:black;
  /*<!--字体颜色-->*/ 
-
-background-color:rgba(214,166,69,1)
-          /*最后一个参数设置透明度，前面三个是RGB颜色值*/
-}
-
-
+ /*最后一个参数设置透明度，前面三个是RGB颜色值*/
 
 /*列表渲染颜色*/
 /*.ui-block-a, 
