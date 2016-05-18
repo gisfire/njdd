@@ -37,13 +37,6 @@
                         }
                     }
                 });
-                if (sessionStorage.jobroleid == 1) {
-                    var option = $($("option", selObj).get(1));
-                    option.attr('selected', 'selected');
-                    selObj.selectmenu();
-                    selObj.selectmenu('refresh', true);
-                }
-                else {
                     if (sessionStorage.carid == "" || sessionStorage.carid == null) {
                         var option = $($("option", selObj).get(b));
                         option.attr('selected', 'selected');
@@ -61,7 +54,7 @@
                             }
                         }
                     }
-                }
+                
                 
             }
         },

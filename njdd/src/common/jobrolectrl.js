@@ -7,6 +7,8 @@ $(document).ready(function () {
         $("#fleetinfoinput").hide();
         $("#header_manager").hide();
         $("#header_personadd").hide();
+        $("#managepage").hide();
+        $("#personaddpage").hide();
     }
     if (jobroleid == 3) {
         $("#nczpersoncar").hide();

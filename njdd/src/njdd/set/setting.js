@@ -46,14 +46,6 @@ $(document).on("pageinit", "#setpage", function () {
                     }
                 });
                 var opList = document.getElementById("setpage_selectcar");
-                //if (sessionStorage.carid == "") {
-                if (sessionStorage.jobroleid == 1) {
-                    var option = $($("option", selObj).get(1));
-                    option.attr('selected', 'selected');
-                    selObj.selectmenu();
-                    selObj.selectmenu('refresh', true);
-                }
-                else{
                     if (sessionStorage.carid == "" || sessionStorage.carid == null) {
                         var option = $($("option", selObj).get(0));
                         option.attr('selected', 'selected');
@@ -71,18 +63,7 @@ $(document).on("pageinit", "#setpage", function () {
                             }
                         }
                     }
-                }
-                //else {
-                //    for (var j = 0, len = opList.length; j < len; j++) {
-                //        if (opList.options[j].value == sessionStorage.carid) {
-                //            var option = $($("option", selObj).get(j));
-                //            option.attr('selected', 'selected');
-                //            selObj.selectmenu();
-                //            selObj.selectmenu('refresh', true);
-                //            break;
-                //        }
-                //    }
-                //}
+                
             }
         },
         error: function (errorMsg) {
