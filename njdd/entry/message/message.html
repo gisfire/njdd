@@ -9,25 +9,24 @@
     <title>农机综合调度指挥系统</title>
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
-    <script src="../../src/common/shouye.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
       <script type="text/javascript" src="../../src/common/config.js"></script>
-    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div data-role="page" >
-        <div data-role="header" class="page_header" data-tap-toggle="false" data-fullscreen="true" id="main-header" >
-            <a data-role="button" data-ajax="false" data-icon="back" data-transition="slideup" onclick="shouye()">返回</a>
+    <div data-role="page">
+        <div data-role="header">
+            <a data-role="button" href="../manage/set.html" data-ajax="false" data-icon="back">返回</a>
             <h1>信息管理</h1>
         </div>
         <!--具体信息-->
-        <div data-role="content" id="main-content" class="ui-content">
+        <div data-role="main" class="ui-content">
             <div>
                 <ul data-role="listview" id="all_listview">
                 </ul>
             </div>
         </div>
-        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
             <h2></h2>
         </div>
 
@@ -45,11 +44,11 @@
                 <label style="color: #000;">
                     <%=sendusername%>
                     <span style="float: right;">
-                        <em style="color: #808080;"><%=sendtime%></em>
+                        <em style="color: #000;"><%=sendtime%></em>
                     </span>
                 </label>
             </div>
-            <p style="color: #808080;"><%=messagecontend%></p>
+            <p style="color: #000;"><%=messagecontend%></p>
         </a>
     </li>
     <hr />
@@ -60,7 +59,7 @@
             <label  style="color: #000;" id="Label1">
                 <%=sendusername%>
                     <span style="float: right;">
-                        <em style="color: #808080;"><%=sendtime%></em>
+                        <em style="color: #000;"><%=sendtime%></em>
                     </span>
             </label>
         </div>

@@ -88,32 +88,9 @@ function address() {
       
     });
    
-    /*
-    返回的数据
-    city='北京';
-    year1='14';//
-    month1='02';
-    day1='21';
-    year2='14';
-    month2='02';
-    day2='22';
-    city='北京';
-    savedate_weather='2014-02-21';
-    savedate_life='2014-02-21';
-    savedate_zhishu='2014-02-21';
-    status1='霾';
-    status2='雾';
-    figure1='mai';
-    figure2='wu';
-    direction1='无持续风向';
-    direction2='无持续风向';
-    power1='≤3';
-    power2='≤3';
-    temperature1='3';//白天温度
-    temperature2='-2';//晚上温度
-    */
+    
 }
-
+//$.getscript("http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js &day=2&city="+city+"&dfc=3",function(){
 function logmanagepagecar(item) {
     //模板渲染
     var html = tmpl("tmpl_logmanagepage_detailinfo", item);

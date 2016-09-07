@@ -4,14 +4,6 @@ var userteamid;
 var deleteuserid;
 var datajson;//
 $(document).on("pagebeforecreate", "#managepage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     $.ajax({
         url: domain + url_getAlluser + "?token=1",
         type: 'get',
@@ -35,8 +27,11 @@ $(document).on("pagebeforecreate", "#managepage", function () {
                 $.each(datajson.result.datas, function (i, item) {
                     //模板渲染
                     if (sessionStorage.unitName == item.unitid) {
-                        var html = tmpl("tmpl_managepage_detailinfo", item);
-                        $(html).appendTo("#managepage_listview").trigger('create');
+                        if (item.teamid == "") {
+                            item.teamName = "无车队";
+                            var html = tmpl("tmpl_managepage_detailinfo", item);
+                            $(html).appendTo("#managepage_listview").trigger('create');
+                        }
                     }
                 });
             }
@@ -53,17 +48,8 @@ function managepage_btn_click(unituserid) {
     replaceid = unituserid;
     deleteuserid = replaceid;
     updateuserid = replaceid;
-
     $(document).on("pageinit", "#informationpage", function () {
-        (function () {
-            var screen = $.mobile.getScreenHeight(),
-                        header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                        footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                        contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                        content = screen - header - footer - contentCurrent;
-            $("#main-content").height(content);
-        })();
-        var j = 0;
+        //alert("56");
         $("#informationpage_unit").empty();
         $("#informationpage_team").empty();
         $.ajax({
@@ -77,26 +63,6 @@ function managepage_btn_click(unituserid) {
                         $("#informationpage_name").val(item.name);
                         $("#informationpage_tel").val(item.phone);
                         $("#informationpage_email").val(item.email);
-                        j = i;
-                        $.getJSON("../../src/common/tdtlib/JavaScript.json", function (datajson) {
-                            if (j >= datajson.length) { j = j % datajson.length; }
-                            $.each(datajson, function (z, tem) {
-                                if (z == j) {
-                                    $("#good").val(tem.good);
-                                    var selObj = $("#comment");
-                                    var teamNames = document.getElementById("comment");
-                                    for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-                                        if (teamNames.options[b].text == tem.comment) {
-                                            var option = $($("option", selObj).get(b));
-                                            option.attr('selected', 'selected');
-                                            selObj.selectmenu();
-                                            selObj.selectmenu('refresh', true);
-                                            break;
-                                        }
-                                    }
-                                }
-                            });
-                        });
                         userunitid = item.unitid;
                         userteamid = item.teamid;
                     }

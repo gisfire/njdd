@@ -1,12 +1,4 @@
 ﻿$(document).on("pagecreate", "#carinfoinputpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     readycode();
     $("#caradd").hide();
     document.getElementById("carcodeinput").value = "";
@@ -113,15 +105,7 @@ function readycode() {
     selObj3.selectmenu('refresh', true);
     document.getElementById("tel").value = "";
     document.getElementById("textarea").value = "";
-    if (classie_css.has(document.querySelector("#addtools"), "ui-state-disabled")) {
-        classie_css.remove(document.querySelector("#addtools"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#updatetools"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#updatetools"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#deletetools"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#deletetools"), "ui-state-disabled");
-    }
+    changedisabled();
 }
 
 //内容为“请输入”时添加信息，否则修改信息
@@ -346,7 +330,6 @@ function updateTools() {
         dataType: 'json',
         success: function () {
             confirm("修改成功！");
-            readycode();
         },
         error: function (errorMsg) {
             alert(errorMsg);

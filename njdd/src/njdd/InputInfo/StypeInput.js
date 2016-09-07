@@ -1,12 +1,4 @@
 ﻿$(document).on("pagecreate", "#stypeinputpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     readycartype();
     $("#typeadd").hide();
     $("#typeupdate").hide();
@@ -38,15 +30,7 @@ function readycartype() {
     $("#typeupdate").hide();
     document.getElementById("Styleinput").value = "";
     document.getElementById("textarea").value = "";
-    if (classie_css.has(document.querySelector("#addCartype"), "ui-state-disabled")) {
-        classie_css.remove(document.querySelector("#addCartype"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#updateCartype"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#updateCartype"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#deleteCartype"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#deleteCartype"), "ui-state-disabled");
-    }
+    changedisabled();
 }
 
 var typeremark;

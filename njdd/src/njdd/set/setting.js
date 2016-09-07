@@ -7,14 +7,6 @@ function setpage_selectcar_change() {
 }
 
 $(document).on("pageinit", "#setpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     //显示所有农机车牌  
     $.ajax({
         url: domain + url_getCarInfo + "?token=1",
@@ -34,36 +26,28 @@ $(document).on("pageinit", "#setpage", function () {
                 var selObj = $("#setpage_selectcar");
                 selObj.append("<option value='" + "-1" + "'>" + "请选择" + "</option>");
                 $.each(carjson.result.datas, function (i, item) {
-                    if (sessionStorage.jobroleid == 1) {
-                        if (sessionStorage.userid == item.car_ownerid) {
-                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                        }
-                    }
-                    else {
-                        if (sessionStorage.unitid == item.car_unitid) {
-                            selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
-                        }
+                    if (sessionStorage.unitid == item.car_unitid) {
+                        selObj.append("<option value='" + item.id + "'>" + item.car_code + "</option>");
                     }
                 });
                 var opList = document.getElementById("setpage_selectcar");
-                    if (sessionStorage.carid == "" || sessionStorage.carid == null) {
-                        var option = $($("option", selObj).get(0));
-                        option.attr('selected', 'selected');
-                        selObj.selectmenu();
-                        selObj.selectmenu('refresh', true);
-                    }
-                    else {
-                        for (var j = 0, len = opList.length; j < len; j++) {
-                            if (opList.options[j].value == sessionStorage.carid) {
-                                var option = $($("option", selObj).get(j));
-                                option.attr('selected', 'selected');
-                                selObj.selectmenu();
-                                selObj.selectmenu('refresh', true);
-                                break;
-                            }
+                if (sessionStorage.carid == "") {
+                    var option = $($("option", selObj).get(0));
+                    option.attr('selected', 'selected');
+                    selObj.selectmenu();
+                    selObj.selectmenu('refresh', true);
+                }
+                else {
+                    for (var j = 0, len = opList.length; j < len; j++) {
+                        if (opList.options[j].value == sessionStorage.carid) {
+                            var option = $($("option", selObj).get(j));
+                            option.attr('selected', 'selected');
+                            selObj.selectmenu();
+                            selObj.selectmenu('refresh', true);
+                            break;
                         }
                     }
-                
+                }
             }
         },
         error: function (errorMsg) {

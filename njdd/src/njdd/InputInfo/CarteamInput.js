@@ -9,15 +9,6 @@ var deleteuserid;
 var datajson = [];
 //alluser变量
 $(document).on("pagecreate", "#carteaminputpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-        $("#carteaminputpage").height(screen);
-    })();
     readyteam();
     document.getElementById("teamnameinput").value = "";
 
@@ -92,15 +83,7 @@ function readyteam() {
     selObj2.selectmenu('refresh', true);
     document.getElementById("captainphone").value = "";
     document.getElementById("textarea").value = "";
-    if (classie_css.has(document.querySelector("#addteam"), "ui-state-disabled")) {
-        classie_css.remove(document.querySelector("#addteam"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#updateteam"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#updateteam"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#deleteteam"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#deleteteam"), "ui-state-disabled");
-    }
+    changedisabled();
 }
 
 //内容为“请输入”时添加信息，否则修改信息
@@ -291,7 +274,6 @@ function updateTeam() {
             dataType: 'json',
             success: function () {
                 confirm("修改成功！");
-                readyteam();
             },
             error: function (errorMsg) {
                 alert(errorMsg);
@@ -337,14 +319,6 @@ function addTeam() {
 
 //车队成员界面的显示
 $(document).on("pagebeforecreate", "#teaminfopage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     teamteamid = $("#carteamname").val();
     var pramestr = "?token=1&teamID=" + teamteamid;
     $.ajax({
@@ -378,14 +352,6 @@ $(document).on("pagebeforecreate", "#teaminfopage", function () {
 
 //车队人员添加显示内容
 $(document).on("pagebeforecreate", "#teammemberaddpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     $.ajax({
         url: domain + url_getAlluser + "?token=1",
         type: 'get',
@@ -472,16 +438,7 @@ function teaminfopageclick(id) {
     replaceid = id;
     deleteuserid = replaceid;
     updateuserid = replaceid;
-    var j;
     $(document).on("pageinit", "#teammemberinfo", function () {
-        (function () {
-            var screen = $.mobile.getScreenHeight(),
-                        header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                        footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                        contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                        content = screen - header - footer - contentCurrent;
-            $("#main-content").height(content);
-        })();
         $("#teammemberinfo_team").empty();
         $("#teammemberinfo_unit").empty();
         $.ajax({
@@ -495,26 +452,6 @@ function teaminfopageclick(id) {
                         $("#teammemberinfo_name").val(item.name);
                         $("#teammemberinfo_tel").val(item.phone);
                         $("#teammemberinfo_email").val(item.email);
-                        j = i;
-                        $.getJSON("../../src/common/tdtlib/JavaScript.json", function (datajson) {
-                            if (j >= datajson.length) { j = j % datajson.length; }
-                            $.each(datajson, function (z, tem) {
-                                if (z == j) {
-                                    $("#regood").val(tem.good);
-                                    var selObj = $("#recomment");
-                                    var teamNames = document.getElementById("recomment");
-                                    for (var b = 0, lenteamNames = teamNames.length; b < lenteamNames; b++) {
-                                        if (teamNames.options[b].text == tem.comment) {
-                                            var option = $($("option", selObj).get(b));
-                                            option.attr('selected', 'selected');
-                                            selObj.selectmenu();
-                                            selObj.selectmenu('refresh', true);
-                                            break;
-                                        }
-                                    }
-                                }
-                            });
-                        });
                         userunitid = item.unitid;
                         userteamid = item.teamid;
                     }

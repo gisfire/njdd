@@ -55,28 +55,8 @@
         });
         //模板渲染  
         function logmanagepagecar(item) {
-            
-            $('#tmpl_quetymechanicsinfopage_detailinfo').focus().css({
-                border: "1px solid red",
-                boxShadow: "0 0 2px red"
-            });
-         
-         
-       //     <style>
-       //.ui-bar-d
-       //     {
-       //         color:green;
-       //         background-color:yellow;
-       //     }
-       //     .ui-body-d
-       //     {
-       //         font-weight:bold;
-       //         color:purple;
-       //     }
-       //     </style>
-
-             html = tmpl("tmpl_quetymechanicsinfopage_detailinfo", item);
-             $(html).appendTo("#quetymechanicsinfopage_listview").trigger('create');
+            var html = tmpl("tmpl_quetymechanicsinfopage_detailinfo", item);
+            $(html).appendTo("#quetymechanicsinfopage_listview").trigger('create');
         };
 
 
@@ -84,8 +64,6 @@
 
 
     });
-   
+
 
 })(window)
-
-var html;

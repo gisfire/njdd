@@ -66,7 +66,7 @@
                 taskid = "";
                 userid = sessionStorage.userid;
                 carid = sessionStorage.carid;
-                intervalTime = 100000;
+                intervalTime = 120000;
                 elemBtnStart = document.querySelector("#btn_start");
                 elemBtnPause = document.querySelector("#btn_pause");
                 elemBtnCompt = document.querySelector("#btn_compt");
@@ -341,7 +341,7 @@
                     if (lastGraphic != null) {
                         var x1 = lastGraphic.geometry.x;
                         var y1 = lastGraphic.geometry.y;
-                       distance = calDistance(x1, y1, currentX, currentY);
+                        distance = calDistance(x1, y1, currentX, currentY);
                         
                     }
                 })();
@@ -383,7 +383,6 @@
                     drawPoint();
                     saveInfo();
                     checkProblem();
-                   
                 });
             }, intervalTime);
 

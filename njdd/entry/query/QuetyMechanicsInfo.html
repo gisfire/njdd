@@ -16,50 +16,41 @@
         <script type="text/javascript" src="../../src/common/config.js"></script>
         <script type="text/javascript" src="../../src/common/classie.js"></script>
         <script src="../../src/common/getmessages.js"></script>
-        <script src="../../src/common/shouye.js"></script>
-        <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     </head>
     <body>
         <div data-role="page" id="main-page">
-            
-
-            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header" >
-                <a data-role="button"  data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header">
+                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
                 <h1>农机信息</h1>
                 
             </div>
-            
-
-            <div data-role="content" id="main-content" class="ui-content"  data-theme="c" >
-                <!--   
-                    <ul data-role="listview" id="quetymechanicsinfopage_listview">
-                    </ul>
-                    -->
-
-                <ul data-role="listview" data-inset="true" id="quetymechanicsinfopage_listview" data-theme="d" >
- 
-
-                </ul>
+            <div data-role="content" id="main-content" class="ui-content">
+              
+              <ul data-role="listview" id="quetymechanicsinfopage_listview">
+            </ul>
                 
-
         
             </div>
             
      
 
-            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer" data-theme="a">
-
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer">
+    
+                
+                
+                
+                
 
                 <div role="main" class="ui-content" data-role="fieldcontain" align="center">
                     
 
-                    <!-- <label style="float: left; font-size: 15px; text-align: right;">车辆类型：</label>-->
+                   <!-- <label style="float: left; font-size: 15px; text-align: right;">车辆类型：</label>-->
                     车辆类型：<select id="quetymechanicsinfopage_selectname" data-native-menu="false" data-inline="true" data-role="none" style="width: 60%">
-                         </select>
+                    </select>
     
                 </div>
                 
-                <a data-role="button" id="btn_start" style="width: 100%; margin: auto;">查   询</a>
+                 <a data-role="button" id="btn_start" style="width: 100%; margin: auto;">查   询</a>
             </div>
         </div>
    
@@ -68,47 +59,7 @@
   
 <script type="text/javascript" src="../../dep/tmpl.js"></script> 
 <script type="text/javascript" src="../../src/njdd/query/queryMechanicesjson.js"></script>
-
     <script type="text/html" id="tmpl_quetymechanicsinfopage_detailinfo" data-theme="c">
-        <!--    <li><a href="#" id="<%=id%>" data-transition="slide">
-            <div class="ui-grid-a" align="center" style="border: 1px solid white;">
-
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手姓名</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_username%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机手电话</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userphone%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>车辆牌照</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_code%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>型号</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>马力</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_horsepower%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>农机车类型</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=cartype_remark%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属单位</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userunit%></span></div>
-            <div class="ui-block-a" style="border: 1px solid transparent;"><span>所属车队</span></div>
-            <div class="ui-block-b" style="border: 1px solid transparent;"><span><%=car_userteam%></span></div>     
-                    
-            -->
-                    
-        <!--  <li data-theme="c" data-role="list-divider">农机手：曹松 <span class="ui-li-count">电话：15255094542</span></li>   
-            <li data-theme="c" ><a href="#">   
-                                    <h2>皖M65465</h2>
-                                    <p>马力：<b>1000</b></p>
-                                    <p>速度：<b>10km/h</b></p>      
-      
-                                    <p class="ui-li-aside">收割机</p></a>
-            </li>
-            <li><a href="#">
-                    <h2>皖M65478</h2>
-                    <p>马力：<b>1000</b></p>
-                    <br>
-                    <p>速度：<b>10km/h</b></p>    
-                    <p class="ui-li-aside">剥粒机</p></a>
-            </li>-->
-        
-
         <li  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=car_username%> <span class="ui-li-count">电话：<%=car_userphone%></span></li>   
         <li  data-inset="true" data-theme="d"  >  
                                                     <h2><%=car_code%></h2>
@@ -117,14 +68,5 @@
                                                     <p class="ui-li-aside"><%=cartype_remark%></p>
         </li>
          <br/>  
-
-       
-
-<!--                </div>
-    </a>
-    </li>-->
 </script>
-    
-
-
 </html>

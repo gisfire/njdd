@@ -2,15 +2,15 @@
 $(document).ready(function () {
     var jobroleid = sessionStorage.jobroleid;
     if (jobroleid == 1) {
-        $("#carinfoinput").hide();
+        $("#header_conduct").hide(); 
+        $("#header_addEssence").hide();
+        $("#header_Logmanage").hide();
+        $("#_conduct").hide();
+        $("#_addEssence").hide();
+        $("#_Logmanage").hide();
         $("#unitinput").hide();
         $("#fleetinfoinput").hide();
         $("#header_manager").hide();
         $("#header_personadd").hide();
-        $("#managepage").hide();
-        $("#personaddpage").hide();
-    }
-    if (jobroleid == 3) {
-        $("#nczpersoncar").hide();
     }
 });

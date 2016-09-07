@@ -13,13 +13,11 @@
         <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
         <script src="../../dep/echarts/echarts.js"></script>
         <script src="../../src/common/getmessages.js"></script>
-        <script src="../../src/common/shouye.js"></script>
-         <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     </head>
     <body>
-        <div data-role="page"  id="chart-page" >
-            <div data-role="header" class="ui-bar-a ui-header" role="banner" id="page-header" >
-                <a data-role="button"  data-ajax="false" data-icon="home" onclick="shouye()">首页</a>
+        <div data-role="page"  id="chart-page">
+            <div data-role="header" class="ui-bar-a ui-header" role="banner" id="page-header">
+                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
                 <h1>面积统计</h1>
             </div>
             <div data-role="content" class="ui-content"  role="main" id="page-content">
@@ -28,8 +26,8 @@
             </div>
             <div data-role="footer" data-tap-toggle="false" class="ui-bar-a ui-footer" id="page-footer"> 
                 <div data-role="fieldcontain">
-                    <label for="select-querytype"  style="float: left; font-size: 15px; text-align: right;">请选择：</label>
-                    <select name="select-querytype" id="select-querytype" data-inline="false" style='display: inline-block; width: 60%;'>
+                    <label for="select-querytype" >请选择：</label>
+                    <select name="select-querytype" id="select-querytype" data-inline="false">
                         <option value="thisWeek">这周统计</option>
                         <option value="lastWeek">上周统计</option>
                         <option value="thisMonth">本月统计</option>
@@ -49,4 +47,3 @@
     <script type="text/javascript" src="../../src/njdd/statistics/area.js"></script>
 </html>
 
- 

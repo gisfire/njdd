@@ -52,42 +52,8 @@ var selecttype;
                 allusergraphicLayer = new GraphicsLayer();
                 map.addLayer(allusergraphicLayer);
                 getAllUsers("0");
-                var workdata1 = "POLYGON((118.2 32.2,118.25 32.25,118.28 32.27,118.2 32.2))";
-                var dataadd1 = ["章子君", "农田", ""];
-                var workdata2 = "POLYGON((117.2 32.33,117.25 32.34,117.257 32.36.35,117.2 32.33))";
-                var dataadd2 = ["吴恬", "教学楼", ""];
-                addpolygon(workdata1, dataadd1);
-                addpolygon(workdata2, dataadd2);
             }
             )();
-
-            function addpolygon(polygondata,adddata) {
-                
-                var wkt = new Wkt.Wkt();
-                wkt.read(polygondata);
-                var config = {
-                    spatialReference: {
-                        wkid: 4326 // WGS84 unprojected
-                    }
-                };
-                // 根据config将wkt转为esri对象
-                var obj = wkt.toObject(config);
-                var symbol = null;
-                switch (obj.type) {
-                    case "polyline":
-                        symbol = new SimpleLineSymbol();
-                        break;
-                    case "polygon":
-                        symbol = new SimpleFillSymbol();
-                        break;
-                }
-                var graphic = new Graphic(obj, symbol);
-                graphic.setAttributes({ "ownername": adddata[0], "elementtype": adddata[1], "remark": adddata[2] });
-                var content = "<b>所有权人</b>: <strong>${ownername}</strong> <br/><b>要素类型</b>:<strong>${elementtype}</strong> <br/><b>备注</b>: <strong>${remark}</strong>";
-                var infoTemplate = new InfoTemplate("信息", content);
-                graphic.setInfoTemplate(infoTemplate);
-                gl.add(graphic);
-            }
 
             function condoctpage_querybtn_click() {
                 var selectval = $("#condouctpage_select").val();
@@ -98,8 +64,8 @@ var selecttype;
                 var symboltemp = new PictureMarkerSymbol('../../dep/jquery-mobile/images/icons-png/' + picname + '.png', 20, 20);
                 var pointtemp = new Point([item.x, item.y], new SpatialReference({ wkid: 4326 }));
                 var graphictemp = new Graphic(pointtemp, symboltemp);
-                graphictemp.setAttributes({ "username": item.username, "status": item.status });
-                var content = "<b>用户姓名</b>: <strong>${username}</strong><br/><b>状态</b>: <strong>${status}</strong>";
+                graphictemp.setAttributes({ "username": item.username });
+                var content = "<b>用户姓名</b>: <strong>${username}</strong>";
                 var infoTemplate = new InfoTemplate("信息", content);
                 graphictemp.setInfoTemplate(infoTemplate);
                 allusergraphicLayer.add(graphictemp);
@@ -231,6 +197,9 @@ function detailinfopage_smsbtn_click() {
        
     }
 }
+
+
+
 
 
 

@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>农机综合调度指挥系统</title>
+    <title>滴滴农机智能调度指挥系统</title>
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <link rel="stylesheet" href="../../src/njdd/execution/exec.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
@@ -16,7 +16,6 @@
     <script src="../../src/njdd/set/personCar.js"></script>
     <script src="../../src/common/classie.js"></script>
     <script src="../../src/common/getmessages.js"></script>
-    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <!--textarea样式-->
     <style type="text/css">
         #textarea {
@@ -30,13 +29,13 @@
 
 </head>
 <body>
-    <div data-role="page" id="personCarpage" >
-        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" class="page_header" id="main-header" >
+    <div data-role="page" id="personCarpage">
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true">
             <!--点击返回，将返回到（页面1——信息录入主页面）-->
             <a data-role="button" href="set.html" data-ajax="false" data-icon="back">返回</a>
             <h1>个人车辆编辑</h1>
         </div>
-        <div data-role="content" id="main-content" class="ui-content">
+        <div data-role="content">
             <!--农机编号下拉框-->
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
@@ -69,7 +68,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机品牌:</label>
+                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机品牌：</label>
                         </td>
                         <td style="width: 76%;">
                             <input type="text" name="carbrand" style="text-align: center;" id="carbrand" />
@@ -82,7 +81,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机马力:</label>
+                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机马力：</label>
                         </td>
                         <td style="width: 76%;">
                             <input type="text" name="carbrand" style="text-align: center;" id="carhorsepower" />
@@ -109,7 +108,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位:</label>
+                            <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
                         </td>
                         <td style="width: 75%;">
                             <select name="unitname" id="unit" data-role="none" data-native-menu="false" onchange="judgeunit()"></select>
@@ -122,7 +121,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="carhoster" style="float: left; font-size: 15px; text-align: right;">农机车主:</label>
+                            <label for="carhoster" style="float: left; font-size: 15px; text-align: right;">农机车主：</label>
                         </td>
                         <td style="width: 75%;">
                             <select data-native-menu="false" style="width: 60%" id="owner" onchange="ownerchange()">
@@ -136,7 +135,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
-                            <label for="tel" style="float: left; font-size: 15px; text-align: right;">车主电话:</label>
+                            <label for="tel" style="float: left; font-size: 15px; text-align: right;">车主电话：</label>
                         </td>
                         <td style="width: 76%;">
                             <input type="text" name="tel" id="tel" style="text-align: center;" disabled="disabled" />
@@ -146,13 +145,13 @@
             </div>
             <!--备注-->
             <div class="ui-field-contain" data-controltype="textinput">
-                <p style="float: left; font-size: 15px; text-align: right;">备注:</p>
+                <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
                 <!--有CSS样式-->
                 <textarea id="textarea"></textarea>
             </div>
         </div>
 
-        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
+        <div data-role="footer">
             <!--删除与保存按钮-->
             <div>
                 <label id="caradd" style="color: #f00; display: none;">请填写农机编号！</label>

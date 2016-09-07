@@ -7,31 +7,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>农机综合调度指挥系统</title>
+    <title>滴滴农机智能调度指挥系统</title>
     <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
     <script src="../../src/common/getmessages.js"></script>
-    <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
 </head>
 <body>
 
-    <div data-role="page" id="informationpage" >
-        <div data-role="header" data-fullscreen="true" data-tap-toggle="false"  class="page_header" id="main-header" >
+    <div data-role="page" id="informationpage">
+        <div data-role="header">
             <a id="a_back" data-role="button" data-rel="back" href="manage.html" class="ui-btn-left" data-icon="back">返回</a>
             <h3>用户管理信息  
             </h3>
         </div>
 
 
-        <div data-role="content" id="main-content" class="ui-content">
+        <div data-role="content" class="ui-content">
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
                         <td style="width: 23%">
                             <label for="name" style="float: right; font-size: 15px; text-align: right;">
-                                用户名:  
+                                用户名：  
                             </label>
                         </td>
                         <td style="width: 76%;">
@@ -47,7 +46,7 @@
                     <tr>
                         <td style="width: 23%">
                             <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
-                                手机:  
+                                手机：  
                             </label>
                         </td>
                         <td style="width: 76%;">
@@ -63,7 +62,7 @@
                     <tr>
                         <td style="width: 23%">
                             <label for="email" style="float: right; font-size: 15px; text-align: right;">
-                                邮箱:  
+                                邮箱：  
                             </label>
                         </td>
                         <td style="width: 76%;">
@@ -79,7 +78,7 @@
                     <tr>
                         <td style="width: 23%">
                             <label for="danwei" style="float: right; font-size: 15px; text-align: right;">
-                                所属单位:  
+                                所属单位：  
                             </label>
                         </td>
                         <td style="width: 75%;">
@@ -97,7 +96,7 @@
                     <tr>
                         <td style="width: 23%">
                             <label for="car_group" style="float: right; font-size: 15px; text-align: right;">
-                                车队:  
+                                车队：  
                             </label>
                         </td>
                         <td style="width: 75%;">
@@ -108,50 +107,12 @@
                     </tr>
                 </table>
             </div>
-            <div class="ui-field-contain" data-controltype="textinput">
-                <table style="width: 100%">
-                    <tr>
-                        <td style="width: 23%">
-                            <label for="mima" style="float: right; font-size: 15px; text-align: right;">
-                                个人特长:  
-                            </label>
-                        </td>
-                        <td style="width: 76%">
-                            <input name="mima" id="good" style="text-align: center;" type="tel" />
-                        </td>
-                    </tr>
-                </table>
-               
-            </div>
-            <div class="ui-field-contain" data-controltype="selectinput">
-                <table style="width: 100%">
-                    <tr>
-                        <td style="width: 23%">
-                            <label for="" style="float: right; font-size: 15px; text-align: right;">
-                                信誉评价: 
-                            </label>
-                        </td>
-                        <td style="width: 75%;">
-                                <select id="comment">
-                                    <option></option>
-                            <option>极优秀</option>
-                            <option>优秀</option>
-                            <option>较优秀</option>
-                            <option>良好</option>
-                            <option>一般</option>
-                            <option>较差</option>
-                            <option>差</option>
-                            <option>极差</option>
-                                </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+
 
         </div>
 
 
-        <div data-role="footer" data-fullscreen="true" data-tap-toggle="false" class="page_footer" id="main-footer">
+        <div data-role="footer">
             <div data-role="navbar">
                 <ul>
                     <li><a id="updateuser" data-role="button" class="ui-btn" data-inline="true" onclick="dianji()">保存</a></li>

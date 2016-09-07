@@ -1,40 +1,38 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>农机综合调度指挥系统</title>
+    <title>滴滴农机智能调度指挥系统</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <script src="../../dep/jquery-mobile/jquery.js"></script>
     <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
     <script src="../../src/common/config.js"></script>
-     <link href="../../src/common/backgroundStyle.css" rel="stylesheet" />
     <script type="text/javascript">
-        
         $(
-            function () {
-                $('.error').hide();
-                $('input').each(
-                    function () {
-                        $(this).blur(
-                            function () {
-                                var name = $(this).attr('name'); //获得表单name属性的值
-                                var val = $(this).val();
-                                var len = val.length;
-                                if (name=='user_name'||name=='user_tel'||name=='user_passworld'||name=="user_passworldsure") {
-                                    if ($(this).val().length < 1) {
-                                        $(this).siblings().find('.error').show();
-                                        alert($(this).siblings().val());
-                                    }
-                                }
+    function () {
+        $('.error').hide();
+        //$('input').each(
+        //    function () {
+        //        $(this).blur(
+        //            function () {
+        //                var name = $(this).attr('name'); //获得表单name属性的值
+        //                var val = $(this).val();
+        //                var len = val.length;
+        //                if (name=='user_name'||name=='user_tel'||name=='user_passworld'||name=="user_passworldsure") {
+        //                    if ($(this).val().length < 1) {
+        //                        $(this).siblings().find('.error').show();
+        //                        alert($(this).siblings().val());
+        //                    }
+        //                }
 
-                            }
-                        );
-                    }
-                );
+        //            }
+        //        );
+        //    }
+        //);
 
-            }
-        );
+    }
+    );
     </script>
 
     <style type="text/css">
@@ -47,8 +45,8 @@
 <body>
 
     <div data-role="page" id="entrypage_signin">
-        <div data-role="header" >
-            <h1>农机作业好助手</h1>
+        <div data-role="header">
+            <h1>滴滴农机智能调度指挥系统</h1>
             <div data-role="navbar">
                 <ul>
                     <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">登录</a></li>
@@ -67,13 +65,11 @@
                             </label>
                         </td>
                         <td>
-                            <input name="user_name" id="entrypage_signin_tel" value="15255006046" type="tel" />
+                            <input name="user_name" id="entrypage_signin_tel" value="15255094542" type="tel" />
                         </td>
                     </tr>
                 </table>
             </div>
-           
-           
 
             <div class="ui-field-contain" data-controltype="textinput">
                 <table>
@@ -102,7 +98,7 @@
     </div>
 
     <div data-role="page" id="entrypage_register">
-        <div data-role="header"  data-theme="f">
+        <div data-role="header">
             <h1>农机远程指挥调度系统</h1>
             <div data-role="navbar">
                 <ul>
@@ -117,12 +113,12 @@
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
-                        <td style="width: 35%">
+                        <td>
                             <label for="user_name">
-                                用户姓名(*):  
+                                用户姓名(*)：  
                             </label>
                         </td>
-                        <td style="width: 64%;">
+                        <td>
                             <input name="user_name" id="entrypage_register_name" value="" />
                         </td>
                         <td>
@@ -134,12 +130,12 @@
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
-                        <td style="width: 35%">
+                        <td>
                             <label for="user_tel">
-                                用户电话(*):  
+                                用户电话(*)：  
                             </label>
                         </td>
-                        <td style="width: 64%;">
+                        <td>
                             <input name="user_tel" id="entrypage_register_tel" value="" />
                         </td>
                         <td>
@@ -152,12 +148,12 @@
             <div class="ui-field-contain" data-controltype="textinput">
                 <table style="width: 100%">
                     <tr>
-                        <td style="width: 35%">
+                        <td>
                             <label for="user_key">
-                                用户密码(*):  
+                                用户密码(*)：  
                             </label>
                         </td>
-                        <td style="width: 64%;">
+                        <td>
                             <input name="user_password" type="password" id="entrypage_register_password" value="" />
                         </td>
                         <td>
@@ -171,12 +167,12 @@
             <div class="ui-field-contain" data-controltype="textinput"   >
                 <table style="width: 100%" >
                     <tr>
-                        <td  style="width: 35%">
+                        <td >
                             <label for="con_key">
-                                密码确认(*):  
+                                密码确认(*)：  
                             </label>
                         </td>
-                        <td  style="width: 64%;">
+                        <td >
                             <input name="user_passwordsure" type="password" id="entrypage_register_passwordsure" value="" />
                         </td>
                         <td>
@@ -190,25 +186,26 @@
            <div class="ui-field-contain" data-controltype="textinput">
                 <table  style="width: 100%">
                     <tr>
-                        <td  style="width: 35%">
+                        <td >
                             <label for=""  >
                               角色选择(*)：  
                             </label>
                         </td>
-                        <td style="width: 63%;">
+                        <td  style="width: 63.3%">
                             <select   id="personinfopage_unitName" >
-                                <option value="1">农机手</option>   
-                                <option value="2">种植户</option>
-                                <option value="3">管理者</option>                               
+                                <option value="1">农机手</option>
+                                <option value="2">农场主</option>
                             </select>
                         </td>
                          <td>
-                         
+                          
                         </td>
                     </tr>
                 </table>
             </div>
             
+            
+
            <!-- <div>
                 <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center">一键注册</a>
             </div>-->

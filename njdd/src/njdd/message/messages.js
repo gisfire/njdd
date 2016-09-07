@@ -1,12 +1,5 @@
 ﻿$(document).ready(function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
+    
     //序列化时间
     Date.prototype.format = function (format) {
         var date = {
@@ -79,14 +72,6 @@ function messagepage_btn_click(id) {
         }
     });
     $(document).on("pageinit", "#persmessage", function () {
-        (function () {
-            var screen = $.mobile.getScreenHeight(),
-                        header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                        footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                        contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                        content = screen - header - footer - contentCurrent;
-            $("#main-content").height(content);
-        })();
         //序列化时间
         Date.prototype.format = function (format) {
             var date = {

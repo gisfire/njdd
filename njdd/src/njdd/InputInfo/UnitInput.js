@@ -1,13 +1,5 @@
 ﻿
 $(document).on("pagecreate", "#unitinputpage", function () {
-    (function () {
-        var screen = $.mobile.getScreenHeight(),
-                    header = $("#main-header").hasClass("ui-header-fixed") ? $("#main-header").outerHeight() - 1 : $("#main-header").outerHeight(),
-                    footer = $("#main-footer").hasClass("ui-footer-fixed") ? $("#main-footer").outerHeight() - 1 : $("#main-footer").outerHeight(),
-                    contentCurrent = $("#main-content").outerHeight() - $("#main-content").height(),
-                    content = screen - header - footer - contentCurrent;
-        $("#main-content").height(content);
-    })();
     readyunit();
     $("#unitadd").hide();
     $("#unitupdate").hide();
@@ -40,15 +32,7 @@ function readyunit() {
     $("#unitadd").hide();
     $("#unitupdate").hide();
     document.getElementById("textarea").value = "";
-    if (classie_css.has(document.querySelector("#addunit"), "ui-state-disabled")) {
-        classie_css.remove(document.querySelector("#addunit"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#updateunit"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#updateunit"), "ui-state-disabled");
-    }
-    if (!classie_css.has(document.querySelector("#deleteunit"), "ui-state-disabled")) {
-        classie_css.add(document.querySelector("#deleteunit"), "ui-state-disabled");
-    }
+    changedisabled();
 }
 
 
