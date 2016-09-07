@@ -7,9 +7,9 @@
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
         <preference name="phonegap-version" value="3.5.0" />
-    <name>农机作业好助手</name>
+    <name>滴滴农机</name>
     <description>
-     农机作业好助手
+     滴滴农机
     </description>
     <author email="#" name="#">
         gislt
