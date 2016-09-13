@@ -62,3 +62,8 @@ $(document).on("pageinit", "#mainpage", function () {
 
 });
 
+function getcarid() {
+    sessionStorage.carid = $("#mainpage_selectcar").val();  
+}
+
+

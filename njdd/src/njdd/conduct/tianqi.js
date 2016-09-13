@@ -40,7 +40,7 @@ var selecttype;
 
         function maptools() {
 
-            AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.Driving', 'AMap.MouseTool', 'AMap.MouseTool', "AMap.MapType", "AMap.OverView", 'AMap.Geolocation', "AMap.RangingTool", "AMap.DistrictSearch"], function () {
+            AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.Driving', 'AMap.MouseTool', 'AMap.MouseTool', "AMap.MapType", "AMap.OverView", 'AMap.Geolocation', "AMap.RangingTool", "AMap.DistrictSearch"], function() {
 
                 map.addControl(new AMap.ToolBar()); //加载平移缩放控件
                 map.addControl(new AMap.Scale()); //加载比例尺    
@@ -83,7 +83,7 @@ var selecttype;
 
         });
 
-        var str;
+        var str ;
         function getlastweather() {
             str = [];
             weather.getForecast(cityinfo, function (err, data) {
@@ -91,11 +91,11 @@ var selecttype;
                 str.push(cityinfo);
                 for (var i = 0, dayWeather; i < data.forecasts.length; i++) {
                     dayWeather = data.forecasts[i];
-
+                   
                     str.push(dayWeather.date + ' <div class="weather">' + dayWeather.dayWeather + '</div> ' + dayWeather.nightTemp + '~' + dayWeather.dayTemp + '℃');
                 }
                 document.getElementById('tip').innerHTML = str.join('<br>');
-
+              
             });
         }
 
@@ -107,11 +107,11 @@ var selecttype;
             cityinfo = sessionStorage.cityinfo;
             // alert(sessionStorage.cityinfo);
             $("#tip").empty();
-
+         
             getlastweather();
             $("#tip").append(str.join('<br>'));
-
-
+           
+        
 
         }
 
